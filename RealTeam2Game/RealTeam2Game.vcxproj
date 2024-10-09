@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="GameIntro.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="PuzzleIdeas.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
