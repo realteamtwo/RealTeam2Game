@@ -128,11 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="PlayerInput.cpp" />
     <ClCompile Include="RealTeam2Game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameIntro.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="PlayerInput.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
