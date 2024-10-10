@@ -130,10 +130,12 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="PlayerInput.cpp" />
     <ClCompile Include="RealTeam2Game.cpp" />
+    <ClCompile Include="Room.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameIntro.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Room.h" />
     <ClInclude Include="PlayerInput.h" />
     <ClInclude Include="PuzzleIdeas.h" />
   </ItemGroup>
