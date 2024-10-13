@@ -3,9 +3,11 @@
 #include "Player.h"
 
 //Constructors
+/*
 Player::Player(Room r) {
 	location = r;
 }
+*/
 
 //Mutators
 void Player::setRoom(Room r) {

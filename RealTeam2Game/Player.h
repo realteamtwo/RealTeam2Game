@@ -10,7 +10,8 @@ public:
 	//CONSTRUCTORS
 
 	//Constructor for setting location; leaves the inventory empty
-	Player(Room);
+	//Doesn't exist yet; Room needs a default constructor
+	//Player(Room);
 
 
 	//MUTATORS
