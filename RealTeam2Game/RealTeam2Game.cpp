@@ -10,6 +10,8 @@ using namespace std;
 
 int main()
 {
+    Backstory();
+    Controls();
     //Test cases - commented out for now
     /*
     Room test("Dark room", "HMMMMMMM, it's dark", 0);

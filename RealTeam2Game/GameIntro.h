@@ -21,4 +21,5 @@ using namespace std;
 //to see what items are around you, type "look" and you will get an idea of what's around you including
 //stuff you can interact with.
 //once you have solved the room, type "open trapdoor" to open and descend further.
-
+void Backstory();
+void Controls();

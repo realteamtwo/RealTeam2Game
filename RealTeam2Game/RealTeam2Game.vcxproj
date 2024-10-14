@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameIntro.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerInput.cpp" />
