@@ -5,7 +5,17 @@ using namespace std;
 
 void Backstory() {
 	
-	cout << "A teleportation spell has gone wrong and you find yourself in an unfamiliar room. You must seek a way out, traveling down until you reach the ground level to flee the evil alchemist's tower!" << endl;
+	
+cout << "In a realm where magic intertwines with reality, you play as (Player), a talented yet impulsive young mage known for having great curiosity and a knack for experimentation. 
+After years of studying ancient tomes, (Player) finally uncovers a long-forgotten teleportation spell that promises to reveal hidden truths of the world. 
+Eager to seek newfound knowledge, (Player) prepares the ritual in the mage tower, envisioning a journey to a legendary library rumored to contain secrets of unparalleled power. However, as (Player) recites the incantation, a sudden surge of dark energy ripples through the air, causing the spell to twist and warp. 
+Instead of the library of secrets, (Player) finds themselves in an unfamiliar, dimly lit room—a chamber deep within the lair of (Evil Alchemist), a notorious alchemist known for his dangerous experiments and mastery of dark magic. 
+The air is thick with the scent of burnt herbs and ominous energy, and the walls are lined with arcane symbols pulsating with an eerie glow.Realizing (Blank) has unwittingly stumbled into (Evil Alchemist) tower, (Blank) heart races.
+Legends speak of the alchemist's twisted experiments, using unwitting subjects to fuel his ambition for immortality.
+Determined to escape, (Player) discovers that the tower is a labyrinth of shifting rooms and realms with enchanted traps, each one being a reflection of (Evil Alchemist) twisted mind and insatiable thirst for knowledge. 
+They could either be as simple as matching words on a desk or as hard as deciphering a mysterious language.As (Player) navigates this perilous environment, they must solve intricate puzzles, each designed to test her intellect and magical prowess. Along the way, they encounter remnants of (Evil Alchemist) past victims—spirits trapped in the tower, their whispers guiding or misdirecting her. 
+To escape, (Player) must harness the very magic that brought them here, learning to bend the rules of her own spells to manipulate the tower’s layout.With every level she descends, the challenges become more daunting, 
+revealing more about (Evil Alchemist) dark experiments and his ultimate goal: to unlock the secrets of life and death.(Player) journey is not just a race against time to escape; it becomes a quest to confront her own fears, unravel the truth behind the alchemist's madness, and ultimately challenge the very forces that have ensnared them. Can (Player) outwit the tower’s defenses, confront (Evil Alchemist) dark legacy, and find their way back home before it’s too late? The fate of the world—and perhaps their very soul—hangs in the balance." << endl;
 }
 
 void Controls() {
