@@ -75,10 +75,6 @@ void PlayerInput::itemInteraction(string command)
 
     if (riddleVisible &&!riddleIsSolved)
     {
-        string answer;
-        cout << "Enter your answer: ";
-        cin >> answer;
-        if (answer == "911") {
             riddleIsSolved = true;
             cout << "You solved the riddle! The code is '911'. Now find the drawer to unlock it." << endl;
         }
