@@ -3,111 +3,146 @@
 #include <iostream>
 
 using namespace std;
-PlayerInput::PlayerInput() : currentDirection("None"), torchFound(false), keyFound(false), riddleIsSolved(false)
-{
-    torch = Item("Torch"," A Flashlight");
-    key = Item("key", " A metal key to unlock the door");
 
+PlayerInput::PlayerInput() : currentDirection("Center"), torchFound(false), keyFound(false), riddleVisible(false), riddleIsSolved(false), drawerUnlocked(false), doorUnlocked(false)
+{
+    torch = Item("Torch", "A Flashlight");
+    key = Item("Key", "A metal key to unlock the door");
+
+    cout << "You are at the center of the room. It's dark, but you sense something important." << endl;
+    cout << "Hint: Go left to find a torch!" << endl;
 }
 
+// Function to handle player movement
+void PlayerInput::movePlayer(string direction) {
 
+    if (direction == "up"|| direction=="Up") {
 
-void PlayerInput::movePlayer(string direction)
-{
-	if (direction == "Up")
-	{
-        if (torchFound)
+        if (riddleIsSolved)
         {
+            cout << "You already solved a riddle. Now you need to find the drawer." << endl;
+        }
+        else  if (torchFound) {
             riddleVisible = true;
             currentDirection = "Up";
+            cout << "You moved up. There is a riddle on the wall." << endl;
+            cout << " You will only see the riddle if you use the torch, input 'use' to turn on the torch" << endl;
         }
         else
         {
-            cout << "there is a riddle on the wall, but It's too dark to see anything!" << endl;
-            currentDirection = "Up";
-        }
-		
-        
-	}
-   
-    else if (direction == "Down") {
-        currentDirection = "Down";
-    }
-    else if (direction == "left") {
-        currentDirection = "Left";
+            cout << "It's too dark to see the riddle on the wall. You need a torch!" << endl;
 
-        if (!torchFound)
-        {
-            cout << "You found a torch! Use the command 'pick' to pick it up." << endl;
         }
     }
-    else if (direction == "right") {
+
+
+
+    else if (direction == "down"|| direction == "Down") {
+        currentDirection = "Down";
+        cout << "You moved down." << endl;
+        if (keyFound)
+        {
+            cout << "You found the door! Insert the key to unlock it, by typing 'insert'. " << endl;
+        }
+        else {
+            cout << " You need to find the key to unlock the door. " << endl;
+        }
+    }
+    else if (direction == "left"|| direction=="Left") {
+        currentDirection = "Left";
+        if (!torchFound) {
+            cout << "You found a torch! Use the command 'pickup' to pick it up." << endl;
+        }
+        else {
+            cout << " Nothing more to find here" << endl;
+        }
+    }
+    else if (direction == "right" || direction == "Right") {
         currentDirection = "Right";
+        if (riddleIsSolved && !drawerUnlocked) {
+
+            cout << "You found a drawer. Use the code you got from the riddle to unlock it." << endl;
+            string code;
+            cout << " Enter the code: ";
+            cin >> code;
+            if (code == "911")
+            {
+                drawerUnlocked = true;
+                keyFound = true;
+                cout << " You unlocked the drawer and found the key! Use the 'get' command to retrieve it." << endl;
+            }
+
+            else
+            {
+                cout << " Incorrect code. Try Again." << endl;
+            }
+        }
+
+        else {
+
+            cout << "You moved right." << endl;
+        }
     }
     else {
         cout << "Invalid direction." << endl;
         return;
-    }
+    }}
 
-}
-
-
-// Handles item interaction (pickup, use, get)
-void PlayerInput::itemInteraction(string command)
-{
-    if (command == "pickup" && !torchFound)
-    {
+// Function to handle item interaction (pickup, use, get)
+void PlayerInput::itemInteraction(string command) {
+    if (command == "pickup" && !torchFound && currentDirection == "Left") {
         torchFound = true;
-        cout << "You picked up the torch!" << endl;
+        cout << "You picked up the torch! Now move up to see the riddle." << endl;
     }
-    else if (command == "use" && torchFound) {
-        if (riddleVisible)
-        {
-            cout << "use the torch to see the riddle on the wall." << endl;
-            cout << "Now solve the riddle on the wall to find the escape code." << endl;
-            cout << "Riddle: In times of trouble, I’m the number you call,  A three - digit code for help, a lifeline for all. From fires to emergencies, I stand tall,What number am I, for safety's call?" << endl;
-        }
-        else {
-            cout << "You need to move up to see the riddle" << endl;
-        }
-    }
+    else if (command == "use"&& torchFound) {
+        if (riddleVisible && !riddleIsSolved) {
+            cout << "You used the torch to see the riddle on the wall." << endl;
+            cout << "Riddle: In times of trouble, I'm the number you call, a three-digit code for help, a lifeline for all. From fires to emergencies, I stand tall. What number am I?" << endl;
+            string answer;
+            cout << "Enter your answer: ";
+            cin >> answer;
 
 
-    if (riddleVisible &&!riddleIsSolved)
-    {
-            riddleIsSolved = true;
-            cout << "You solved the riddle! The code is '911'. Now find the drawer to unlock it." << endl;
+            if (answer == "911")
+            {
+                riddleIsSolved = true;
+                cout << "You solved the riddle! Now find the drawer and unlock it." << endl;
+            }
+            else {
+                cout << "Incorrect answer. Try again." << endl;
+            }
         }
-        else {
-            cout << "Incorrect answer. Try again." << endl;
+    
+        else{
+            cout << "You need to move up to see the riddle." << endl;
         }
-    }
-    else if (!keyFound)
-    {
-        cout << "Enter the code to unlock the drawer: ";
-        string code = "";
-        cin >> code;
-        if (code == "911")
-        {
-            keyFound = true;
-            cout << "Drawer unlocked! You found the key. Use 'get' to take the key." << endl;
-        }
-        else
-        {
-            cout << "Wrong code. Try again." << endl;
-        }
-    }
 
+    }
    
-    else if (command == "get"&& keyFound ) 
-    {
-        cout << "You got the key! Now find the door and unlock it with 'use key'." << endl;
+    
+    else if (command == "get" || command == "Get") {
+        if (keyFound && drawerUnlocked) {
+            cout << "You got the key! Now find the door and use the key to unlock it." << endl;
+        }
+        else if (!drawerUnlocked) {
+            cout << "You need to unlock the drawer first with the code." << endl;
+        }
     }
-    else
-    {
+    else if (command == "insert" && keyFound && currentDirection == "Down") {
+        {
+            cout << " You inserted the key to unlock the door." << endl;
+            cout << " Congratulations! You have unlocked the door and escaped!" << endl;
+            doorUnlocked = true;
+            exit(0);
+            
+        }
+    }
+    else {
         cout << "Invalid command." << endl;
     }
 }
+
+
 
 // Checks if the player has found the torch
 bool PlayerInput::hasTorch() const {

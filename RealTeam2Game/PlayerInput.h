@@ -13,6 +13,7 @@ public:
 
 	void movePlayer(string direction);
 	void itemInteraction(string command);
+	
 
 
 	bool hasTorch() const;
@@ -25,7 +26,9 @@ private:
 	bool torchFound;
 	bool riddleVisible;
 	bool riddleIsSolved;
+	bool drawerUnlocked;
 	bool keyFound;
+	bool doorUnlocked;
 	
 
 

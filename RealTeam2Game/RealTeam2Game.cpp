@@ -28,19 +28,28 @@ int main()
     std::cout << pencil.getDescription() << endl;
     */
 
+   
     PlayerInput inputHandler;
+
+    cout << "Welcome to the Escape Room Game!" << endl;
+    cout << "You are at the center of the room. It's dark, but you sense something important is in this room." << endl;
+    cout << "Hint: Move left to find a torch." << endl;
 
     string input;
     while (true) {
-        cout << "Enter next command: ";
+        cout << "Enter next command (up, down, left, right, use, pickup, get, insert): ";
         cin >> input;
-        if (input == "Up" || input == "Down" || input == "left" || input == "right") {
-            cout << "Command recieved" << endl;
+
+        if (input == "up" || input == "down" || input == "left" || input == "right" || input == "center") {
             inputHandler.movePlayer(input);
         }
-        else if (input == "use" || input == "get" || input == "pickup") {
-            cout << "Command recieved" << endl;
+        else if (input == "use" || input == "pickup" || input == "get" || input== "insert") {
             inputHandler.itemInteraction(input);
         }
+        else {
+            cout << "Invalid command." << endl;
+        }
     }
+
+    return 0;
 }
