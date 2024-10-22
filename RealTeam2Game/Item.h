@@ -1,7 +1,8 @@
-#include <string>
-
 #ifndef ITEM
 #define ITEM
+
+#include <string>
+
 class Item {
 public:
 	//CONSTRUCTORS

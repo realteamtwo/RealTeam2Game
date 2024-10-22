@@ -1,9 +1,11 @@
-
 #ifndef PLAYERINPUT_H
 #define PLAYERINPUT_H
 
 #include <string>
 #include "Item.h"
+#include "Level2.h"
+#include "Player.h"
+
 using namespace std;
 
 class PlayerInput
@@ -13,6 +15,8 @@ public:
 
 	void movePlayer(string direction);
 	void itemInteraction(string command);
+
+	void descend(Player &);
 	
 
 

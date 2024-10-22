@@ -1,5 +1,4 @@
 #include "PlayerInput.h"
-#include "Item.h"
 #include <iostream>
 
 using namespace std;
@@ -131,9 +130,10 @@ void PlayerInput::itemInteraction(string command) {
     else if (command == "insert" && keyFound && currentDirection == "Down") {
         {
             cout << " You inserted the key to unlock the door." << endl;
-            cout << " Congratulations! You have unlocked the door and escaped!" << endl;
+            cout << " Congratulations! You have unlocked the door!" << endl;
+            cout << " Type \"descend\" to go to the next floor." << endl;
             doorUnlocked = true;
-            exit(0);
+            //exit(0);
             
         }
     }
@@ -142,6 +142,16 @@ void PlayerInput::itemInteraction(string command) {
     }
 }
 
+//Function to handle descending to the next floor
+void PlayerInput::descend(Player &player) {
+    if (doorUnlocked == true) {
+        player.setLevel(2);
+        player.setLocation(Level2::Location::CENTER_ROOM);
+    }
+    else {
+        cout << "You can't do that yet!" << endl;
+    }
+}
 
 
 // Checks if the player has found the torch

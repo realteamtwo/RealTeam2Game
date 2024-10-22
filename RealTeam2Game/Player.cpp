@@ -3,15 +3,14 @@
 #include "Player.h"
 
 //Constructors
-/*
-Player::Player(Room r) {
-	location = r;
+Player::Player() {
+	level = 1;
 }
-*/
+
 
 //Mutators
-void Player::setRoom(Room r) {
-	location = r;
+void Player::setLocation(Level2::Location l) {
+	location = l;
 }
 
 void Player::addItem(Item i) {
@@ -26,11 +25,19 @@ void Player::removeItem(string name) {
 	}
 }
 
+void Player::setLevel(int l) {
+	level = l;
+}
+
 //Accessors
-Room Player::getRoom() {
+Level2::Location Player::getLocation() {
 	return location;
 }
 
 vector<Item> Player::getItems() {
 	return items;
+}
+
+int Player::getLevel() {
+	return level;
 }
