@@ -8,7 +8,7 @@ class Player;
 class Level2 {
 public:
 	//Enum, one entry for each location
-	//Add locations to this enum when adding a new location
+	//See discord notes for how to add a new location
 	enum Location { CENTER_ROOM };
 
 	//Constructor
