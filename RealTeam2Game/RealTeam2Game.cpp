@@ -2,6 +2,8 @@
 #include <iostream>
 #include "Item.h"
 #include "GameIntro.h"
+#include "Level2.h"
+#include "Player.h"
 #include "PlayerInput.h"
 #include "PuzzleIdeas.h"
 #include "Room.h"
@@ -30,25 +32,39 @@ int main()
 
    
     PlayerInput inputHandler;
+    Player player;
 
     cout << "Welcome to the Escape Room Game!" << endl;
     cout << "You are at the center of the room. It's dark, but you sense something important is in this room." << endl;
     cout << "Hint: Move left to find a torch." << endl;
 
     string input;
-    while (true) {
+
+    while (player.getLevel() == 1) {
         cout << "Enter next command (up, down, left, right, use, pickup, get, insert): ";
         cin >> input;
 
         if (input == "up" || input == "down" || input == "left" || input == "right" || input == "center") {
             inputHandler.movePlayer(input);
         }
-        else if (input == "use" || input == "pickup" || input == "get" || input== "insert") {
+        else if (input == "use" || input == "pickup" || input == "get" || input == "insert") {
             inputHandler.itemInteraction(input);
+        }
+        else if (input == "descend") {
+            inputHandler.descend(player);
         }
         else {
             cout << "Invalid command." << endl;
         }
+    }
+    
+    Level2 level2;
+
+    while (player.getLevel() == 2) {
+        level2.displayDescription(player);
+        cout << "Enter a command: ";
+        cin >> input;
+        level2.interact(player, input);
     }
 
     return 0;

@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="GameIntro.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Level2.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerInput.cpp" />
     <ClCompile Include="RealTeam2Game.cpp" />
@@ -137,6 +138,7 @@
   <ItemGroup>
     <ClInclude Include="GameIntro.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Level2.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="PlayerInput.h" />
