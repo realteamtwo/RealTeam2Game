@@ -8,6 +8,7 @@ PlayerInput::PlayerInput() : currentDirection("Center"), matchFound(false), torc
     match = Item("Match", " A spark of fire");
     torch = Item("Torch", "A Flashlight");
     key = Item("Key", "A metal key to unlock the door");
+    rock = Item("Rock", "A blunt rock from the Earth Room");
 
     cout << "You are at the center of the room. It's dark, but you sense something important." << endl;
     cout << "Hint: Go left to find a torch!" << endl;

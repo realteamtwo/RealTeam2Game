@@ -23,6 +23,7 @@ public:
 	bool hasTorch() const;
 	bool riddleSolved() const;
 	bool hasKey() const;
+	bool hasRock() const;
 
 private:
 
@@ -35,11 +36,14 @@ private:
 	bool drawerUnlocked;
 	bool keyFound;
 	bool doorUnlocked;
+	bool rockFound;
+	bool glassBroken;
 	
 
 	Item match;
 	Item torch;
 	Item key;
+	Item rock;
 
 };
 
