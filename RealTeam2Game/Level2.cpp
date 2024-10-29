@@ -5,7 +5,7 @@ Level2::Level2() {
 	//do nothing
 }
 
-void Level2::displayDescription(Player p) {
+void Level2::displayDescription(Player &p) {
 	switch (p.getLocation()) {
 	case Location::CENTER_ROOM:
 		cout << "You are in a central area with another locked trapdoor." << endl;
@@ -19,23 +19,23 @@ void Level2::displayDescription(Player p) {
 	}
 }
 
-void Level2::interact(Player p, std::string input) {
+void Level2::interact(Player &p, std::string input) {
 	switch (p.getLocation()) {
 		case Location::CENTER_ROOM:
-		Level2::runCenterRoom(input);
+		Level2::runCenterRoom(p, input);
 		break;
 		
 		case Location::DOWN_ROOM:
-		Level2::runDownRoom(input);
+		Level2::runDownRoom(p, input);
 		break;
 	}
 }
 
-void Level2::runCenterRoom(std::string input) {
+void Level2::runCenterRoom(Player &p, std::string input) {
 	cout << "Center Room Interaction (Placeholder)" << endl;
 	if (input == "down") {
 		cout << " you go down " << endl;
-		//update location to DOWN_ROOM
+		p.setLocation(Level2::Location::DOWN_ROOM);
 	}
 	else if (input == "up") {
 		cout << " you go up" << endl;
@@ -51,6 +51,6 @@ void Level2::runCenterRoom(std::string input) {
 	}
 }
 
-void Level2::runDownRoom(std::string input) {
+void Level2::runDownRoom(Player &p, std::string input) {
 	cout << "Down Room Interaction (Placeholder)" << endl;
 }

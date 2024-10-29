@@ -5,6 +5,7 @@
 //Constructors
 Player::Player() {
 	level = 1;
+	location = Level2::Location::CENTER_ROOM;
 }
 
 
