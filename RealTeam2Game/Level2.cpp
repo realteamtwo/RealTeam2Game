@@ -15,7 +15,7 @@ void Level2::displayDescription(Player &p) {
 	// 
 	//for the air room
 	case Location::DOWN_ROOM:
-		cout << "You move down to a room with writing on the walls"<< endl;
+		cout << "You move down to a room with writing on the walls. A breeze passes by you"<< endl;
 		break;
 		//for fire room
 	case Location::RIGHT_ROOM:
@@ -60,7 +60,7 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 	cout << "Center Room Interaction (Placeholder)" << endl;
 	if (input == "down") {
 		cout << " you go down " << endl;
-		p.setLocation(Level2::Location::DOWN_ROOM);
+		p.setLocation(Level2::Location::DOWN_ROOM);  
 	}
 	else if (input == "up") {
 		cout << "You go up" << endl;
