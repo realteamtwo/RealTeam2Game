@@ -86,16 +86,73 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 
 void Level2::runDownRoom(Player &p, std::string input) {
 	cout << "Down Room Interaction (Placeholder)" << endl;
+	if (input == "down") {
+		cout << "Do Your Work 4 down:)" << endl;
+	}
+
+	if (input == "left") {
+		cout << "Do Your Work 4 left :)" << endl;
+	}
+
+	if (input == "right") {
+		cout << "Do Your Work 4 right :)" << endl;
+	}
+
+	if (input == "up") {
+		cout << "Do Your Work 4 up :)" << endl;
+	}
+	else if (input == "leave") {
+		cout << "You are in center room" << endl;
+		p.setLocation(Level2::Location::CENTER_ROOM);
+	}
 }
 
 void Level2::runRightRoom(Player& p, std::string input) {
 	cout << "Right Room Interaction" << endl;
-	
+
+	if (input == "down") {
+		cout << "Do Your Work 4 down:)" << endl;
+	}
+
+	if (input == "left") {
+		cout << "Do Your Work 4 left :)" << endl;
+	}
+
+	if (input == "right") {
+		cout << "Do Your Work 4 right :)" << endl;
+	}
+
+	if (input == "up") {
+		cout << "Do Your Work 4 up :)" << endl;
+	}
+	else if (input == "leave") {
+		cout << "You are in center room" << endl;
+		p.setLocation(Level2::Location::CENTER_ROOM);
+	}
 }
 
 void Level2::runLeftRoom(Player& p, std::string input) {
 	cout << "Left Room Interaction" << endl;
 
+	if (input == "down") {
+		cout << "Do Your Work 4 down:)" << endl;
+	}
+
+	if (input == "left") {
+		cout << "Do Your Work 4 left :)" << endl;
+	}
+
+	if (input == "right") {
+		cout << "Do Your Work 4 right :)" << endl;
+	}
+
+	if (input == "up") {
+		cout << "Do Your Work 4 up :)" << endl;
+	}
+	else if (input == "leave") {
+		cout << "You are in center room" << endl;
+		p.setLocation(Level2::Location::CENTER_ROOM);
+		}
 	/*
 	cout << "Water Room" << endl;
 	if (input == "down") {
