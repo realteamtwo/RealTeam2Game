@@ -33,6 +33,22 @@ void Level2::interact(Player p, std::string input) {
 
 void Level2::runCenterRoom(std::string input) {
 	cout << "Center Room Interaction (Placeholder)" << endl;
+	if (input == "down") {
+		cout << " you go down " << endl;
+		//update location to DOWN_ROOM
+	}
+	else if (input == "up") {
+		cout << " you go up" << endl;
+		//update location to UP_ROOM
+	}
+	else if (input == "left") {
+		cout << " you go left" << endl;
+		//update location to LEFT_ROOM
+	}
+	else if (input == "right") {
+		cout << " you go right" << endl;
+		//update location to RIGHT_ROOM
+	}
 }
 
 void Level2::runDownRoom(std::string input) {
