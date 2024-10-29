@@ -19,7 +19,7 @@ public:
 	void descend(Player &);
 	
 
-	//bool hasMatch() const;
+	bool hasMatch() const;
 	bool hasTorch() const;
 	bool riddleSolved() const;
 	bool hasKey() const;
@@ -28,7 +28,7 @@ private:
 
 	string currentDirection;
 
-    //bool matchFound;
+    bool matchFound;
 	bool torchFound;
 	bool riddleVisible;
 	bool riddleIsSolved;
@@ -37,7 +37,7 @@ private:
 	bool doorUnlocked;
 	
 
-	//Item match;
+	Item match;
 	Item torch;
 	Item key;
 

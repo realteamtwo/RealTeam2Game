@@ -3,8 +3,9 @@
 
 using namespace std;
 
-PlayerInput::PlayerInput() : currentDirection("Center"),/*matchFound(false)*/ torchFound(false), keyFound(false), riddleVisible(false), riddleIsSolved(false), drawerUnlocked(false), doorUnlocked(false)
+PlayerInput::PlayerInput() : currentDirection("Center"), matchFound(false), torchFound(false), keyFound(false), riddleVisible(false), riddleIsSolved(false), drawerUnlocked(false), doorUnlocked(false)
 {
+    match = Item("Match", " A spark of fire");
     torch = Item("Torch", "A Flashlight");
     key = Item("Key", "A metal key to unlock the door");
 
@@ -171,9 +172,9 @@ void PlayerInput::descend(Player &player) {
 
 // Checks if the player has found the torch
 
-/*bool PlayerInput::Match() const {
+bool PlayerInput::hasMatch() const {
     return matchFound;
-}*/
+}
 
 bool PlayerInput::hasTorch() const {
     return torchFound;

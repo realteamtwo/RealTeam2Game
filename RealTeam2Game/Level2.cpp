@@ -16,10 +16,10 @@ void Level2::displayDescription(Player &p) {
 	case Location::DOWN_ROOM:
 		cout << "You move down to a room with writing on the walls"<< endl;
 		break;
-
-	/*case Location::RIGHT_ROOM:
-		cout << "You move down to a room with light gleaming and intense heat suffocating you" << endl;
-		break;*/
+		//for fire room
+	case Location::RIGHT_ROOM:
+		cout << "You move right to a room with light gleaming and intense heat suffocating you" << endl;
+		break;
 	}
 }
 
@@ -33,9 +33,9 @@ void Level2::interact(Player &p, std::string input) {
 		Level2::runDownRoom(p, input);
 		break;
 
-		/*case Location::RIGHT_ROOM:
+		case Location::RIGHT_ROOM:
 			Level2::runRightRoom(p, input);
-			break;*/
+		break;
 	}
 }
 
@@ -63,6 +63,6 @@ void Level2::runDownRoom(Player &p, std::string input) {
 	cout << "Down Room Interaction (Placeholder)" << endl;
 }
 
-/*void Level2::runRightRoom(Player& p, std::string input) {
-	cout << "Right Room Interaction (Placeholder)" << endl;
-}*/
+void Level2::runRightRoom(Player& p, std::string input) {
+	cout << "Right Room Interaction" << endl;
+}
