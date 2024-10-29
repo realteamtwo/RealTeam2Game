@@ -24,9 +24,17 @@ void Level2::interact(Player p, std::string input) {
 		case Location::CENTER_ROOM:
 		Level2::runCenterRoom(input);
 		break;
+		
+		case Location::DOWN_ROOM:
+		Level2::runDownRoom(input);
+		break;
 	}
 }
 
 void Level2::runCenterRoom(std::string input) {
 	cout << "Center Room Interaction (Placeholder)" << endl;
+}
+
+void Level2::runDownRoom(std::string input) {
+	cout << "Down Room Interaction (Placeholder)" << endl;
 }
