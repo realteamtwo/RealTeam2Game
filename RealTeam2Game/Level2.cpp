@@ -27,7 +27,7 @@ void Level2::displayDescription(Player &p) {
 		break;
 		//for earth room
 	case Location::UP_ROOM:
-		cout << "earth" << endl;
+		cout << "The room you are within has rock walls and a dirt floor, and you are overwhelmed by a sandstorm engulfing the room" << endl;
 		break;
 	}
 }
@@ -63,8 +63,8 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 		p.setLocation(Level2::Location::DOWN_ROOM);
 	}
 	else if (input == "up") {
-		cout << " you go up" << endl;
-		//p.setLocation(Level2::Location::UP_ROOM);
+		cout << "You go up" << endl;
+		p.setLocation(Level2::Location::UP_ROOM);
 		//update location to UP_ROOM
 	}
 	else if (input == "left") {
@@ -92,5 +92,18 @@ void Level2::runLeftRoom(Player& p, std::string input) {
 }
 
 void Level2::runUpRoom(Player& p, std::string input) {
-	cout << "Up Room Interaction" << endl;
+	cout << "EARTH ROOM" << endl;
+	if (input == "down") {
+		cout << "The back wall is rough and rocky. There appears to be nothing of use on this side of the room." << endl;
+	}
+	else if (input == "up") {
+		cout << "The front wall has text on it.\nI'm the third rock from the sun, with one moon as my companion\nIf you don't take care of me, who knows what'll happen" << endl;
+		cout << "I have oceans so deep and moutains so high\nI'm your home. What am I?" << endl;
+	}
+	else if (input == "left") {
+		cout << "The left wall is covered with large, spiky rocks. A chunk of one seems to have broken off onto the floor." << endl;
+	}
+	else if (input == "right") {
+		cout << "The right wall contains a large container protected by thick glass. Maybe something can break it?" << endl;
+	}
 }
