@@ -47,11 +47,11 @@ void Level2::interact(Player &p, std::string input) {
 		break;
 
 		case Location::LEFT_ROOM:
-			Level2::runRightRoom(p, input);
+			Level2::runLeftRoom(p, input);
 			break;
 
 		case Location::UP_ROOM:
-			Level2::runRightRoom(p, input);
+			Level2::runUpRoom(p, input);
 			break;
 	}
 }
