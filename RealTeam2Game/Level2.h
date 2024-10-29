@@ -28,6 +28,8 @@ private:
 
 	//down room function?
 	void runDownRoom(Player &p, std::string);
+
+	//void runRightRoom(Player &p, std::string);
 };
 
 #endif

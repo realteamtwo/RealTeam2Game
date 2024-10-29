@@ -3,7 +3,7 @@
 
 using namespace std;
 
-PlayerInput::PlayerInput() : currentDirection("Center"), torchFound(false), keyFound(false), riddleVisible(false), riddleIsSolved(false), drawerUnlocked(false), doorUnlocked(false)
+PlayerInput::PlayerInput() : currentDirection("Center"),/*matchFound(false)*/ torchFound(false), keyFound(false), riddleVisible(false), riddleIsSolved(false), drawerUnlocked(false), doorUnlocked(false)
 {
     torch = Item("Torch", "A Flashlight");
     key = Item("Key", "A metal key to unlock the door");
@@ -140,6 +140,21 @@ void PlayerInput::itemInteraction(string command) {
     else {
         cout << "Invalid command." << endl;
     }
+
+    /*  else if
+      if (command == "pickup match" && !matchFound && currentDirection == "Left") {
+          matchFound = true;
+          cout << "You picked up the Matches! Now move up to see the riddle." << endl;
+      }
+
+       else if (command == "Light" || command == "Light") {
+      if (matchFound && torchUnlocked) {
+          cout << "You got the match! Now Use the Torch and light the fire again." << endl;
+      }
+      else if (!torchUnlocked) {
+          cout << "You need to pickup the torch first in order to light a fire." << endl;
+      }*/
+
 }
 
 //Function to handle descending to the next floor
@@ -155,6 +170,11 @@ void PlayerInput::descend(Player &player) {
 
 
 // Checks if the player has found the torch
+
+/*bool PlayerInput::Match() const {
+    return matchFound;
+}*/
+
 bool PlayerInput::hasTorch() const {
     return torchFound;
 }
