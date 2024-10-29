@@ -16,3 +16,6 @@
 //once they "use torch" again to get rid of light, a glow in the dark code to something (exit perhaps?)
 //should be visible so the player will now have the code. Since this puzzle isn't intuitive a hint should be there.
 //something like "the secret is hidden in the dark" or "shines brightest in the dark"
+
+//Air Riddle Idea: What travels in the daylight but casts no shadow? What can you feel but you cannot see?
+//Answer: air

@@ -9,7 +9,9 @@ class Level2 {
 public:
 	//Enum, one entry for each location
 	//See discord notes for how to add a new location
-	enum Location { CENTER_ROOM };
+	enum Location { CENTER_ROOM, DOWN_ROOM, UP_ROOM, LEFT_ROOM, RIGHT_ROOM };
+	//hoping I am doing this right and I added all rooms so people could get idea - nicole
+	
 
 	//Constructor
 	Level2();
@@ -23,6 +25,9 @@ public:
 private:
 	//Center room function, takes the player's current input
 	void runCenterRoom(std::string);
+
+	//down room function?
+	void runDownRoom(std::string);
 };
 
 #endif

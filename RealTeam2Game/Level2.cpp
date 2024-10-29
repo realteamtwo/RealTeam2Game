@@ -11,6 +11,11 @@ void Level2::displayDescription(Player p) {
 		cout << "You are in a central area with another locked trapdoor." << endl;
 		cout << "Four hallways extend from this room to other areas." << endl;
 		break;
+	////is this how you want the format of the code? -Nicole
+	//for the air room
+	case Location::DOWN_ROOM:
+		cout << "You move down to a room with writing on the walls"<< endl;
+		break;
 	}
 }
 
