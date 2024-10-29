@@ -30,6 +30,10 @@ private:
 	void runDownRoom(Player &p, std::string);
 
 	void runRightRoom(Player &p, std::string);
+
+	void runUpRoom(Player& p, std::string);
+
+	void runLeftRoom(Player& p, std::string);
 };
 
 #endif
