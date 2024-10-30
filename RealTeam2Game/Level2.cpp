@@ -127,21 +127,26 @@ void Level2::runRightRoom(Player& p, std::string input) {
 		cout << "Do Your Work 4 down:)" << endl;
 	}
 
-	if (input == "left") {
+	else if (input == "left") {
 		cout << "Do Your Work 4 left :)" << endl;
 	}
 
-	if (input == "right") {
+	else if (input == "right") {
 		cout << "Do Your Work 4 right :)" << endl;
 	}
 
-	if (input == "up") {
+	else if (input == "up") {
 		cout << "Do Your Work 4 up :)" << endl;
 	}
 	else if (input == "leave") {
 		cout << "You are in center room" << endl;
 		p.setLocation(Level2::Location::CENTER_ROOM);
 	}
+	else if (input == "fire") {
+		//put some kind of cout statement
+		riddlesSolved++;
+	}
+	
 }
 
 void Level2::runLeftRoom(Player& p, std::string input) {
@@ -151,21 +156,25 @@ void Level2::runLeftRoom(Player& p, std::string input) {
 		cout << "Do Your Work 4 down:)" << endl;
 	}
 
-	if (input == "left") {
+	else if (input == "left") {
 		cout << "Do Your Work 4 left :)" << endl;
 	}
 
-	if (input == "right") {
+	else if (input == "right") {
 		cout << "Do Your Work 4 right :)" << endl;
 	}
 
-	if (input == "up") {
+	else if (input == "up") {
 		cout << "Do Your Work 4 up :)" << endl;
 	}
 	else if (input == "leave") {
 		cout << "You are in center room" << endl;
 		p.setLocation(Level2::Location::CENTER_ROOM);
 		}
+	else if (input == "water") {
+		//put a cout statement here
+		riddlesSolved++;
+	}
 	/*
 	cout << "Water Room" << endl;
 	if (input == "down") {
