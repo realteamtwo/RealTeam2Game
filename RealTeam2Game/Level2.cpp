@@ -179,20 +179,26 @@ void Level2::runLeftRoom(Player& p, std::string input) {
 		//put a cout statement here
 		riddlesSolved++;
 	}
-	/*
-	cout << "Water Room" << endl;
+	
+	/*cout << "Water Room" << endl;
+
 	if (input == "down") {
-		cout << "The back wall is rough and rocky. There appears to be nothing of use on this side of the room." << endl;
+		cout << "The back glass of the aquarium like room wall is vibrant. " << endl;
+		cout << "All there seems to be is a bunch of ancient greek designs of poseidon...Welp nothing I can do about this." << endl;
 	}
 	else if (input == "up") {
 		cout << "The front wall has text on it.\nI'm the third rock from the sun, with one moon as my companion\nIf you don't take care of me, who knows what'll happen" << endl;
 		cout << "I have oceans so deep and moutains so high\nI'm your home. What am I?" << endl;
 	}
 	else if (input == "left") {
-		cout << "The left wall is covered with large, spiky rocks. A chunk of one seems to have broken off onto the floor." << endl;
+		cout << "The left glass of the aquariaum is covered with moss, plants and a slight crack in the glass. 
+		cout << "A chunk of glass seems to have broken off onto the floor." << endl;
+		cout << "Within the decrypted messages on the broken markings.\ [It States] What runs but has no feet? .\ roars but has no mouth? .\ Runs but never gets tired? .\ << endl;
+		cout << What Am I? << endl;
+
 	}
 	else if (input == "right") {
-		cout << "The right wall contains a large container protected by thick glass. Maybe something can break it?" << endl;
+		cout << "The right glass wall holds beautiful sea creatures ranging from " << endl;
 	}*/
 }
 
