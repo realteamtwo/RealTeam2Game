@@ -64,7 +64,10 @@ void Level2::interact(Player &p, std::string input) {
 }
 
 void Level2::runCenterRoom(Player &p, std::string input) {
-	
+	if (riddlesSolved == 4) {
+		cout << "You here a click from the center of the room" << endl; // note this code does not show when they leave the room they just came from I think
+		//could put could that makes descend work this is mostly a place holder
+	}
 	if (input == "down") {
 		cout << " you go down " << endl;
 		//update location to DOWN_ROOM
@@ -90,6 +93,7 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 		p.setLocation(Level2::Location::CENTER_ROOM);
 		//update location to RIGHT_ROOM
 	}
+
 }
 
 void Level2::runDownRoom(Player &p, std::string input) {
