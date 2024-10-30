@@ -267,51 +267,36 @@ void Level2::runRightRoom(Player& p, std::string input) {
 }
 void Level2::runLeftRoom(Player& p, std::string input) {
 	cout << "Left Room Interaction" << endl;
+	cout << "Water Room" << endl;
 
 	if (input == "down") {
-		cout << "Do Your Work 4 down:)" << endl;
+		cout << "The back glass of the aquarium room wall is vibrant. " << endl;
+		cout << "All there seems to be is a bunch of ancient greek designs of poseidon...Welp nothing I can do about this." << endl;
+	}
+	else if (input == "up") {
+		cout << "The front wall is empty with no water and a huge crack in the middle like a sea creature bust through it" << endl;
 	}
 
 	else if (input == "left") {
-		cout << "Do Your Work 4 left :)" << endl;
-	}
+		cout << "The left glass of the aquariaum is covered with moss, plants and a slight crack in the glass." <<endl;
+		cout << "A chunk of glass seems to have broken off onto the floor." << endl;
+		cout << "Within the decrypted messages on the broken markings.\n [It States] What runs but has no feet? .\n roars but has no mouth? .\n Runs but never gets tired? .\n " << endl;
+		cout << "What Am I ?" << endl;
 
+	}
 	else if (input == "right") {
-		cout << "Do Your Work 4 right :)" << endl;
+		cout << "The right glass wall holds beautiful sea creatures from all over the world" << endl;
 	}
-
-	else if (input == "up") {
-		cout << "Do Your Work 4 up :)" << endl;
+	else if (input == "water") {
+		cout << "You solved the riddle!" << endl;
+		riddlesSolved++;
 	}
 	else if (input == "leave") {
 		cout << "You are in center room" << endl;
 		p.setLocation(Level2::Location::CENTER_ROOM);
 		}
-	else if (input == "water") {
-		//put a cout statement here
-		riddlesSolved++;
-	}
 	
-	/*cout << "Water Room" << endl;
-
-	if (input == "down") {
-		cout << "The back glass of the aquarium like room wall is vibrant. " << endl;
-		cout << "All there seems to be is a bunch of ancient greek designs of poseidon...Welp nothing I can do about this." << endl;
-	}
-	else if (input == "up") {
-		cout << "The front wall has text on it.\nI'm the third rock from the sun, with one moon as my companion\nIf you don't take care of me, who knows what'll happen" << endl;
-		cout << "I have oceans so deep and moutains so high\nI'm your home. What am I?" << endl;
-	}
-	else if (input == "left") {
-		cout << "The left glass of the aquariaum is covered with moss, plants and a slight crack in the glass. 
-		cout << "A chunk of glass seems to have broken off onto the floor." << endl;
-		cout << "Within the decrypted messages on the broken markings.\ [It States] What runs but has no feet? .\ roars but has no mouth? .\ Runs but never gets tired? .\ << endl;
-		cout << What Am I? << endl;
-
-	}
-	else if (input == "right") {
-		cout << "The right glass wall holds beautiful sea creatures ranging from " << endl;
-	}*/
+	
 }
 
 void Level2::runUpRoom(Player& p, std::string input) {
