@@ -95,6 +95,13 @@ void PlayerInput::itemInteraction(string command) {
         torchFound = true;
         cout << "You picked up the torch! Now move up to see the riddle." << endl;
     }
+
+    else if (command == "pickup rock" || command == "Pickup rock" && !rockFound)
+    {
+        rockFound = true;
+        cout << "You picked up the rock!" << endl;
+    }
+
     else if (command == "use"&& torchFound) {
         if (riddleVisible && !riddleIsSolved) {
             cout << "You used the torch to see the riddle on the wall." << endl;
@@ -138,6 +145,7 @@ void PlayerInput::itemInteraction(string command) {
             //exit(0);
             
         }
+
     }
     else {
         cout << "Invalid command." << endl;
@@ -184,6 +192,11 @@ bool PlayerInput::hasTorch() const {
 // Checks if the player has found the key
 bool PlayerInput::hasKey() const {
     return keyFound;
+}
+
+bool PlayerInput::hasRock() const
+{
+    return rockFound;
 }
 
 // Checks if the riddle has been solved

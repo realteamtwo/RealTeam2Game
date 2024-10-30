@@ -32,6 +32,7 @@ void Level2::displayDescription(Player &p) {
 		//for earth room
 	case Location::UP_ROOM:
 		cout << "The room you are within has rock walls and a dirt floor, and you are overwhelmed by a sandstorm engulfing the room" << endl;
+		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
 		break;
 	}
 }
@@ -194,6 +195,12 @@ void Level2::runUpRoom(Player& p, std::string input) {
 	}
 	else if (input == "right") {
 		cout << "The right wall contains a large container protected by thick glass. Maybe something can break it?" << endl;
+	}
+
+	else if (input == "earth")
+	{
+		cout << "You solved the riddle!" << endl;
+		riddlesSolved++;
 	}
 
 	else if (input == "leave") {
