@@ -268,9 +268,47 @@ void Level2::runRightRoom(Player& p, std::string input) {
 				cout << "You chose not to use the matchstick. Please enter another command." << endl;
 			}
 		}
+
 		else {
 			cout << "The door is locked with a puzzle. Perhaps solving another riddle will help.\n";
 		}
+	}
+	else if (input == "up") {
+		if (fireextinguisherFound) {
+			cout << "There’s a fire on the wall.\n"
+				<< "Use an item from your inventory to clear the fire: ";
+			string item;
+			cin >> item;
+			if (item == "fireextinguisher") {
+				cout << "You used the Fire Extinguisher to clear the flames! The path is now accessible.\n";
+				cout << "The wall reads:" << endl;
+				cout << "I am often found in a box," << endl;
+				cout << "Strike me once, and I’ll make sparks," << endl;
+				cout << "I can help you start a fire,  Or light up darkened parks." << endl;
+				cout << "What am I?" << endl;
+				cout << "Enter your answer: ";
+				string answer;
+				cin >> answer;
+				if (answer == "matchstick") {
+					cout << "Correct! You've obtained a matchstick.\n";
+					matchstickFound = true;
+					cout << "Go to another wall in order to escape.\n";
+				}
+				else {
+					cout << "Incorrect answer. Try again.\n";
+				}
+			}
+			else {
+				cout << "That item can't be used to clear the fire.\n";
+				cout << "Please enter a diffeent item or try again.\n";
+			}
+		}
+		else {
+			cout << "There’s a fire blocking your way. You need something to clear it first.\n";
+		}
+	}
+	else {
+		cout << "Invalid direction. Please enter 'up', 'down', 'left', or 'right'.\n";
 	}
 }
 void Level2::runLeftRoom(Player& p, std::string input) {
