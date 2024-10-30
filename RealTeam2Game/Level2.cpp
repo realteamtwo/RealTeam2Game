@@ -118,7 +118,7 @@ void Level2::runDownRoom(Player &p, std::string input) {
 		p.setLocation(Level2::Location::CENTER_ROOM);
 	}
 	else if(input == "air") {
-		cout << "You solved the riddle! (riddle solve placeholder)" << endl;
+		cout << "You solved the riddle!" << endl;
 		//maybe get item air key or update an unlocking variable (going with variable for now)
 		riddlesSolved++;
 	}
