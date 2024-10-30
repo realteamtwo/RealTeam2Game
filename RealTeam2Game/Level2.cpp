@@ -24,10 +24,12 @@ void Level2::displayDescription(Player &p) {
 		//for fire room
 	case Location::RIGHT_ROOM:
 		cout << "You move right to a room with light gleaming and intense heat suffocating you" << endl;
+		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
 		break;
 		//for water room
 	case Location::LEFT_ROOM:
 		cout << "You move left to a room with the smell of the ocean and beautiful sea creatures around in a tank" << endl;
+		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
 		break;
 		//for earth room
 	case Location::UP_ROOM:
