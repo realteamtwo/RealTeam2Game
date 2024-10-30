@@ -30,6 +30,9 @@ private:
 	void runDownRoom(Player &p, std::string);
 
 	void runRightRoom(Player &p, std::string);
+	bool fireextinguisherFound;
+	bool matchstickFound;
+	bool rightRoomEntered;
 
 	void runUpRoom(Player& p, std::string);
 
