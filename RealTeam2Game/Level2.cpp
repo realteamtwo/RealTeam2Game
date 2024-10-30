@@ -5,15 +5,23 @@
 
 Level2::Level2() : fireextinguisherFound(false), matchstickFound(false), rightRoomEntered(false) {}
 
-//let me know if you guys don't like this -Nicole
-int riddlesSolved = 0;
+bool fireSolved = true;
+bool waterSolved = true;
+bool earthSolved = true;
+bool airSolved = true;
 
 
 
 void Level2::displayDescription(Player &p) {
 	switch (p.getLocation()) {
 	case Location::CENTER_ROOM:
-		cout << "You are in a central area with another locked trapdoor." << endl;
+		if (fireSolved && waterSolved && earthSolved && airSolved) {
+			cout << "You hear a click from the center of the room." << endl;
+			cout << "You are in a central area with an open trapdoor." << endl;
+		}
+		else {
+			cout << "You are in a central area with another locked trapdoor." << endl;
+		}
 		cout << "Four hallways extend from this room to other areas." << endl;
 		break;
 	////is this how you want the format of the code? -Nicole
@@ -73,10 +81,6 @@ void Level2::interact(Player &p, std::string input) {
 }
 
 void Level2::runCenterRoom(Player &p, std::string input) {
-	if (riddlesSolved == 4) {
-		cout << "You here a click from the center of the room" << endl; // note this code does not show when they leave the room they just came from I think
-		//could put could that makes descend work this is mostly a place holder perhaps code could go in display description
-	}
 	if (input == "down") {
 		cout << " you go down " << endl;
 		//update location to DOWN_ROOM
@@ -101,6 +105,10 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 		cout << " Your In Center Room" << endl;
 		p.setLocation(Level2::Location::CENTER_ROOM);
 		//update location to RIGHT_ROOM
+	}
+	else if (input == "descend") {
+		cout << "You go down through the trapdoor to the next floor of the tower.";
+		p.setLevel(3);
 	}
 
 }
@@ -129,7 +137,7 @@ void Level2::runDownRoom(Player &p, std::string input) {
 	else if(input == "air") {
 		cout << "You solved the riddle!" << endl;
 		//maybe get item air key or update an unlocking variable (going with variable for now)
-		riddlesSolved++;
+		airSolved = true;
 	}
 }
 
@@ -249,7 +257,7 @@ void Level2::runRightRoom(Player& p, std::string input) {
 				// Check if the answer is correct
 				if (answer == "fire" || answer == "flames" || answer == "smoke") {
 					cout << "The door unlocks as you answered correctly!" << endl;
-					// Logic for unlocking the door goes here...
+					fireSolved = true;
 					p.setLocation(Level2::Location::CENTER_ROOM); // Move to the next location or room
 				}
 				else {
@@ -289,7 +297,7 @@ void Level2::runLeftRoom(Player& p, std::string input) {
 	}
 	else if (input == "water") {
 		cout << "You solved the riddle!" << endl;
-		riddlesSolved++;
+		waterSolved = true;
 	}
 	else if (input == "leave") {
 		cout << "You are in center room" << endl;
@@ -318,7 +326,7 @@ void Level2::runUpRoom(Player& p, std::string input) {
 	else if (input == "earth")
 	{
 		cout << "You solved the riddle!" << endl;
-		riddlesSolved++;
+		earthSolved = true;
 	}
 
 	else if (input == "leave") {
