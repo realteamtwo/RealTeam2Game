@@ -89,23 +89,26 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 void Level2::runDownRoom(Player &p, std::string input) {
 	
 	if (input == "down") {
-		cout << "What travels in the daylight but casts no shadow? What can you feel but you cannot see?" << endl;
+		cout << "What travels in the daylight but casts no shadow? What can you feel but you cannot see? Say your answer" << endl;
 	}
 
-	if (input == "left") {
+	else if (input == "left") {
 		cout << "The wall is decorated with swirls" << endl;
 	}
 
-	if (input == "right") {
+	else if (input == "right") {
 		cout << "There are many pinwheels huddled together here " << endl;
 	}
 
-	if (input == "up") {
+	else if (input == "up") {
 		cout << "The doorway you came from has many tassels and cloth flowing in the breeze" << endl;
 	}
 	else if (input == "leave") {
 		cout << "You are in center room" << endl;
 		p.setLocation(Level2::Location::CENTER_ROOM);
+	}
+	else if(input == "air") {
+		cout << "You solved the riddle! (riddle solve placeholder)" << endl;
 	}
 }
 
