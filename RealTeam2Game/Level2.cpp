@@ -17,6 +17,7 @@ void Level2::displayDescription(Player &p) {
 	//for the air room
 	case Location::DOWN_ROOM:
 		cout << "You move down to a room with writing on the walls. A breeze passes by you"<< endl;
+		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
 		break;
 		//for fire room
 	case Location::RIGHT_ROOM:
@@ -28,10 +29,12 @@ void Level2::displayDescription(Player &p) {
 		//for water room
 	case Location::LEFT_ROOM:
 		cout << "You move left to a room with the smell of the ocean and beautiful sea creatures around in a tank" << endl;
+		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
 		break;
 		//for earth room
 	case Location::UP_ROOM:
 		cout << "The room you are within has rock walls and a dirt floor, and you are overwhelmed by a sandstorm engulfing the room" << endl;
+		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
 		break;
 	}
 }
@@ -61,10 +64,14 @@ void Level2::interact(Player &p, std::string input) {
 }
 
 void Level2::runCenterRoom(Player &p, std::string input) {
-	cout << "Center Room Interaction (Placeholder)" << endl;
+	if (riddlesSolved == 4) {
+		cout << "You here a click from the center of the room" << endl; // note this code does not show when they leave the room they just came from I think
+		//could put could that makes descend work this is mostly a place holder perhaps code could go in display description
+	}
 	if (input == "down") {
 		cout << " you go down " << endl;
-		p.setLocation(Level2::Location::DOWN_ROOM);  
+		//update location to DOWN_ROOM
+		p.setLocation(Level2::Location::DOWN_ROOM); 
 	}
 	else if (input == "up") {
 		cout << "You go up" << endl;
@@ -73,7 +80,7 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 	}
 	else if (input == "left") {
 		cout << " you go left" << endl;
-		//p.setLocation(Level2::Location::LEFT_ROOM);
+		p.setLocation(Level2::Location::LEFT_ROOM);
 		//update location to LEFT_ROOM
 	}
 	else if (input == "right") {
@@ -81,10 +88,40 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 		p.setLocation(Level2::Location::RIGHT_ROOM);
 		//update location to RIGHT_ROOM
 	}
+	else if (input == "leave") {
+		cout << " Your In Center Room" << endl;
+		p.setLocation(Level2::Location::CENTER_ROOM);
+		//update location to RIGHT_ROOM
+	}
+
 }
 
 void Level2::runDownRoom(Player &p, std::string input) {
-	cout << "Down Room Interaction (Placeholder)" << endl;
+	
+	if (input == "down") {
+		cout << "What travels in the daylight but casts no shadow? What can you feel but you cannot see? Say your answer" << endl;
+	}
+
+	else if (input == "left") {
+		cout << "The wall is decorated with swirls" << endl;
+	}
+
+	else if (input == "right") {
+		cout << "There are many pinwheels huddled together here " << endl;
+	}
+
+	else if (input == "up") {
+		cout << "The doorway you came from has many tassels and cloth flowing in the breeze" << endl;
+	}
+	else if (input == "leave") {
+		cout << "You are in center room" << endl;
+		p.setLocation(Level2::Location::CENTER_ROOM);
+	}
+	else if(input == "air") {
+		cout << "You solved the riddle!" << endl;
+		//maybe get item air key or update an unlocking variable (going with variable for now)
+		riddlesSolved++;
+	}
 }
 
 void Level2::runRightRoom(Player& p, std::string input) {
@@ -94,6 +131,51 @@ void Level2::runRightRoom(Player& p, std::string input) {
 
 void Level2::runLeftRoom(Player& p, std::string input) {
 	cout << "Left Room Interaction" << endl;
+
+	if (input == "down") {
+		cout << "Do Your Work 4 down:)" << endl;
+	}
+
+	else if (input == "left") {
+		cout << "Do Your Work 4 left :)" << endl;
+	}
+
+	else if (input == "right") {
+		cout << "Do Your Work 4 right :)" << endl;
+	}
+
+	else if (input == "up") {
+		cout << "Do Your Work 4 up :)" << endl;
+	}
+	else if (input == "leave") {
+		cout << "You are in center room" << endl;
+		p.setLocation(Level2::Location::CENTER_ROOM);
+		}
+	else if (input == "water") {
+		//put a cout statement here
+		riddlesSolved++;
+	}
+	
+	/*cout << "Water Room" << endl;
+
+	if (input == "down") {
+		cout << "The back glass of the aquarium like room wall is vibrant. " << endl;
+		cout << "All there seems to be is a bunch of ancient greek designs of poseidon...Welp nothing I can do about this." << endl;
+	}
+	else if (input == "up") {
+		cout << "The front wall has text on it.\nI'm the third rock from the sun, with one moon as my companion\nIf you don't take care of me, who knows what'll happen" << endl;
+		cout << "I have oceans so deep and moutains so high\nI'm your home. What am I?" << endl;
+	}
+	else if (input == "left") {
+		cout << "The left glass of the aquariaum is covered with moss, plants and a slight crack in the glass. 
+		cout << "A chunk of glass seems to have broken off onto the floor." << endl;
+		cout << "Within the decrypted messages on the broken markings.\ [It States] What runs but has no feet? .\ roars but has no mouth? .\ Runs but never gets tired? .\ << endl;
+		cout << What Am I? << endl;
+
+	}
+	else if (input == "right") {
+		cout << "The right glass wall holds beautiful sea creatures ranging from " << endl;
+	}*/
 }
 
 void Level2::runUpRoom(Player& p, std::string input) {
@@ -110,5 +192,16 @@ void Level2::runUpRoom(Player& p, std::string input) {
 	}
 	else if (input == "right") {
 		cout << "The right wall contains a large container protected by thick glass. Maybe something can break it?" << endl;
+	}
+
+	else if (input == "earth")
+	{
+		cout << "You solved the riddle!" << endl;
+		riddlesSolved++;
+	}
+
+	else if (input == "leave") {
+		cout << "You are in center room" << endl;
+		p.setLocation(Level2::Location::CENTER_ROOM);
 	}
 }
