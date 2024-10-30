@@ -16,6 +16,7 @@ void Level2::displayDescription(Player &p) {
 	//for the air room
 	case Location::DOWN_ROOM:
 		cout << "You move down to a room with writing on the walls. A breeze passes by you"<< endl;
+		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
 		break;
 		//for fire room
 	case Location::RIGHT_ROOM:
@@ -86,7 +87,6 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 }
 
 void Level2::runDownRoom(Player &p, std::string input) {
-	cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
 	
 	if (input == "down") {
 		cout << "What travels in the daylight but casts no shadow? What can you feel but you cannot see?" << endl;
