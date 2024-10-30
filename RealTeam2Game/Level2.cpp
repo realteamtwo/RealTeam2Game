@@ -5,10 +5,10 @@
 
 Level2::Level2() : fireextinguisherFound(false), matchstickFound(false), rightRoomEntered(false) {}
 
-bool fireSolved = true;
-bool waterSolved = true;
-bool earthSolved = true;
-bool airSolved = true;
+bool fireSolved = false;
+bool waterSolved = false;
+bool earthSolved = false;
+bool airSolved = false;
 
 
 
