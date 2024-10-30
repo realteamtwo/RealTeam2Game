@@ -1,6 +1,9 @@
 #include "Level2.h"
 #include "Player.h"
 
+//let me know if you guys don't like this -Nicole
+int riddlesSolved = 0;
+
 Level2::Level2() {
 	//do nothing
 }
@@ -109,6 +112,8 @@ void Level2::runDownRoom(Player &p, std::string input) {
 	}
 	else if(input == "air") {
 		cout << "You solved the riddle! (riddle solve placeholder)" << endl;
+		//maybe get item air key or update an unlocking variable (going with variable for now)
+		riddlesSolved++;
 	}
 }
 
