@@ -57,10 +57,11 @@ void Level2::interact(Player &p, std::string input) {
 }
 
 void Level2::runCenterRoom(Player &p, std::string input) {
-	cout << "Center Room Interaction (Placeholder)" << endl;
+	
 	if (input == "down") {
 		cout << " you go down " << endl;
-		p.setLocation(Level2::Location::DOWN_ROOM);  
+		//update location to DOWN_ROOM
+		p.setLocation(Level2::Location::DOWN_ROOM); 
 	}
 	else if (input == "up") {
 		cout << "You go up" << endl;
@@ -85,21 +86,22 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 }
 
 void Level2::runDownRoom(Player &p, std::string input) {
-	cout << "Down Room Interaction (Placeholder)" << endl;
+	cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
+	
 	if (input == "down") {
-		cout << "Do Your Work 4 down:)" << endl;
+		cout << "What travels in the daylight but casts no shadow? What can you feel but you cannot see?" << endl;
 	}
 
 	if (input == "left") {
-		cout << "Do Your Work 4 left :)" << endl;
+		cout << "The wall is decorated with swirls" << endl;
 	}
 
 	if (input == "right") {
-		cout << "Do Your Work 4 right :)" << endl;
+		cout << "There are many pinwheels huddled together here " << endl;
 	}
 
 	if (input == "up") {
-		cout << "Do Your Work 4 up :)" << endl;
+		cout << "The doorway you came from has many tassels and cloth flowing in the breeze" << endl;
 	}
 	else if (input == "leave") {
 		cout << "You are in center room" << endl;
