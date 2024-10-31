@@ -107,8 +107,14 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 		//update location to RIGHT_ROOM
 	}
 	else if (input == "descend") {
-		cout << "You go down through the trapdoor to the next floor of the tower.";
-		p.setLevel(3);
+		if (fireSolved && waterSolved && earthSolved && airSolved) {
+			cout << "You go down through the trapdoor to the next floor of the tower." << endl;
+			p.setLevel(3);
+		}
+		else {
+			cout << "The trapdoor is locked!" << endl;
+		}
+		
 	}
 
 }
