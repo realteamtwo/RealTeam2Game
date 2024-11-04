@@ -19,7 +19,7 @@ void Player::addItem(Item i) {
 }
 
 void Player::removeItem(string name) {
-	for (int i = items.size() - 1; i >= 0; i--) {
+	for (int i = items.size()-1; i >= 0; i--) {
 		if (items[i].getDisplayName() == name) {
 			items.erase(items.begin() + i);
 		}
