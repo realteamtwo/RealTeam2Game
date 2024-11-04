@@ -27,5 +27,5 @@ std::string Item::getDescription() {
 	return description;
 }
 
-std::string displayName;
-std::string description;
+// std::string displayName;
+// std::string description;
