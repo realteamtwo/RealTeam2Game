@@ -132,6 +132,10 @@ namespace RealTeam2Test
 			// Logger::WriteMessage(inventory.c_str());
 		}
 
+		TEST_METHOD(AnotherTest) {
+			// ...
+		}
+
 		std::string catItemNames(vector<Item> itemList) {
 			std::string catString = "+";
 			for (int iterator = 0; iterator < itemList.size(); iterator++) {
