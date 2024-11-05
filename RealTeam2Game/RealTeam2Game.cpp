@@ -3,6 +3,7 @@
 #include "Item.h"
 #include "GameIntro.h"
 #include "Level2.h"
+#include "Level3.h"
 #include "Player.h"
 #include "PlayerInput.h"
 #include "PuzzleIdeas.h"
@@ -58,14 +59,26 @@ int main()
         }
     }
     
+    //level objects 1 for each level except for the first level
     Level2 level2;
+    Level3 level3;
 
+    //this will keep the player in the level still able to enter another command after the next as well as get input
+    //stops once they are no longer on level 2
     while (player.getLevel() == 2) {
         level2.displayDescription(player);
         cout << "Enter a command: ";
         cin >> input;
         level2.interact(player, input);
     }
+    
+    /// work in progress of level 3 but should be essentially the same as level 2 commented out because not fully developed
+    //while (player.getLevel() == 3) {
+        //level3.displayDescription(player);
+        //cout << "Enter a command: ";
+        //cin >> input;
+        //level3.interact(player, input);
+    //}
 
     return 0;
 }

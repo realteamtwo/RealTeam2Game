@@ -6,6 +6,12 @@
 
 using namespace std;
 
+class Player;
+
+//general class for level 3 contains functions for location descriptions, player interaction in locations, and running the correct location
+class Level3 {
+
+};
 
 
 
