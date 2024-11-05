@@ -102,7 +102,7 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 		//update location to RIGHT_ROOM
 	}
 	else if (input == "leave") {
-		cout << " Your In Center Room" << endl;
+		cout << " You're In Center Room" << endl;
 		p.setLocation(Level2::Location::CENTER_ROOM);
 		//update location to RIGHT_ROOM
 	}
