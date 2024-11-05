@@ -2,6 +2,8 @@
 #include "Level3.h"
 #include "Player.h"
 
+#include <string>
+
 using namespace std;
 
 //when player enters a room they get a description so they know what's up. The player is also informed of how to move
