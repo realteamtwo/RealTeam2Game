@@ -4,7 +4,10 @@
 #ifndef LEVEL3
 #define LEVEL3
 
+#include <string>
+
 using namespace std;
+
 
 class Player;
 

@@ -2,7 +2,6 @@
 #include "Level3.h"
 #include "Player.h"
 
-#include <string>
 
 using namespace std;
 
@@ -46,7 +45,7 @@ void Level3::displayDescription(Player& p) {
 //for interaction based on player's input as seen in RealTeam2Game.cpp
 //takes input string
 //each room has interactions specific for the room so it matters which room they are in
-void Level3::interact(Player& p, string input) {
+void Level3::interact(Player& p, std::string input) {
 	//based on player's current location does specific run function
 	switch (p.getLocation()) {
 	//starting
