@@ -27,19 +27,19 @@ public:
 private:
 
 	//Center room function, takes the player's current input, runs if in center room and is where player first goes
-	void runCenterRoom(Player& p, std::string);
+	///void runCenterRoom(Player& p, std::string);
 
 	//for running down room takes player input, runs if player inputs down in center room
-	void runDownRoom(Player& p, std::string);
+	///void runDownRoom(Player& p, std::string);
 
 	//for running right room takes player input, runs if player inputs right in center room
-	void runRightRoom(Player& p, std::string);
+	///void runRightRoom(Player& p, std::string);
 
 	//for running up room takes player input, runs if player inputs up in center room
-	void runUpRoom(Player& p, std::string);
+	///void runUpRoom(Player& p, std::string);
 
 	//for running left room takes player input, runs if player inputs left in center room
-	void runLeftRoom(Player& p, std::string);
+	///void runLeftRoom(Player& p, std::string);
 
 };
 

@@ -5,7 +5,7 @@
 
 
 //when player enters a room they get a description so they know what's up. The player is also informed of how to move
-void Level3::displayDescription(Player& p) {
+/*void Level3::displayDescription(Player& p) {
 	switch (p.getLocation()) {
 
 	//first case and player starts here, where trapdoor is located so if else statement should occur to check locked or unlocked
@@ -39,12 +39,12 @@ void Level3::displayDescription(Player& p) {
 		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
 		break;
 	}
-}
+}*/
 
 //for interaction based on player's input as seen in RealTeam2Game.cpp
 //takes input string
 //each room has interactions specific for the room so it matters which room they are in
-void Level3::interact(Player& p, std::string input) {
+/*void Level3::interact(Player& p, std::string input) {
 	//based on player's current location does specific run function
 	switch (p.getLocation()) {
 	//starting
@@ -68,4 +68,4 @@ void Level3::interact(Player& p, std::string input) {
 		Level3::runUpRoom(p, input);
 		break;
 	}
-}
+}*/

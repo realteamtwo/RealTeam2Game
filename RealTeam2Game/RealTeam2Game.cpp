@@ -61,7 +61,7 @@ int main()
     
     //level objects 1 for each level except for the first level
     Level2 level2;
-    Level3 level3;
+    //Level3 level3;
 
     //this will keep the player in the level still able to enter another command after the next as well as get input
     //stops once they are no longer on level 2
@@ -73,12 +73,12 @@ int main()
     }
     
     
-    while (player.getLevel() == 3) {
-        level3.displayDescription(player);
-        cout << "Enter a command: ";
-        cin >> input;
-        level3.interact(player, input);
-    }
+    //while (player.getLevel() == 3) {
+        //level3.displayDescription(player);
+       // cout << "Enter a command: ";
+        //cin >> input;
+        //level3.interact(player, input);
+    //}
 
     return 0;
 }
