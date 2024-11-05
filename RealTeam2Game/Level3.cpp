@@ -33,7 +33,7 @@ void Level2::displayDescription(Player& p) {
 		cout << "put description :)" << endl;
 		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
 		break;
-		//for earth room
+		//put which room
 	case Location::UP_ROOM:
 		cout << "put description :)" << endl;
 		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
