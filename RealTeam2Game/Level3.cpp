@@ -40,3 +40,32 @@ void Level3::displayDescription(Player& p) {
 		break;
 	}
 }
+
+//for interaction based on player's input as seen in RealTeam2Game.cpp
+//takes input string
+//each room has interactions specific for the room so it matters which room they are in
+void Level3::interact(Player& p, string input) {
+	//based on player's current location does specific run function
+	switch (p.getLocation()) {
+	//starting
+	case Location::CENTER_ROOM:
+		Level3::runCenterRoom(p, input);
+		break;
+
+	case Location::DOWN_ROOM:
+		Level3::runDownRoom(p, input);
+		break;
+
+	case Location::RIGHT_ROOM:
+		Level3::runRightRoom(p, input);
+		break;
+
+	case Location::LEFT_ROOM:
+		Level3::runLeftRoom(p, input);
+		break;
+
+	case Location::UP_ROOM:
+		Level3::runUpRoom(p, input);
+		break;
+	}
+}

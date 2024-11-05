@@ -72,13 +72,13 @@ int main()
         level2.interact(player, input);
     }
     
-    /// work in progress of level 3 but should be essentially the same as level 2 commented out because not fully developed
-    //while (player.getLevel() == 3) {
-        //level3.displayDescription(player);
-        //cout << "Enter a command: ";
-        //cin >> input;
-        //level3.interact(player, input);
-    //}
+    
+    while (player.getLevel() == 3) {
+        level3.displayDescription(player);
+        cout << "Enter a command: ";
+        cin >> input;
+        level3.interact(player, input);
+    }
 
     return 0;
 }
