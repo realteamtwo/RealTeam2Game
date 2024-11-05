@@ -1,12 +1,9 @@
-//Header file for level 3 (The Potion Room) much like level 2. Sets up level3 class and has player class
-#pragma once
-
 #ifndef LEVEL3
 #define LEVEL3
 
 #include <string>
 
-using namespace std;
+//Header file for level 3 (The Potion Room) much like level 2. Sets up level3 class and has player class
 
 
 class Player;
@@ -26,7 +23,7 @@ public:
 	void displayDescription(Player& p);
 
 	//Calls the appropriate function for interacting with the player's current room
-	void interact(Player& p, string);
+	void interact(Player& p, std::string);
 private:
 
 	//Center room function, takes the player's current input, runs if in center room and is where player first goes
