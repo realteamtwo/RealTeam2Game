@@ -5,7 +5,7 @@
 using namespace std;
 
 //when player enters a room they get a description so they know what's up. The player is also informed of how to move
-void Level2::displayDescription(Player& p) {
+void Level3::displayDescription(Player& p) {
 	switch (p.getLocation()) {
 
 	//first case and player starts here, where trapdoor is located so if else statement should occur to check locked or unlocked
