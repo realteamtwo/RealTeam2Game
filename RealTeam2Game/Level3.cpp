@@ -3,6 +3,8 @@
 #include "Player.h"
 
 
+Level3::Level3() {}
+
 
 //when player enters a room they get a description so they know what's up. The player is also informed of how to move
 void Level3::displayDescription(Player& p) {

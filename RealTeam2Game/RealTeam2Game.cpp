@@ -31,6 +31,8 @@ int main()
     std::cout << pencil.getDescription() << endl;
     */
 
+    bool gameRunning = true;
+
    
     PlayerInput inputHandler;
     Player player;
@@ -72,13 +74,17 @@ int main()
         level2.interact(player, input);
     }
     
-    
-    //while (player.getLevel() == 3) {
-        //level3.displayDescription(player);
-       // cout << "Enter a command: ";
-        //cin >> input;
-        //level3.interact(player, input);
-    //}
+    //Level 3 object creation
+    Level3 level3;
+
+    //While loop to keep player in Level 3 and allow them to input commands to solve the puzzles in the room
+    //Breaks when level is no longer 3
+    while (player.getLevel() == 3) {
+        level3.displayDescription(player);
+        cout << "Enter a command: ";
+        cin >> input;
+        level3.interact(player, input);
+    }
 
     return 0;
 }
