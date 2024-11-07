@@ -17,7 +17,6 @@ public:
 	void itemInteraction(string command);
 
 	void descend(Player &);
-	
 
 	bool hasMatch() const;
 	bool hasTorch() const;

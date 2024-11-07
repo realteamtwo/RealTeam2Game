@@ -31,60 +31,62 @@ int main()
     std::cout << pencil.getDescription() << endl;
     */
 
+    //Bool check to enable ability to go back to previous rooms
     bool gameRunning = true;
-
    
     PlayerInput inputHandler;
     Player player;
 
-    cout << "Welcome to the Escape Room Game!" << endl;
-    cout << "You are at the center of the room. It's dark, but you sense something important is in this room." << endl;
-    cout << "Hint: Move left to find a torch." << endl;
-
     string input;
+    //While loop to check the gameRunning value
+    while (gameRunning)
+    {
+        cout << "Welcome to the Escape Room Game!" << endl;
+        cout << "You are at the center of the room. It's dark, but you sense something important is in this room." << endl;
+        cout << "Hint: Move left to find a torch." << endl;
 
-    while (player.getLevel() == 1) {
-        cout << "Enter next command (up, down, left, right, use, pickup, get, insert): ";
-        cin >> input;
+        while (player.getLevel() == 1) {
+            cout << "Enter next command (up, down, left, right, use, pickup, get, insert): ";
+            cin >> input;
 
-        if (input == "up" || input == "down" || input == "left" || input == "right" || input == "center") {
-            inputHandler.movePlayer(input);
+            if (input == "up" || input == "down" || input == "left" || input == "right" || input == "center") {
+                inputHandler.movePlayer(input);
+            }
+            else if (input == "use" || input == "pickup" || input == "get" || input == "insert") {
+                inputHandler.itemInteraction(input);
+            }
+            else if (input == "descend") {
+                inputHandler.descend(player);
+            }
+            else {
+                cout << "Invalid command." << endl;
+            }
         }
-        else if (input == "use" || input == "pickup" || input == "get" || input == "insert") {
-            inputHandler.itemInteraction(input);
+
+        //level objects 1 for each level except for the first level
+        Level2 level2;
+        //Level3 level3;
+
+        //this will keep the player in the level still able to enter another command after the next as well as get input
+        //stops once they are no longer on level 2
+        while (player.getLevel() == 2) {
+            level2.displayDescription(player);
+            cout << "Enter a command: ";
+            cin >> input;
+            level2.interact(player, input);
         }
-        else if (input == "descend") {
-            inputHandler.descend(player);
-        }
-        else {
-            cout << "Invalid command." << endl;
+
+        //Level 3 object creation
+        Level3 level3;
+
+        //While loop to keep player in Level 3 and allow them to input commands to solve the puzzles in the room
+        //Breaks when level is no longer 3
+        while (player.getLevel() == 3) {
+            level3.displayDescription(player);
+            cout << "Enter a command: ";
+            cin >> input;
+            level3.interact(player, input);
         }
     }
-    
-    //level objects 1 for each level except for the first level
-    Level2 level2;
-    //Level3 level3;
-
-    //this will keep the player in the level still able to enter another command after the next as well as get input
-    //stops once they are no longer on level 2
-    while (player.getLevel() == 2) {
-        level2.displayDescription(player);
-        cout << "Enter a command: ";
-        cin >> input;
-        level2.interact(player, input);
-    }
-    
-    //Level 3 object creation
-    Level3 level3;
-
-    //While loop to keep player in Level 3 and allow them to input commands to solve the puzzles in the room
-    //Breaks when level is no longer 3
-    while (player.getLevel() == 3) {
-        level3.displayDescription(player);
-        cout << "Enter a command: ";
-        cin >> input;
-        level3.interact(player, input);
-    }
-
     return 0;
 }

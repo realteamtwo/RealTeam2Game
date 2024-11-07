@@ -98,6 +98,12 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 		p.setLocation(Level2::Location::CENTER_ROOM);
 		//update location to RIGHT_ROOM
 	}
+	else if (input == "ascend")
+	{
+		cout << "You went back to the previous room." << endl;
+		p.setLevel(2);
+		//Set level back to level 2
+	}
 	//need unlocking here
 
 }
