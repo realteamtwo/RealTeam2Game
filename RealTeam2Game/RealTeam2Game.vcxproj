@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameIntro.h" />
+    <ClInclude Include="StopWatch.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Level2.h" />
     <ClInclude Include="Level3.h" />

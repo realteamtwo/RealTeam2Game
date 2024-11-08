@@ -2,6 +2,7 @@
 #define LEVEL3
 
 #include <string>
+#include "StopWatch.h"
 
 //Header file for level 3 (The Potion Room) much like level 2. Sets up level3 class and has player class
 
@@ -41,6 +42,7 @@ private:
 	//for running left room takes player input, runs if player inputs left in center room
 	void runLeftRoom(Player& p, std::string);
 
+	StopWatch LevelTime;
 };
 
 

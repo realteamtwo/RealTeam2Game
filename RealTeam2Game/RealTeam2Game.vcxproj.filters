@@ -59,6 +59,9 @@
     <ClInclude Include="Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="StopWatch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Level2.h">
       <Filter>Header Files</Filter>
     </ClInclude>

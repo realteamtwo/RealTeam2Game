@@ -1,6 +1,6 @@
 #include "PlayerInput.h"
 #include <iostream>
-
+#include "StopWatch.h"
 using namespace std;
 
 PlayerInput::PlayerInput() : currentDirection("Center"), matchFound(false), torchFound(false), keyFound(false), riddleVisible(false), riddleIsSolved(false), drawerUnlocked(false), doorUnlocked(false)
@@ -92,7 +92,7 @@ void PlayerInput::movePlayer(string direction) {
     }}
 
 // Function to handle item interaction (pickup, use, get)
-void PlayerInput::itemInteraction(string command) {
+void PlayerInput::itemInteraction(string command, StopWatch GameTime) {
     if (command == "pickup" && !torchFound && currentDirection == "Left") {
         torchFound = true;
         cout << "You picked up the torch! Now move up to see the riddle." << endl;
@@ -143,6 +143,9 @@ void PlayerInput::itemInteraction(string command) {
             cout << " You inserted the key to unlock the door." << endl;
             cout << " Congratulations! You have unlocked the door!" << endl;
             cout << " Type \"descend\" to go to the next floor." << endl;
+            // The Player Escaped & Display Time
+            GameTime.printDiffTime();
+
             doorUnlocked = true;
             //exit(0);
             

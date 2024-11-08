@@ -8,11 +8,13 @@
 #include "PlayerInput.h"
 #include "PuzzleIdeas.h"
 #include "Room.h"
+#include "StopWatch.h"
 
 using namespace std;
 
 int main()
 {
+    StopWatch GameTime;
     Backstory();
     Controls();
     //Test cases - commented out for now
@@ -53,7 +55,7 @@ int main()
                 inputHandler.movePlayer(input);
             }
             else if (input == "use" || input == "pickup" || input == "get" || input == "insert") {
-                inputHandler.itemInteraction(input);
+                inputHandler.itemInteraction(input, GameTime);
             }
             else if (input == "descend") {
                 inputHandler.descend(player);
@@ -75,6 +77,10 @@ int main()
             cin >> input;
             level2.interact(player, input);
         }
+        
+        //TODO: cout "time spent so far L2" or something
+        GameTime.printDiffTime(); 
+
 
         //Level 3 object creation
         Level3 level3;
@@ -87,6 +93,8 @@ int main()
             cin >> input;
             level3.interact(player, input);
         }
+        //TODO: cout "time spent so far L3" or something
+        GameTime.printDiffTime();
     }
     return 0;
 }
