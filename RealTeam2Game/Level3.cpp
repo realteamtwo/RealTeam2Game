@@ -21,12 +21,12 @@ void Level3::displayDescription(Player& p) {
 
 		//put which room
 	case Location3::DOWN_ROOM:
-		cout << "A room full of shelves and boxes of unknown contents line the walls. Paper and clutter stretches out before you. Type look to look around" << endl;
-		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
+		cout << "A room full of shelves and boxes of unknown contents line the walls. Paper and clutter stretches out before you." << endl;
+		cout << "Type look to look around. If you want to go back type leave. " << endl;
 		break;
 		// put which room it is
 	case Location3::RIGHT_ROOM:
-		cout << "put description :)" << endl;
+		cout << "A cold breeze chills you. You notice a thin layer of frost on the floor" << endl;
 		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
 
 		break;
@@ -139,6 +139,7 @@ void Level3::runDownRoom(Player& p, std::string input) {
 		
 }
 void Level3::runRightRoom(Player& p, std::string input) {
+	cout << "A chill runs through you. " << endl;
 
 }
 void Level3::runUpRoom(Player& p, std::string input) {
