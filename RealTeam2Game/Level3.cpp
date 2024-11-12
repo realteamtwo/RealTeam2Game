@@ -136,7 +136,8 @@ void Level3::runDownRoom(Player& p, std::string input) {
 		p.setLocation3(Level3::Location3::CENTER_ROOM);
 	}
 	else if (answer == "y") {
-		//p.addItem(Item MagicPowder);
+		//add item to inventory
+		//p.addItem(MagicPowder);
 		cout << "You picked up Magic Powder" << endl;
 	}
 		
