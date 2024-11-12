@@ -21,7 +21,7 @@ void Level3::displayDescription(Player& p) {
 
 		//put which room
 	case Location::DOWN_ROOM:
-		cout << "put description :)" << endl;
+		cout << "A room full of shelves and boxes of unknown contents line the walls. Paper and clutter stretches out before you" << endl;
 		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
 		break;
 		// put which room it is
