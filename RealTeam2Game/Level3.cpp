@@ -147,7 +147,7 @@ void Level3::runDownRoom(Player& p, std::string input) {
 void Level3::runRightRoom(Player& p, std::string input) {
 	cout << "A chill runs through you. " << endl;
 	if (input == "right") {
-		cout << "blue plants a sprouting in pots of frozen earth. " << endl;
+		cout << "blue plants are sprouting in pots of frozen earth. " << endl;
 	}
 	else if (input == "left") {
 		cout << "place holder thinking of idea" << endl;

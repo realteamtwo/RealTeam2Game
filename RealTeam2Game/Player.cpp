@@ -30,6 +30,10 @@ void Player::setLevel(int l) {
 	level = l;
 }
 
+void Player::setLocation3(Level3::Location3 l) {
+	location3 = l;
+}
+
 //Accessors
 Level2::Location Player::getLocation() {
 	return location;
