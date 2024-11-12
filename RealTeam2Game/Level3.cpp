@@ -121,18 +121,14 @@ void Level3::runDownRoom(Player& p, std::string input) {
 
 	}
 	else if (input == "right") {
+		cout << "Amongst several piles of paper is a metalic cylinder. A warning label reads 'Do Not Open: Magic Powder'" << endl;
 
 	}
 	else if (input == "leave") {
 		cout << "You are in center room" << endl;
 		p.setLocation3(Level3::Location3::CENTER_ROOM);
 	}
-	else if (input == "air") {
-		cout << "" << endl;
 		
-		
-	}
-
 }
 void Level3::runRightRoom(Player& p, std::string input) {
 
