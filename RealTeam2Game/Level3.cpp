@@ -1,9 +1,30 @@
 //cpp for Level 3 (the potion room) will be where location descriptions snd interactions for the player will be
 #include "Level3.h"
 #include "Player.h"
+#include "Item.h"
 
 
-Level3::Level3() {}
+//declaring Items so they can be used in methods
+Item MagicPowder;
+Item SnakeVenom;
+Item IceHerbs;
+
+Level3::Level3() {
+	//items we might encounter in level 3 not sure where to put these
+	///This is the Item for magic powder which will be found in level 3 storage room
+	MagicPowder.setDescription("A metallic cylinder with labeled magic powder. The sound of grains swishing happens when you move it. A warning label says do not open.");
+	MagicPowder.setDisplayName("Magic Powder");
+	///Magic Powder done
+	///This is the Item for snake venom which will be found in level 3 storage room
+	SnakeVenom.setDescription("A vial filled with murky dark liquid ");
+	SnakeVenom.setDisplayName("Snake Venom");
+	///Snake Venom done
+	///This is the Item for Herbs which will be found in level 3 ice room
+	IceHerbs.setDescription("Light blue herbs with spiky leaves. The herbs are still cold to the touch ");
+	IceHerbs.setDisplayName("Herbs");
+	///Herbs done
+}
+
 
 
 //when player enters a room they get a description so they know what's up. The player is also informed of how to move
@@ -137,7 +158,7 @@ void Level3::runDownRoom(Player& p, std::string input) {
 	}
 	else if (answer == "y") {
 		//add item to inventory
-		//p.addItem(MagicPowder);
+		p.addItem(MagicPowder);
 		cout << "You picked up Magic Powder" << endl;
 	}
 		
