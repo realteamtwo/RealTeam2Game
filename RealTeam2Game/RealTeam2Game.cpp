@@ -78,7 +78,7 @@ int main()
             level2.interact(player, input);
         }
         
-        //TODO: cout "time spent so far L2" or something
+        //TODO: cout "time spent so far L2" 
         GameTime.printDiffTime(); 
 
 
@@ -93,7 +93,7 @@ int main()
             cin >> input;
             level3.interact(player, input);
         }
-        //TODO: cout "time spent so far L3" or something
+        //TODO: cout "time spent so far L3" 
         GameTime.printDiffTime();
     }
     return 0;

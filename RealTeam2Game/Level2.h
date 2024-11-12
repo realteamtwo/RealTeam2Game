@@ -39,7 +39,7 @@ private:
 
 	void runLeftRoom(Player& p, std::string);
 	
-	StopWatch roomTime;
+	StopWatch L2Time;
 };
 
 #endif

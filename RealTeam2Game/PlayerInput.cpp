@@ -143,7 +143,9 @@ void PlayerInput::itemInteraction(string command, StopWatch GameTime) {
             cout << " You inserted the key to unlock the door." << endl;
             cout << " Congratulations! You have unlocked the door!" << endl;
             cout << " Type \"descend\" to go to the next floor." << endl;
-            // The Player Escaped & Display Time
+
+            // How much time has passed in the game overall since beating level 1
+            cout << "\n" << "Level #1 has been completed in: ";
             GameTime.printDiffTime();
 
             doorUnlocked = true;

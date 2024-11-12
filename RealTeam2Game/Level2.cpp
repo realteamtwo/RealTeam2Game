@@ -20,8 +20,9 @@ void Level2::displayDescription(Player &p) {
 			cout << "You are in a central area with an open trapdoor." << endl;
 			if (doorUnlocked == false)
 			{
-				cout << "Door solved in: ";
-				roomTime.printDiffTime();
+				// How much time has passed in the game overall since beating level 2
+				cout << "\n" << "Level #2 has been completed in: ";
+				L2Time.printDiffTime();
 				doorUnlocked = true;
 			}
 		}

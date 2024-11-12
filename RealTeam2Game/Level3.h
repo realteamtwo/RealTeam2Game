@@ -42,7 +42,7 @@ private:
 	//for running left room takes player input, runs if player inputs left in center room
 	void runLeftRoom(Player& p, std::string);
 
-	StopWatch LevelTime;
+	StopWatch L3Time;
 };
 
 
