@@ -35,9 +35,14 @@ Level2::Location Player::getLocation() {
 	return location;
 }
 
+Level3::Location3 Player::getLocation3() {
+	return location3;
+}
+
 vector<Item> Player::getItems() {
 	return items;
 }
+
 
 int Player::getLevel() {
 	return level;

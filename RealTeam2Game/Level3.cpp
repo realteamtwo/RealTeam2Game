@@ -109,8 +109,18 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 }
 
 void Level3::runDownRoom(Player& p, std::string input) {
+	//prompt
 	cout << "Perhaps there is something useful here?" << endl;
+	//based on input of player different things can happen (for information check player files and main)
 	if (input == "look") {
+		cout << "Some of the boxes to your left and right stand out. " << endl;
+	}
+	//theoretically we would want this to be pressed after look but no reason they shouldn't be able to
+	else if (input == "left") {
+		cout << "There is an open chest. Inside there is what looks like the fossilized remains of a snake, and a vile of liquid" << endl;
+
+	}
+	else if (input == "right") {
 
 	}
 	else if (input == "leave") {
