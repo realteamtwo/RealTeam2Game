@@ -2,6 +2,7 @@
 #define LEVEL2
 
 #include <string>
+#include "StopWatch.h"
 
 class Player;
 
@@ -37,6 +38,8 @@ private:
 	void runUpRoom(Player& p, std::string);
 
 	void runLeftRoom(Player& p, std::string);
+	
+	StopWatch L2Time;
 };
 
 #endif

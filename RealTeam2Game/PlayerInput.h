@@ -2,10 +2,10 @@
 #define PLAYERINPUT_H
 
 #include <string>
-#include "Item.h"
+#include "Item.h" 
+#include "StopWatch.h"
 #include "Level2.h"
 #include "Player.h"
-
 using namespace std;
 
 class PlayerInput
@@ -14,7 +14,8 @@ public:
 	PlayerInput(); // empty constructor
 
 	void movePlayer(string direction);
-	void itemInteraction(string command);
+	void itemInteraction(string command, StopWatch GameTime);
+	
 
 	void descend(Player &);
 

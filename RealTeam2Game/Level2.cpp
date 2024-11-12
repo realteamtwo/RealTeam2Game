@@ -10,7 +10,7 @@ bool waterSolved = false;
 bool earthSolved = false;
 bool airSolved = false;
 
-
+bool doorUnlocked = false;
 
 void Level2::displayDescription(Player &p) {
 	switch (p.getLocation()) {
@@ -18,6 +18,13 @@ void Level2::displayDescription(Player &p) {
 		if (fireSolved && waterSolved && earthSolved && airSolved) {
 			cout << "You hear a click from the center of the room." << endl;
 			cout << "You are in a central area with an open trapdoor." << endl;
+			if (doorUnlocked == false)
+			{
+				// How much time has passed in the game overall since beating level 2
+				cout << "\n" << "Level #2 has been completed in: ";
+				L2Time.printDiffTime();
+				doorUnlocked = true;
+			}
 		}
 		else {
 			cout << "You are in a central area with another locked trapdoor." << endl;
@@ -107,6 +114,7 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 		//update location to RIGHT_ROOM
 	}
 	else if (input == "descend") {
+		// Level 2 Completed
 		if (fireSolved && waterSolved && earthSolved && airSolved) {
 			cout << "You go down through the trapdoor to the next floor of the tower." << endl;
 			p.setLevel(3);
