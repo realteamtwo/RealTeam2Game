@@ -140,7 +140,22 @@ void Level3::runDownRoom(Player& p, std::string input) {
 }
 void Level3::runRightRoom(Player& p, std::string input) {
 	cout << "A chill runs through you. " << endl;
-
+	if (input == "right") {
+		cout << "blue plants a sprouting in pots of frozen earth. " << endl;
+	}
+	else if (input == "left") {
+		cout << "place holder thinking of idea" << endl;
+	}
+	else if (input == "down") {
+		cout << "place holder" << endl;
+	}
+	else if (input == "up") {
+		cout << "place holder" << endl;
+	}
+	else if (input == "leave") {
+		cout << "You are in center room" << endl;
+		p.setLocation3(Level3::Location3::CENTER_ROOM);
+	}
 }
 void Level3::runUpRoom(Player& p, std::string input) {
 
