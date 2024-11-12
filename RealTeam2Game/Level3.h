@@ -15,7 +15,7 @@ public:
 
 	//Enum, one entry for each location
 	//let me know if you guys would like to rename these or if there will be more or if the shape is different
-	enum Location { CENTER_ROOM, DOWN_ROOM, UP_ROOM, LEFT_ROOM, RIGHT_ROOM };
+	enum Location3 { CENTER_ROOM, DOWN_ROOM, UP_ROOM, LEFT_ROOM, RIGHT_ROOM };
 
 	//Constructor
 	Level3();
