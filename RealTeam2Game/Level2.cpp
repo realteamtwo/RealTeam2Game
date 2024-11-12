@@ -5,13 +5,6 @@
 
 Level2::Level2() : fireextinguisherFound(false), matchstickFound(false), rightRoomEntered(false) {}
 
-bool fireSolved = false;
-bool waterSolved = false;
-bool earthSolved = false;
-bool airSolved = false;
-
-
-
 void Level2::displayDescription(Player &p) {
 	switch (p.getLocation()) {
 	case Location::CENTER_ROOM:

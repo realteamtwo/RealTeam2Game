@@ -22,6 +22,12 @@ public:
 	//Calls the appropriate function for interacting with the player's current room
 	void interact(Player &p, std::string);
 
+	//For tracking the completion of each side puzzle
+	bool fireSolved = false;
+	bool waterSolved = false;
+	bool earthSolved = false;
+	bool airSolved = false;
+
 private:
 	//Center room function, takes the player's current input
 	void runCenterRoom(Player &p, std::string);

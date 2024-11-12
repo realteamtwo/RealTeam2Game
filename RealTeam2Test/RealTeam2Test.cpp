@@ -132,8 +132,75 @@ namespace RealTeam2Test
 			// Logger::WriteMessage(inventory.c_str());
 		}
 
-		TEST_METHOD(AnotherTest) {
-			// ...
+		//Test the player's location in Level2
+		//Enters and leaves each room and verifies the player's location is correct after each step
+		TEST_METHOD(PlayerLocationTest) {
+			Logger::WriteMessage("// Testing player's location in Level2");
+			Level2 level;
+			Player player;
+			Level2::Location expected;
+			Level2::Location actual;
+			player.setLevel(2);
+			
+			Logger::WriteMessage("// Try to leave the center room (this shouldn't do anything)");
+			level.interact(player, "leave");
+			expected = Level2::Location::CENTER_ROOM;
+			actual = player.getLocation();
+			Assert::IsTrue(expected == actual);
+
+			Logger::WriteMessage("// Make sure each direction sends the player to the appropriate room");
+			Logger::WriteMessage("// Also make sure leaving each room returns the player to the center");
+			Logger::WriteMessage("// Exception: Player cannot leave the fire room");
+
+			std::string directionNames[4] = { "up", "down", "left", "right" };
+			Level2::Location directionLocations[4] = {
+				Level2::Location::UP_ROOM,
+				Level2::Location::DOWN_ROOM,
+				Level2::Location::LEFT_ROOM,
+				Level2::Location::RIGHT_ROOM
+			};
+
+			for (int i = 0; i < 4; i++) {
+				level.interact(player, directionNames[i]);
+				expected = directionLocations[i];
+				actual = player.getLocation();
+				Assert::IsTrue(expected == actual);
+
+				level.interact(player, "leave");
+				if (directionNames[i] == "right") { //Special case since you can't leave the fire room
+					expected = Level2::Location::RIGHT_ROOM;
+				}
+				else {
+					expected = Level2::Location::CENTER_ROOM;
+				}
+				actual = player.getLocation();
+				Assert::IsTrue(expected == actual);
+			}
+		}
+
+		//Make sure Level 2 is beatable!
+		//Artificially marks the fire room as beaten, then uses the input sequence:
+		//up, earth, leave, down, air, leave, left, water, leave, descend
+		TEST_METHOD(Level2CompletionTest) {
+			Logger::WriteMessage("// Make sure level 2 can be completed");
+			Level2 level;
+			level.fireSolved = true;
+			Player player;
+			player.setLevel(2);
+			const int INPUT_COUNT = 10;
+
+			std::string inputSequence[INPUT_COUNT] = {
+				"up", "earth", "leave", "down", "air",
+				"leave", "left", "water", "leave", "descend"
+			};
+
+			for (int i = 0; i < INPUT_COUNT; i++) {
+				level.interact(player, inputSequence[i]);
+			}
+
+			int expected = 3;
+			int actual = player.getLevel();
+			Assert::IsTrue(expected == actual);
 		}
 
 		std::string catItemNames(vector<Item> itemList) {
