@@ -15,7 +15,7 @@ void Level3::displayDescription(Player& p) {
 		
 		//current description perhaps some flair for a potion room:)
 		//also will be in the else once we figure out how the door unlocks in this room
-		cout << "You are in a central area with another locked trapdoor." << endl;
+		cout << "You are in a central area with another locked trapdoor. An large empty cauldron stands out. " << endl;
 		cout << "Four hallways extend from this room to other areas." << endl;
 		break;
 
