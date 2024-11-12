@@ -108,6 +108,9 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 	// Add Stop Watch Code for Level 3
 }
 
+//this is the room the player can enter by going to the right from center room, the ice room
+//now when it gets input from player it will do stuff
+//this is where the items snake venom and magic powder will be gotten
 void Level3::runDownRoom(Player& p, std::string input) {
 	//prompt
 	//check if 'input is right' for what it is gotten from
@@ -138,6 +141,8 @@ void Level3::runDownRoom(Player& p, std::string input) {
 	}
 		
 }
+//this is the room the player can enter by going to the right from center room, the ice room
+//now when it gets input from player it will do stuff
 void Level3::runRightRoom(Player& p, std::string input) {
 	cout << "A chill runs through you. " << endl;
 	if (input == "right") {
