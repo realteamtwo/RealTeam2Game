@@ -110,6 +110,8 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 
 void Level3::runDownRoom(Player& p, std::string input) {
 	//prompt
+	//check if 'input is right' for what it is gotten from
+	string answer;
 	cout << "Perhaps there is something useful here?" << endl;
 	//based on input of player different things can happen (for information check player files and main)
 	if (input == "look") {
@@ -118,15 +120,21 @@ void Level3::runDownRoom(Player& p, std::string input) {
 	//theoretically we would want this to be pressed after look but no reason they shouldn't be able to
 	else if (input == "left") {
 		cout << "There is an open chest. Inside there is what looks like the fossilized remains of a snake, and a vile of liquid" << endl;
-
+	
 	}
 	else if (input == "right") {
-		cout << "Amongst several piles of paper is a metalic cylinder. A warning label reads 'Do Not Open: Magic Powder'" << endl;
-
+		cout << "Amongst several piles of paper is a metallic cylinder. A warning label reads 'Do Not Open: Magic Powder'" << endl;
+		cout << "Pickup? (Y/N): ";
+		//this is to get the yes or no answer to this question wanted to keep it separate from input
+		cin >> answer;
 	}
 	else if (input == "leave") {
 		cout << "You are in center room" << endl;
 		p.setLocation3(Level3::Location3::CENTER_ROOM);
+	}
+	else if (answer == "y") {
+		//p.addItem(Item MagicPowder);
+		cout << "You picked up Magic Powder" << endl;
 	}
 		
 }
