@@ -8,6 +8,7 @@
 Item MagicPowder;
 Item SnakeVenom;
 Item IceHerbs;
+Item AcidPotion;
 
 Level3::Level3() {
 	//items we might encounter in level 3 not sure where to put these
@@ -172,6 +173,7 @@ void Level3::runDownRoom(Player& p, std::string input) {
 //this is the room the player can enter by going to the right from center room, the ice room
 //now when it gets input from player it will do stuff
 void Level3::runRightRoom(Player& p, std::string input) {
+
 	cout << "A chill runs through you. " << endl;
 	if (input == "right") {
 		cout << "blue plants are sprouting in pots of frozen earth. " << endl;
@@ -204,7 +206,7 @@ void Level3::runUpRoom(Player& p, std::string input) {
 		if (answer == "acid" || answer == "Acid") {
 			cout << "Correct! A hidden compartment opens in the wall, revealing a bottle labeled 'Acid Potion'!" << endl;
 			//Add item to inventory
-			//p.addItem(AcidPotion);
+			p.addItem(AcidPotion);
 		}
 		else {
 			cout << "That's not the correct answer. The riddle remains unsolved." << endl;
