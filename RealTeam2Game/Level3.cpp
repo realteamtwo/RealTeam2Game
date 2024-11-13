@@ -24,6 +24,10 @@ Level3::Level3() {
 	IceHerbs.setDescription("Light blue herbs with spiky leaves. The herbs are still cold to the touch ");
 	IceHerbs.setDisplayName("Herbs");
 	///Herbs done
+	///item for acid potion it should be made by mixing snake venom and magic powder
+	AcidPotion.setDescription("A bubbling liquid made by mixing magic powder and snake venom ");
+	AcidPotion.setDisplayName("Acid Potion");
+	cauldronExploded == false;
 }
 
 
@@ -34,13 +38,27 @@ Level3::Level3() {
 void Level3::displayDescription(Player& p) {
 	switch (p.getLocation3()) {
 
-	//first case and player starts here, where trapdoor is located so if else statement should occur to check locked or unlocked
+		//first case and player starts here, where trapdoor is located so if else statement should occur to check locked or unlocked
 	case Location3::CENTER_ROOM:
-		
+
 		//current description perhaps some flair for a potion room:)
 		//also will be in the else once we figure out how the door unlocks in this room
-		cout << "You are in a central area with another locked trapdoor. An large empty cauldron stands out. " << endl;
+		if (cauldronExploded == true)
+		{
+			cout << "The cauldron has exploded and revealed a path forward." << endl;
+			cout << "You are in a central area with an opening in the floor. The cauldron is gone." << endl;
+			cout << "Four hallways extend from this room to other areas." << endl;
+		}
+		else
+		{
+			cout << "You are in a central area with another locked trapdoor. A large cauldron in the center stands out." << endl;
+		}
 		cout << "Four hallways extend from this room to other areas." << endl;
+
+		//if(have magic powder && have snake venom) { cout << you have ingredients ready to brew. Put them in the cauldron << endl;}
+		//p.addItem(AcidPotion);
+		//p.removeItem(SnakeVenom);
+		//p.removeItem(MagicPowder);
 		break;
 
 		//put which room
@@ -132,6 +150,17 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 		p.setLevel(2);
 		//Set level back to level 2
 	}
+	else if (input == "descend")
+	{
+		if (cauldronExploded == true)
+		{
+			cout << "You go down through the hole to the next floor of the tower." << endl;
+		}
+		else
+		{
+			cout << "The trapdoor is locked!" << endl;
+		}
+	}
 	//need unlocking here
 	// Add Stop Watch Code for Level 3
 }
@@ -150,23 +179,34 @@ void Level3::runDownRoom(Player& p, std::string input) {
 	}
 	//theoretically we would want this to be pressed after look but no reason they shouldn't be able to
 	else if (input == "left") {
-		cout << "There is an open chest. Inside there is what looks like the fossilized remains of a snake, and a vile of liquid" << endl;
-	
+		cout << "There is an open chest. Inside there is what looks like the fossilized remains of a snake, and a vial of liquid" << endl;
+		cout << "Type left, right, look, or pickup to interact. When you want to leave type leave." << endl;
 	}
 	else if (input == "right") {
 		cout << "Amongst several piles of paper is a metallic cylinder. A warning label reads 'Do Not Open: Magic Powder'" << endl;
 		cout << "Pickup? (Y/N): ";
 		//this is to get the yes or no answer to this question wanted to keep it separate from input
 		cin >> answer;
+		if (answer == "y") {
+			//add item to inventory
+			p.addItem(MagicPowder);
+			cout << "You picked up Magic Powder" << endl;
+		}
 	}
 	else if (input == "leave") {
 		cout << "You are in center room" << endl;
 		p.setLocation3(Level3::Location3::CENTER_ROOM);
 	}
-	else if (answer == "y") {
-		//add item to inventory
-		p.addItem(MagicPowder);
-		cout << "You picked up Magic Powder" << endl;
+	else if (input == "pickup") {
+		cout << "which one? " << endl;
+	}
+	else if (input == "vial" || input == "venom") {
+		cout << "You picked up Snake Venom" << endl;
+		//adding item to inventory
+		p.addItem(SnakeVenom);
+	}
+	else if (input == "fossil" || input == "remains") {
+		cout << "You attempt to pick it up but it starts to break. Oops. " << endl;
 	}
 		
 }

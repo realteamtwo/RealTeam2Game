@@ -35,7 +35,7 @@ void Level2::displayDescription(Player &p) {
 	// 
 	//for the air room
 	case Location::DOWN_ROOM:
-		cout << "You move down to a room with writing on the walls. A breeze passes by you"<< endl;
+		cout << "You are in a room with writing on the walls. A breeze passes by you"<< endl;
 		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
 		break;
 		//for fire room
@@ -46,13 +46,13 @@ void Level2::displayDescription(Player &p) {
             rightRoomEntered = true;
         }
 
-		cout << "You move right to a room with light gleaming and intense heat suffocating you" << endl;
+		cout << "You are in a room with light gleaming and intense heat suffocating you" << endl;
 		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
 
 		break;
 		//for water room
 	case Location::LEFT_ROOM:
-		cout << "You move left to a room with the smell of the ocean and beautiful sea creatures around in a tank" << endl;
+		cout << "You are in a room with the smell of the ocean and beautiful sea creatures around in a tank" << endl;
 		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
 		break;
 		//for earth room
@@ -89,7 +89,7 @@ void Level2::interact(Player &p, std::string input) {
 
 void Level2::runCenterRoom(Player &p, std::string input) {
 	if (input == "down") {
-		cout << " you go down " << endl;
+		cout << "You go down " << endl;
 		//update location to DOWN_ROOM
 		p.setLocation(Level2::Location::DOWN_ROOM); 
 	}
@@ -99,17 +99,17 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 		//update location to UP_ROOM
 	}
 	else if (input == "left") {
-		cout << " you go left" << endl;
+		cout << "You go left" << endl;
 		p.setLocation(Level2::Location::LEFT_ROOM);
 		//update location to LEFT_ROOM
 	}
 	else if (input == "right") {
-		cout << " you go right" << endl;
+		cout << "You go right" << endl;
 		p.setLocation(Level2::Location::RIGHT_ROOM);
 		//update location to RIGHT_ROOM
 	}
 	else if (input == "leave") {
-		cout << " You're In Center Room" << endl;
+		cout << "You're in the Center Room" << endl << endl;
 		p.setLocation(Level2::Location::CENTER_ROOM);
 		//update location to RIGHT_ROOM
 	}
@@ -145,7 +145,7 @@ void Level2::runDownRoom(Player &p, std::string input) {
 		cout << "The doorway you came from has many tassels and cloth flowing in the breeze" << endl;
 	}
 	else if (input == "leave") {
-		cout << "You are in center room" << endl;
+		cout << "You leave the Air Room" << endl << endl;
 		p.setLocation(Level2::Location::CENTER_ROOM);
 	}
 	else if(input == "air") {
@@ -352,7 +352,7 @@ void Level2::runLeftRoom(Player& p, std::string input) {
 		waterSolved = true;
 	}
 	else if (input == "leave") {
-		cout << "You are in center room" << endl;
+		cout << "You leave the Water Room" << endl << endl;
 		p.setLocation(Level2::Location::CENTER_ROOM);
 		}
 	
@@ -382,7 +382,7 @@ void Level2::runUpRoom(Player& p, std::string input) {
 	}
 
 	else if (input == "leave") {
-		cout << "You are in center room" << endl;
+		cout << "You leave the Earth Room" << endl << endl;
 		p.setLocation(Level2::Location::CENTER_ROOM);
 	}
 }

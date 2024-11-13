@@ -44,6 +44,8 @@ private:
 	void runLeftRoom(Player& p, std::string);
 
 	StopWatch L3Time;
+
+	bool cauldronExploded;
 };
 
 
