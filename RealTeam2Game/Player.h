@@ -42,6 +42,8 @@ public:
 	Level2::Location getLocation();
 	//Gets the list of items, as a vector
 	vector<Item> getItems();
+	//Checks if the player has the given item
+	bool hasItem(Item);
 	//Gets the player's current level
 	int getLevel();
 	//like getLocation but for level3

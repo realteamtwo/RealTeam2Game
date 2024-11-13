@@ -27,7 +27,7 @@ Level3::Level3() {
 	///item for acid potion it should be made by mixing snake venom and magic powder
 	AcidPotion.setDescription("A bubbling liquid made by mixing magic powder and snake venom ");
 	AcidPotion.setDisplayName("Acid Potion");
-	cauldronExploded == false;
+	cauldronExploded = false;
 }
 
 
@@ -161,6 +161,95 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 			cout << "The trapdoor is locked!" << endl;
 		}
 	}
+	else if (input == "cauldron" || input == "brew") {
+		//Brewing process
+		//Ask the player for the first ingredient
+		Item ingredient1;
+		cout << "Choose an item you have as the first potion ingredient (case sensitive), or exit to step away: " << endl;
+
+		//List all items the player has, while also storing their names for input checking
+		vector<string> playerItemNames;
+		vector<Item> playerItems = p.getItems();
+		for (int i = 0; i < playerItems.size(); i++) {
+			cout << playerItems[i].getDisplayName() << endl;
+			playerItemNames.push_back(playerItems[i].getDisplayName());
+		}
+
+		//Get the player's first choice and check that they have the item
+		string ingredientRequested;
+		bool ingredientValid = false;
+		cin.clear();
+		cin.ignore();
+		getline(cin, ingredientRequested);
+		if (ingredientRequested == "exit") {
+			cout << "You stepped away from the cauldron." << endl;
+			return;
+		}
+		for (int i = 0; i < playerItemNames.size(); i++) {
+			if (ingredientRequested == playerItemNames[i]) {
+				ingredientValid = true;
+				ingredient1 = playerItems[i];
+			}
+		}
+		if (!ingredientValid) {
+			cout << "You don't have that item!" << endl;
+			return;
+		}
+
+		//Ask for the second ingredient and check for it too
+		Item ingredient2;
+		ingredientValid = false;
+		cout << "Choose a second ingredient (case sensitive), or exit to take back the first ingredient: " << endl;
+		cin.clear();
+		string ingredientRequested2;
+		getline(cin, ingredientRequested2);
+		if (ingredientRequested2 == "exit") {
+			cout << "You stepped away from the cauldron." << endl;
+			return;
+		}
+		else if (ingredientRequested2 == ingredient1.getDisplayName()) {
+			cout << "You already used that item!" << endl;
+			return;
+		}
+		for (int i = 0; i < playerItemNames.size(); i++) {
+			if (ingredientRequested2 == playerItemNames[i]) {
+				ingredientValid = true;
+				ingredient2 = playerItems[i];
+			}
+		}
+		if (!ingredientValid) {
+			cout << "You don't have that item!" << endl;
+			return;
+		}
+
+		//Potion recipes! Check if the input items form a valid recipe.
+		//When adding a new recipe, check both combinations of ingredients here.(example provided)
+		if (
+			(ingredient1 == MagicPowder && ingredient2 == SnakeVenom)
+			|| (ingredient1 == SnakeVenom && ingredient2 == MagicPowder)
+			// || (ingredient1 == YourFirstIngredient && ingredient2 == YourSecondIngredient)
+			// || (ingredient1 == YourSecondIngredient && ingredient2 == YourFirstIngredient)
+		)
+		{
+			Item brewedItem;
+
+			//Acid potion recipe, use as a template for other recipes
+			if ((ingredient1 == MagicPowder && ingredient2 == SnakeVenom) || (ingredient1 == SnakeVenom && ingredient2 == MagicPowder)) {
+				brewedItem = AcidPotion;
+			}
+
+			if (p.hasItem(brewedItem)) {
+				cout << "You already have that potion!" << endl;
+			}
+			else {
+				cout << "You brewed: " << brewedItem.getDisplayName() << ", " << brewedItem.getDescription() << endl;
+				p.removeItem(ingredient1.getDisplayName());
+				p.removeItem(ingredient2.getDisplayName());
+				p.addItem(brewedItem);
+			}
+		}
+		
+	}
 	//need unlocking here
 	// Add Stop Watch Code for Level 3
 }
@@ -187,10 +276,15 @@ void Level3::runDownRoom(Player& p, std::string input) {
 		cout << "Pickup? (Y/N): ";
 		//this is to get the yes or no answer to this question wanted to keep it separate from input
 		cin >> answer;
-		if (answer == "y") {
-			//add item to inventory
-			p.addItem(MagicPowder);
-			cout << "You picked up Magic Powder" << endl;
+		if (answer == "Y") {
+			if (p.hasItem(MagicPowder)) {
+				cout << "You already have this item!" << endl;
+			}
+			else {
+				//add item to inventory
+				p.addItem(MagicPowder);
+				cout << "You picked up Magic Powder" << endl;
+			}
 		}
 	}
 	else if (input == "leave") {
@@ -201,9 +295,14 @@ void Level3::runDownRoom(Player& p, std::string input) {
 		cout << "which one? " << endl;
 	}
 	else if (input == "vial" || input == "venom") {
-		cout << "You picked up Snake Venom" << endl;
-		//adding item to inventory
-		p.addItem(SnakeVenom);
+		if (p.hasItem(SnakeVenom)) {
+			cout << "You already have this item!" << endl;
+		}
+		else {
+			cout << "You picked up Snake Venom" << endl;
+			//adding item to inventory
+			p.addItem(SnakeVenom);
+		}
 	}
 	else if (input == "fossil" || input == "remains") {
 		cout << "You attempt to pick it up but it starts to break. Oops. " << endl;

@@ -26,6 +26,15 @@ void Player::removeItem(string name) {
 	}
 }
 
+bool Player::hasItem(Item item) {
+	for (int i = 0; i < items.size(); i++) {
+		if (items[i] == item) {
+			return true;
+		}
+	}
+	return false;
+}
+
 void Player::setLevel(int l) {
 	level = l;
 }

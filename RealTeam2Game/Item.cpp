@@ -27,5 +27,12 @@ std::string Item::getDescription() {
 	return description;
 }
 
+//Member variables
 std::string displayName;
 std::string description;
+
+//Equality operator, for checking if two items are equal
+//Checks if the name and description both match
+bool Item::operator==(Item i) {
+	return (displayName == i.getDisplayName() && description == i.getDescription());
+}

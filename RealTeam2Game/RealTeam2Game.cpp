@@ -39,6 +39,8 @@ int main()
     PlayerInput inputHandler;
     Player player;
 
+    player.setLevel(3); //for testing only
+
     string input;
 
 
