@@ -23,6 +23,7 @@ Level3::Level3() {
 	IceHerbs.setDescription("Light blue herbs with spiky leaves. The herbs are still cold to the touch ");
 	IceHerbs.setDisplayName("Herbs");
 	///Herbs done
+	cauldronExploded == false;
 }
 
 
@@ -38,7 +39,16 @@ void Level3::displayDescription(Player& p) {
 		
 		//current description perhaps some flair for a potion room:)
 		//also will be in the else once we figure out how the door unlocks in this room
-		cout << "You are in a central area with another locked trapdoor. An large empty cauldron stands out. " << endl;
+		if (cauldronExploded == true)
+		{
+			cout << "The cauldron has exploded and revealed a path forward." << endl;
+			cout << "You are in a central area with an opening in the floor. The cauldron is gone." << endl;
+			cout << "Four hallways extend from this room to other areas." << endl;
+		}
+		else
+		{
+			cout << "You are in a central area with another locked trapdoor. A large cauldron in the center stands out." << endl;
+		}
 		cout << "Four hallways extend from this room to other areas." << endl;
 		break;
 
@@ -130,6 +140,17 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 		cout << "You went back to the previous room." << endl;
 		p.setLevel(2);
 		//Set level back to level 2
+	}
+	else if (input == "descend")
+	{
+		if (cauldronExploded == true)
+		{
+			cout << "You go down through the hole to the next floor of the tower." << endl;
+		}
+		else
+		{
+			cout << "The trapdoor is locked!" << endl;
+		}
 	}
 	//need unlocking here
 	// Add Stop Watch Code for Level 3
