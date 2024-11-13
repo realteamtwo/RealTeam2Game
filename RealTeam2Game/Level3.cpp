@@ -316,12 +316,13 @@ void Level3::runRightRoom(Player& p, std::string input) {
 	cout << "A chill runs through you. " << endl;
 	if (input == "right") {
 		cout << "blue plants are sprouting in pots of frozen earth. " << endl;
+		p.addItem(IceHerbs);
 	}
 	else if (input == "left") {
 		cout << "You see a red valve handle. Trying to move it does nothing as the cold metal refuses to budge" << endl;
 	}
 	else if (input == "down") {
-		cout << "place holder" << endl;
+		cout << "A knozzle that still works is attached to the wall. " << endl;
 	}
 	else if (input == "up") {
 		cout << "Several glass jars line the wall filled with rotting plants. " << endl;
