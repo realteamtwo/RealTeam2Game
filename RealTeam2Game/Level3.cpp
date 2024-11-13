@@ -171,7 +171,7 @@ void Level3::runDownRoom(Player& p, std::string input) {
 	//theoretically we would want this to be pressed after look but no reason they shouldn't be able to
 	else if (input == "left") {
 		cout << "There is an open chest. Inside there is what looks like the fossilized remains of a snake, and a vile of liquid" << endl;
-	
+		cout << "Type left, right, look, or pickup to interact. When you want to leave type leave." << endl;
 	}
 	else if (input == "right") {
 		cout << "Amongst several piles of paper is a metallic cylinder. A warning label reads 'Do Not Open: Magic Powder'" << endl;
@@ -187,6 +187,17 @@ void Level3::runDownRoom(Player& p, std::string input) {
 		//add item to inventory
 		p.addItem(MagicPowder);
 		cout << "You picked up Magic Powder" << endl;
+	}
+	else if (input == "pickup") {
+		cout << "which one? " << endl;
+	}
+	else if (input == "vial" || input == "venom") {
+		cout << "You picked up Snake Venom" << endl;
+		//adding item to inventory
+		p.addItem(SnakeVenom);
+	}
+	else if (input == "fossil" || input == "remains") {
+		cout << "You attempt to pick it up but it starts to break. Oops. " << endl;
 	}
 		
 }
