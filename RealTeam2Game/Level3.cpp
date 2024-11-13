@@ -38,9 +38,9 @@ Level3::Level3() {
 void Level3::displayDescription(Player& p) {
 	switch (p.getLocation3()) {
 
-	//first case and player starts here, where trapdoor is located so if else statement should occur to check locked or unlocked
+		//first case and player starts here, where trapdoor is located so if else statement should occur to check locked or unlocked
 	case Location3::CENTER_ROOM:
-		
+
 		//current description perhaps some flair for a potion room:)
 		//also will be in the else once we figure out how the door unlocks in this room
 		if (cauldronExploded == true)
@@ -54,6 +54,11 @@ void Level3::displayDescription(Player& p) {
 			cout << "You are in a central area with another locked trapdoor. A large cauldron in the center stands out." << endl;
 		}
 		cout << "Four hallways extend from this room to other areas." << endl;
+
+		//if(have magic powder && have snake venom) { cout << you have ingredients ready to brew. Put them in the cauldron << endl;}
+		//p.addItem(AcidPotion);
+		//p.removeItem(SnakeVenom);
+		//p.removeItem(MagicPowder);
 		break;
 
 		//put which room
