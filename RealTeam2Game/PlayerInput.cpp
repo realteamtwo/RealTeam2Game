@@ -12,8 +12,8 @@ PlayerInput::PlayerInput() : currentDirection("Center"), matchFound(false), torc
     fireextinguisher = Item("Fire Extinguisher", "Used to put out fires"); 
     matchstick = Item("Matchstick", "A single matchstick");
 
-    cout << "You are at the center of the room. It's dark, but you sense something important." << endl;
-    cout << "Hint: Go left to find a torch!" << endl;
+    //cout << "You are at the center of the room. It's dark, but you sense something important." << endl;
+    //cout << "Hint: Go left to find a torch!" << endl;
 }
 
 // Function to handle player movement
@@ -29,7 +29,7 @@ void PlayerInput::movePlayer(string direction) {
             riddleVisible = true;
             currentDirection = "Up";
             cout << "You moved up. There is a riddle on the wall." << endl;
-            cout << " You will only see the riddle if you use the torch, input 'use' to turn on the torch" << endl;
+            cout << "You will only see the riddle if you use the torch, input 'use' to turn on the torch" << endl;
         }
         else
         {
@@ -48,7 +48,7 @@ void PlayerInput::movePlayer(string direction) {
             cout << "You found the door! Insert the key to unlock it, by typing 'insert'. " << endl;
         }
         else {
-            cout << " You need to find the key to unlock the door. " << endl;
+            cout << "You need to find the key to unlock the door. " << endl;
         }
     }
     else if (direction == "left"|| direction=="Left") {
@@ -57,7 +57,7 @@ void PlayerInput::movePlayer(string direction) {
             cout << "You found a torch! Use the command 'pickup' to pick it up." << endl;
         }
         else {
-            cout << " Nothing more to find here" << endl;
+            cout << "Nothing more to find here" << endl;
         }
     }
     else if (direction == "right" || direction == "Right") {
@@ -66,18 +66,18 @@ void PlayerInput::movePlayer(string direction) {
 
             cout << "You found a drawer. Use the code you got from the riddle to unlock it." << endl;
             string code;
-            cout << " Enter the code: ";
+            cout << "Enter the code: ";
             cin >> code;
             if (code == "911")
             {
                 drawerUnlocked = true;
                 keyFound = true;
-                cout << " You unlocked the drawer and found the key! Use the 'get' command to retrieve it." << endl;
+                cout << "You unlocked the drawer and found the key! Use the 'get' command to retrieve it." << endl;
             }
 
             else
             {
-                cout << " Incorrect code. Try Again." << endl;
+                cout << "Incorrect code. Try Again." << endl;
             }
         }
 
@@ -140,9 +140,9 @@ void PlayerInput::itemInteraction(string command, StopWatch GameTime) {
     }
     else if (command == "insert" && keyFound && currentDirection == "Down") {
         {
-            cout << " You inserted the key to unlock the door." << endl;
-            cout << " Congratulations! You have unlocked the door!" << endl;
-            cout << " Type \"descend\" to go to the next floor." << endl;
+            cout << "You inserted the key to unlock the door." << endl;
+            cout << "Congratulations! You have unlocked the door!" << endl;
+            cout << "Type \"descend\" to go to the next floor." << endl;
 
             // How much time has passed in the game overall since beating level 1
             cout << "\n" << "Level #1 has been completed in: ";
