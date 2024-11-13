@@ -8,6 +8,7 @@
 Item MagicPowder;
 Item SnakeVenom;
 Item IceHerbs;
+Item AcidPotion;
 
 Level3::Level3() {
 	//items we might encounter in level 3 not sure where to put these
@@ -23,6 +24,9 @@ Level3::Level3() {
 	IceHerbs.setDescription("Light blue herbs with spiky leaves. The herbs are still cold to the touch ");
 	IceHerbs.setDisplayName("Herbs");
 	///Herbs done
+	///item for acid potion it should be made by mixing snake venom and magic powder
+	AcidPotion.setDescription("A bubbling liquid made by mixing magic powder and snake venom ");
+	AcidPotion.setDisplayName("Acid Potion");
 	cauldronExploded == false;
 }
 
@@ -170,7 +174,7 @@ void Level3::runDownRoom(Player& p, std::string input) {
 	}
 	//theoretically we would want this to be pressed after look but no reason they shouldn't be able to
 	else if (input == "left") {
-		cout << "There is an open chest. Inside there is what looks like the fossilized remains of a snake, and a vile of liquid" << endl;
+		cout << "There is an open chest. Inside there is what looks like the fossilized remains of a snake, and a vial of liquid" << endl;
 		cout << "Type left, right, look, or pickup to interact. When you want to leave type leave." << endl;
 	}
 	else if (input == "right") {
@@ -178,15 +182,15 @@ void Level3::runDownRoom(Player& p, std::string input) {
 		cout << "Pickup? (Y/N): ";
 		//this is to get the yes or no answer to this question wanted to keep it separate from input
 		cin >> answer;
+		if (answer == "y") {
+			//add item to inventory
+			p.addItem(MagicPowder);
+			cout << "You picked up Magic Powder" << endl;
+		}
 	}
 	else if (input == "leave") {
 		cout << "You are in center room" << endl;
 		p.setLocation3(Level3::Location3::CENTER_ROOM);
-	}
-	else if (answer == "y") {
-		//add item to inventory
-		p.addItem(MagicPowder);
-		cout << "You picked up Magic Powder" << endl;
 	}
 	else if (input == "pickup") {
 		cout << "which one? " << endl;
