@@ -87,23 +87,8 @@ int main()
         //Level 3 object creation
         Level3 level3;
 
-        //items we might encounter in level 3 not sure where to put these
-        ///This is the Item for magic powder which will be found in level 3 storage room
-        Item MagicPowder;
-        MagicPowder.setDescription("A metallic cylinder with labeled magic powder. The sound of grains swishing happens when you move it. A warning label says do not open.");
-        MagicPowder.setDisplayName("Magic Powder");
-        ///Magic Powder done
-        ///This is the Item for snake venom which will be found in level 3 storage room
-        Item SnakeVenom;
-        SnakeVenom.setDescription("A vial filled with murky dark liquid ");
-        SnakeVenom.setDisplayName("Snake Venom");
-        ///Snake Venom done
-        ///This is the Item for Herbs which will be found in level 3 ice room
-        Item IceHerbs;
-        IceHerbs.setDescription("Light blue herbs with spiky leaves. The herbs are still cold to the touch ");
-        IceHerbs.setDisplayName("Herbs");
-        ///Herbs done
-
+        
+       
         //While loop to keep player in Level 3 and allow them to input commands to solve the puzzles in the room
         //Breaks when level is no longer 3
         while (player.getLevel() == 3) {
