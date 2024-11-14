@@ -79,14 +79,12 @@ void Level3::displayDescription(Player& p) {
 		break;
 		//put which room 
 	case Location3::UP_ROOM:
-		cout << "You have entered the Acid Potion Room!" << endl;
-		cout << "This room is filled with mysterious markings, shelves of strange ingredients, and glowing potions." << endl;
-		cout << "You see a cauldron bubbling softly in the corner." << endl;
-		cout << "There are riddles on the walls, and items scattered around." << endl;
-		cout << "Solve the puzzles and interact with objects to find the Acid Potion." << endl;
-		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
 		break;
+
 	}
+
+
+	
 }
 
 //for interaction based on player's input as seen in RealTeam2Game.cpp
@@ -276,7 +274,7 @@ void Level3::runDownRoom(Player& p, std::string input) {
 		cout << "Pickup? (Y/N): ";
 		//this is to get the yes or no answer to this question wanted to keep it separate from input
 		cin >> answer;
-		if (answer == "Y") {
+		if (answer == "Y"|| answer=="y") {
 			if (p.hasItem(MagicPowder)) {
 				cout << "You already have this item!" << endl;
 			}
@@ -312,8 +310,33 @@ void Level3::runDownRoom(Player& p, std::string input) {
 //this is the room the player can enter by going to the right from center room, the ice room
 //now when it gets input from player it will do stuff
 void Level3::runRightRoom(Player& p, std::string input) {
+	if (!iceRoomDoorOpen) {
+		if (p.hasItem(AcidPotion))
+		{
+			cout << " You have something in your inventory which you can use to unlock this door." << endl;
+			cin >> input;
+			if (input == "acid")
+			{
+				cout << " You used the acid to melt the ice, which was blocking you from entering the ice room." << endl;
+				cout << " The door is now open." << endl;
+				cout << "A chill runs through you. " << endl;
+				iceRoomDoorOpen = true;
 
-	cout << "A chill runs through you. " << endl;
+			}
+			else
+			{
+				cout << " This is not an appropriate item, Try Again" << endl;
+				return;
+			}
+		}
+		else
+		{
+			cout << " You can't go to the ice room, the door is locked. You need something to unlock it." << endl;
+			return;
+		}
+	}
+	cout << " Which direction would yu like to go?" << endl;
+	cin >> input;
 	if (input == "right") {
 		cout << "blue plants are sprouting in pots of frozen earth. " << endl;
 	}
@@ -326,15 +349,17 @@ void Level3::runRightRoom(Player& p, std::string input) {
 	else if (input == "up") {
 		cout << "place holder" << endl;
 	}
-	else if (input == "leave") {
+
+	if (input == "leave") {
 		cout << "You are in center room" << endl;
 		p.setLocation3(Level3::Location3::CENTER_ROOM);
-	}
+				}
+	
 }
 //this is the room the player can enter by going to the up from center room, the ACID POTION room
 void Level3::runUpRoom(Player& p, std::string input) {
 	// handles the interaction when the player moves up to the riddle wall.
-	if (input == "up") {
+	/*if (input == "up") {
 		cout << "You approach the wall with the riddle. The symbols glow faintly, drawing your attention to the carved words:" << endl;
 		cout << "'I am something that burns, but I’m not fire. I am a liquid that can melt steel.' " << endl;
 		cout << "What is your answer?" << endl;
@@ -379,7 +404,7 @@ void Level3::runUpRoom(Player& p, std::string input) {
 	}
 	else {
 	cout<<" Try another command"<< endl;
-	}
+	}*/
 
 }
 void Level3::runLeftRoom(Player& p, std::string input) {
