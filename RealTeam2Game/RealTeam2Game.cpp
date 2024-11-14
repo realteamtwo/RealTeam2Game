@@ -41,7 +41,8 @@ int main()
     PlayerInput inputHandler;
     Player player;
 
-    player.setLevel(3); //for testing only
+    //Uncomment to skip to level 3, for testing
+    //player.setLevel(3);
 
     string input;
 
