@@ -43,7 +43,7 @@ void Level3::displayDescription(Player& p) {
 
 		//current description perhaps some flair for a potion room:)
 		//also will be in the else once we figure out how the door unlocks in this room
-		if (cauldronExploded == true)
+		if (cauldronExploded == true) //Checks if the leave condition has been met and prints different text
 		{
 			cout << "The cauldron has exploded and revealed a path forward." << endl;
 			cout << "You are in a central area with an opening in the floor. The cauldron is gone." << endl;
@@ -153,6 +153,7 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 		p.setLevel(2);
 		//Set level back to level 2
 	}
+	//Checks if leave condition has been met to be able to descend to the next floor
 	else if (input == "descend")
 	{
 		if (cauldronExploded == true)
