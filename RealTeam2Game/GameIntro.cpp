@@ -29,3 +29,7 @@ void Controls() {
 	cout << "for example 'use torch' will light the torch while 'use key' will try to use key on lock. Objects can also be moved, for example 'move vase'." << endl;
 	cout << "to see what items are around you, type 'look' and you will get an idea of what's around you including stuff you can interact with. Once you have solved the room, type 'descend' to open and descend further." << endl << endl;
 }
+void clearScreen()
+{
+	cout << "\033[2J\033[1;1H";
+}
