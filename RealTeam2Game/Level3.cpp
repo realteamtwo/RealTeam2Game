@@ -74,12 +74,11 @@ void Level3::displayDescription(Player& p) {
 		break;
 		//put which
 	case Location3::LEFT_ROOM:
-		
+		cout << "put description :)" << endl;
 		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
 		break;
 		//put which room 
 	case Location3::UP_ROOM:
-		
 		break;
 
 	}
@@ -124,17 +123,13 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 		p.setLocation3(Level3::Location3::DOWN_ROOM);
 	}
 	else if (input == "up") {
-		cout << " you go up" << endl;
-		cout << "There is nothing" << endl;
-	p.setLocation3(Level3::Location3::CENTER_ROOM);
-
+		cout << "You go up" << endl;
+		p.setLocation3(Level3::Location3::UP_ROOM);
 		//update location to UP_ROOM
 	}
 	else if (input == "left") {
 		cout << " you go left" << endl;
-		cout << "There is nothing" << endl;
-	p.setLocation3(Level3::Location3::CENTER_ROOM);
-
+		p.setLocation3(Level3::Location3::LEFT_ROOM);
 		//update location to LEFT_ROOM
 	}
 	else if (input == "right") {
@@ -320,7 +315,7 @@ void Level3::runRightRoom(Player& p, std::string input) {
 		{
 			cout << " You have something in your inventory which you can use to unlock this door." << endl;
 			cin >> input;
-			if (input == "acid"|| input=="Acid Potion")
+			if (input == "acid")
 			{
 				cout << " You used the acid to melt the ice, which was blocking you from entering the ice room." << endl;
 				cout << " The door is now open." << endl;
@@ -364,9 +359,6 @@ void Level3::runRightRoom(Player& p, std::string input) {
 }
 //this is the room the player can enter by going to the up from center room, the ACID POTION room
 void Level3::runUpRoom(Player& p, std::string input) {
-	cout << "There is nothing" << endl;
-	p.setLocation3(Level3::Location3::CENTER_ROOM);
-
 	// handles the interaction when the player moves up to the riddle wall.
 	/*if (input == "up") {
 		cout << "You approach the wall with the riddle. The symbols glow faintly, drawing your attention to the carved words:" << endl;
@@ -417,4 +409,5 @@ void Level3::runUpRoom(Player& p, std::string input) {
 
 }
 void Level3::runLeftRoom(Player& p, std::string input) {
+
 }

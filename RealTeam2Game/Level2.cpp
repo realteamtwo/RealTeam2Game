@@ -1,11 +1,9 @@
 #include "Level2.h"
 #include "Player.h"
-#include "Item.h"
 
-Item SharpRock;
-Item JarOfEarthworms;
 
-Level2::Level2() : fireextinguisherFound(false), matchstickFound(false), rightRoomEntered(false), sharpRockFound(false), jarOfEarthwormsFound(false), glassBroken(false) {}
+
+Level2::Level2() : fireextinguisherFound(false), matchstickFound(false), rightRoomEntered(false) {}
 
 bool fireSolved = false;
 bool waterSolved = false;
@@ -372,67 +370,11 @@ void Level2::runUpRoom(Player& p, std::string input) {
 	}
 	else if (input == "left") {
 		cout << "The left wall is covered with large, spiky rocks. A chunk of one seems to have broken off onto the floor." << endl;
-		if (!sharpRockFound)
-		{
-			cout << " You see a Sharp Rock in the dirt" << endl;
-			cout << "  Do you want to pickup?(y/n)";
-			string choice;
-			cin >> choice;
-			if (choice == "y" || choice == "Y")
-			{
-				cout << " You picked up the Sharp Rock." << endl;
-				sharpRockFound = true;
-				p.addItem(SharpRock);// Add the rock to the player's Inventory
-			}
-		
-		else {
-			cout << "You leave the rock in the dirt.\n";
-		}
-	}
-	else {
-		cout << "You already picked up the rock.\n";
-	}
-		
-		
 	}
 	else if (input == "right") {
-		if (!sharpRockFound) { // Rock is needed to break the glass
-			cout << "You see a glass jar behind a barrier, but you need something sharp to break it." << endl;
-		}
-		else if (!glassBroken) { // Rock available, glass not broken yet
-			cout << "Use the sharp rock to break the glass? (y/n): ";
-			string choice;
-			cin >> choice;
-			if (choice == "y" || choice == "Y")
-			{
-				cout << "You smash the glass with the sharp rock. The jar is now accessible." << endl;
-				glassBroken = true;
-
-				if (!jarOfEarthwormsFound) { // Glass is broken, jar not picked up yet
-					cout << "Pick up the jar of earthworms: ";
-					string choice;
-					cin >> choice;
-					if (choice == "pickup") { // If the player chooses to pick up the jar
-						cout << "You picked up the jar of earthworms.(~~~)"<<endl;
-						cout << "                                    (~~~)" << endl;
-						jarOfEarthwormsFound = true;
-						p.addItem(JarOfEarthworms); // Add the jar to the player's inventory
-					}
-					else {
-						cout << "You leave the jar where it is.\n";
-					}
-				}
-				else { // Jar already picked up
-					cout << "You already have the jar of earthworms.\n";
-				}
-			}
-			else {
-				cout << "You decide not to break the glass for now." << endl;
-			}
-		}
-		
-		
+		cout << "The right wall contains a large container protected by thick glass. Maybe something can break it?" << endl;
 	}
+
 	else if (input == "earth")
 	{
 		cout << "You solved the riddle!" << endl;
