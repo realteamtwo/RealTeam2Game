@@ -34,6 +34,9 @@ private:
 	bool fireextinguisherFound;
 	bool matchstickFound;
 	bool rightRoomEntered;
+	bool sharpRockFound;
+	bool jarOfEarthwormsFound;
+	bool glassBroken;
 
 	void runUpRoom(Player& p, std::string);
 

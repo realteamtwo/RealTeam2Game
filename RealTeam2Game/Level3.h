@@ -20,7 +20,7 @@ public:
 	//Constructor
 	Level3();
 	// display the description of the locked door.
-	void displayDoorDescription();
+	
 	//Checks the player's current room and prints the description for it
 	void displayDescription(Player& p);
 

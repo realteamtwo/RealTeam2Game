@@ -12,8 +12,10 @@ PlayerInput::PlayerInput() : currentDirection("Center"), matchFound(false), torc
     fireextinguisher = Item("Fire Extinguisher", "Used to put out fires"); 
     matchstick = Item("Matchstick", "A single matchstick");
 
-    //cout << "You are at the center of the room. It's dark, but you sense something important." << endl;
-    //cout << "Hint: Go left to find a torch!" << endl;
+
+  //  cout << "You are at the center of the room. It's dark, but you sense something important." << endl;
+  //  cout << "Hint: Go left to find a torch!" << endl;
+
 }
 
 // Function to handle player movement

@@ -41,3 +41,4 @@ Can (Player) outwit the tower’s defenses, confront (Evil Alchemist) dark legac
 //once you have solved the room, type "open trapdoor" to open and descend further.
 void Backstory();
 void Controls();
+void clearScreen();

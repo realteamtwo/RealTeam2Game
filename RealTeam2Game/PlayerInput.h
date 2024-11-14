@@ -38,7 +38,6 @@ private:
 	bool keyFound;
 	bool doorUnlocked;
 	bool rockFound;
-	bool glassBroken;
 	
 	
 
@@ -48,7 +47,7 @@ private:
 	Item rock;
 	Item fireextinguisher;
 	Item matchstick;
-
+	
 };
 
 

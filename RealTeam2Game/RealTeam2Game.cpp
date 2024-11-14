@@ -17,6 +17,8 @@ int main()
     StopWatch GameTime;
     Backstory();
     Controls();
+    
+
     //Test cases - commented out for now
     /*
     Room test("Dark room", "HMMMMMMM, it's dark", 0);
@@ -48,12 +50,12 @@ int main()
     while (gameRunning)
     {
         cout << "Welcome to the Escape Room Game!" << endl;
-        cout << "You are at the center of the room. It's dark, but you sense something important is in this room." << endl;
-        cout << "Hint: Move left to find a torch." << endl;
+        
 
         while (player.getLevel() == 1) {
             cout << "Enter next command (up, down, left, right, use, pickup, get, insert): ";
             cin >> input;
+            clearScreen();
 
             if (input == "up" || input == "down" || input == "left" || input == "right" || input == "center") {
                 inputHandler.movePlayer(input);
@@ -79,6 +81,7 @@ int main()
             level2.displayDescription(player);
             cout << "Enter a command: ";
             cin >> input;
+            clearScreen();
             level2.interact(player, input);
         }
         
@@ -97,6 +100,7 @@ int main()
             level3.displayDescription(player);
             cout << "Enter a command: ";
             cin >> input;
+            clearScreen();
             level3.interact(player, input);
         }
         //TODO: cout "time spent so far L3" 

@@ -27,5 +27,13 @@ void Controls() {
 	cout << "While exploring the Tower, you will find various *items* and *objects*. Such items will be helpful in solving puzzles. To look at an item, type 'inspect [item name]', for example 'inspect torch' will" << endl;
 	cout << "briefly describe what the torch looks like and if it is lit or not. To use an item, type 'use [item name]'" << endl;
 	cout << "for example 'use torch' will light the torch while 'use key' will try to use key on lock. Objects can also be moved, for example 'move vase'." << endl;
-	cout << "to see what items are around you, type 'look' and you will get an idea of what's around you including stuff you can interact with. Once you have solved the room, type 'descend' to open and descend further." << endl << endl;
+	cout << "to see what items are around you, type 'look' and you will get an idea of what's around you including stuff you can interact with. Once you have solved the room, type 'descend' to open and descend further." << endl<<endl<<endl
+		<<endl;
+	
+
+
+}
+void clearScreen() {
+	// ANSI escape code to clear the screen
+	cout << "\033[2J\033[1;1H";
 }
