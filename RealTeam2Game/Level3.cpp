@@ -345,6 +345,7 @@ void Level3::runRightRoom(Player& p, std::string input) {
 	cin >> input;
 	if (input == "right") {
 		cout << "blue plants are sprouting in pots of frozen earth. " << endl;
+		cout << "You picked up Herbs! " << endl;
 		p.addItem(IceHerbs);
 	}
 	else if (input == "left") {
