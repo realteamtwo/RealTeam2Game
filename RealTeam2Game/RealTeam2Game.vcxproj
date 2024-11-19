@@ -131,6 +131,7 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Level2.cpp" />
     <ClCompile Include="Level3.cpp" />
+    <ClCompile Include="Level4.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerInput.cpp" />
     <ClCompile Include="RealTeam2Game.cpp" />
@@ -138,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameIntro.h" />
+    <ClInclude Include="Level4.h" />
     <ClInclude Include="StopWatch.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Level2.h" />
