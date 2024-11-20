@@ -6,12 +6,14 @@
 #include "Item.h"
 #include "Level2.h"
 #include"Level3.h"
+#include "Level4.h"
 #include "Room.h"
 
 class Player {
 private:
 	Level2::Location location;
 	Level3::Location3 location3;
+	Level4::Location4 location4;
 	vector<Item> items;
 	int level;
 public:
@@ -33,6 +35,7 @@ public:
 	void setLevel(int);
 	//like set location but for floor 3
 	void setLocation3(Level3::Location3);
+	void setLocation4(Level4::Location4);
 	
 
 
@@ -48,5 +51,6 @@ public:
 	int getLevel();
 	//like getLocation but for level3
 	Level3::Location3 getLocation3();
+	Level4::Location4 getLocation4();
 };
 #endif

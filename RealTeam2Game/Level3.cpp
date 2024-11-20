@@ -159,6 +159,7 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 		if (cauldronExploded == true)
 		{
 			cout << "You go down through the hole to the next floor of the tower." << endl;
+			p.setLevel(4);
 		}
 		else
 		{

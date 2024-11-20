@@ -4,6 +4,7 @@
 #include "GameIntro.h"
 #include "Level2.h"
 #include "Level3.h"
+#include "Level4.h"
 #include "Player.h"
 #include "PlayerInput.h"
 #include "PuzzleIdeas.h"
@@ -106,6 +107,19 @@ int main()
         }
         //TODO: cout "time spent so far L3" 
         GameTime.printDiffTime();
+
+        //Level 4 object creation
+        Level4 level4;
+
+        //While loop to keep player in Level 4 and allow them to input commands to solve the puzzles in the room
+        //Breaks when level is no longer 4
+        while (player.getLevel() == 4) {
+            level4.displayDescription(player);
+            cout << "Enter a command: ";
+            cin >> input;
+            clearScreen();
+            level4.interact(player, input);
+        }
     }
     return 0;
 }

@@ -43,6 +43,10 @@ void Player::setLocation3(Level3::Location3 l) {
 	location3 = l;
 }
 
+void Player::setLocation4(Level4::Location4 l) {
+	location4 = l;
+}
+
 //Accessors
 Level2::Location Player::getLocation() {
 	return location;
@@ -50,6 +54,10 @@ Level2::Location Player::getLocation() {
 
 Level3::Location3 Player::getLocation3() {
 	return location3;
+}
+
+Level4::Location4 Player::getLocation4() {
+	return location4;
 }
 
 vector<Item> Player::getItems() {
