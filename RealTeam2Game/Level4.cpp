@@ -86,6 +86,7 @@ void Level4::runCenterRoom(Player& p, std::string input) {
 		p.setLocation4(Level4::Location4::CENTER_ROOM);
 		//Update location to RIGHT_ROOM
 	}
+	//Code to go back to the previous floor which is the potion room
 	else if (input == "ascend")
 	{
 		cout << "You went back to the previous room." << endl;
