@@ -38,5 +38,18 @@ public:
 private:
 	std::string displayName;
 	std::string description;
+
+	/*
+	Item(const std::string& name, const std::string& description)
+        : name(name), description(description) {}
+
+    const std::string& getName() const { return name; }
+    const std::string& getDescription() const { return description; }
+
+private:
+    std::string name;
+    std::string description;
+
+	*/
 };
 #endif
