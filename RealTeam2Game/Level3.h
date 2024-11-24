@@ -46,6 +46,7 @@ private:
 	StopWatch L3Time;
 
 	bool cauldronExploded;
+	bool plantGrown;
 	bool iceRoomDoorOpen = false;
 };
 

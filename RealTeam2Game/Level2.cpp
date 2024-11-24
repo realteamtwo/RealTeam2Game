@@ -2,8 +2,8 @@
 #include "Player.h"
 #include "Item.h"
 
-Item SharpRock;
-Item JarOfEarthworms;
+Item SharpRock("Rock", "A sharp rock picked up off the floor");
+Item JarOfEarthworms("Worms", "A jar of earthworms squirming around");
 
 Level2::Level2() : fireextinguisherFound(false), matchstickFound(false), rightRoomEntered(false), sharpRockFound(false), jarOfEarthwormsFound(false), glassBroken(false) {}
 

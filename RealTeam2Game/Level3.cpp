@@ -9,6 +9,8 @@ Item MagicPowder;
 Item SnakeVenom;
 Item IceHerbs;
 Item AcidPotion;
+Item GrowthPotion;
+Item VolatileEssence;
 
 Level3::Level3() {
 	//items we might encounter in level 3 not sure where to put these
@@ -27,7 +29,15 @@ Level3::Level3() {
 	///item for acid potion it should be made by mixing snake venom and magic powder
 	AcidPotion.setDescription("A bubbling liquid made by mixing magic powder and snake venom ");
 	AcidPotion.setDisplayName("Acid Potion");
+	//Growth Potion
+	GrowthPotion.setDescription("A strange liquid that seems to make plants grow quickly");
+	GrowthPotion.setDisplayName("Growth Potion");
+	//Volatile Essence
+	VolatileEssence.setDescription("A box with many warnings on it, containing a bright red powder.");
+	VolatileEssence.setDisplayName("Volatile Essence");
+
 	cauldronExploded = false;
+	plantGrown = false;
 }
 
 
@@ -232,6 +242,9 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 		if (
 			(ingredient1 == MagicPowder && ingredient2 == SnakeVenom)
 			|| (ingredient1 == SnakeVenom && ingredient2 == MagicPowder)
+			//Special case for jar of earthworms, use the name instead of the item since it's from another room
+			|| (ingredient1.getDisplayName() == "Worms" && ingredient2 == IceHerbs)
+			|| (ingredient1 == IceHerbs && ingredient2.getDisplayName() == "Worms")
 			// || (ingredient1 == YourFirstIngredient && ingredient2 == YourSecondIngredient)
 			// || (ingredient1 == YourSecondIngredient && ingredient2 == YourFirstIngredient)
 		)
@@ -241,6 +254,9 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 			//Acid potion recipe, use as a template for other recipes
 			if ((ingredient1 == MagicPowder && ingredient2 == SnakeVenom) || (ingredient1 == SnakeVenom && ingredient2 == MagicPowder)) {
 				brewedItem = AcidPotion;
+			}
+			else if ((ingredient1.getDisplayName() == "Worms" && ingredient2 == IceHerbs) || (ingredient1 == IceHerbs && ingredient2.getDisplayName() == "Worms")) {
+				brewedItem = GrowthPotion;
 			}
 
 			if (p.hasItem(brewedItem)) {
@@ -252,6 +268,10 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 				p.removeItem(ingredient2.getDisplayName());
 				p.addItem(brewedItem);
 			}
+		}
+		else {
+			cout << "You put the items into the cauldron, but nothing magical seems to happen." << endl;
+			cout << "Maybe try a different recipe?" << endl;
 		}
 		
 	}
@@ -267,14 +287,17 @@ void Level3::runDownRoom(Player& p, std::string input) {
 	//check if 'input is right' for what it is gotten from
 	string answer;
 	cout << "Perhaps there is something useful here?" << endl;
+	cout << "Type left, down, right, look, or pickup to interact. When you want to leave type leave." << endl;
 	//based on input of player different things can happen (for information check player files and main)
 	if (input == "look") {
-		cout << "Some of the boxes to your left and right stand out. " << endl;
+		cout << "Some of the boxes to your left and right stand out." << endl;
+		if (!plantGrown) {
+			cout << "There is another box on a high shelf on the downwards wall, far out of reach. There is a small plant below the shelf." << endl;
+		}
 	}
 	//theoretically we would want this to be pressed after look but no reason they shouldn't be able to
 	else if (input == "left") {
 		cout << "There is an open chest. Inside there is what looks like the fossilized remains of a snake, and a vial of liquid" << endl;
-		cout << "Type left, right, look, or pickup to interact. When you want to leave type leave." << endl;
 	}
 	else if (input == "right") {
 		cout << "Amongst several piles of paper is a metallic cylinder. A warning label reads 'Do Not Open: Magic Powder'" << endl;
@@ -290,6 +313,14 @@ void Level3::runDownRoom(Player& p, std::string input) {
 				p.addItem(MagicPowder);
 				cout << "You picked up Magic Powder" << endl;
 			}
+		}
+	}
+	else if (input == "down") {
+		if (plantGrown) {
+			cout << "This section of the room is mossy and downtrodden. A large stalk grows from the floor to the ceiling." << endl;
+		}
+		else {
+			cout << "This section of the room is mossy and downtrodden. A single plant is sprouting out of the floor. There is also a small crate on a high shelf far out of reach." << endl;
 		}
 	}
 	else if (input == "leave") {
@@ -311,6 +342,15 @@ void Level3::runDownRoom(Player& p, std::string input) {
 	}
 	else if (input == "fossil" || input == "remains") {
 		cout << "You attempt to pick it up but it starts to break. Oops. " << endl;
+	}
+	else if (input == "grow" || input == "growth" || input == "potion") { //Growth potion usage
+		if (p.hasItem(GrowthPotion) && !plantGrown) {
+			plantGrown = true;
+			p.removeItem("Growth Potion");
+			cout << "You pour the growth potion onto the plant. Within seconds, it turns into a huge vine! You climb it to reach the high shelf and grab the box, which has several warnings on it." << endl;
+			cout << "Obtained Volatile Essence." << endl;
+			p.addItem(VolatileEssence);
+		}
 	}
 		
 }
