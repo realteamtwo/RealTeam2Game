@@ -12,8 +12,13 @@ void Level4::displayDescription(Player& p)
 	//first case and player starts here, where the player meets the alchemist
 	case Location4::CENTER_ROOM:
 		//Current description of the center room of Level 4
+		//Encounter the alchemist and start the process of the final set of riddles
 		cout << "You are in a central area at the base of the tower. The Evil Alchemist stands before you." << endl;
-		cout << "Four hallways extend from this room to other areas." << endl;
+		cout << "'You have done well to make it this far, but believe me. Escaping this tower will not be so simple' he says." << endl;
+		cout << "'On this final floor resides your final riddles to solve. If you solve them, you may leave, but if you cannot, you will remain here forever!" << endl;
+		cout << "You will need to use all of the tower's resources to solve this challenge. Some clues may be lying in other parts of the tower." << endl;
+		cout << "Prove to me that you deserve to escape, or remain here with me as my test subject for eternity!'" << endl;
+		//cout << "Four hallways extend from this room to other areas." << endl;
 		break;
 
 	case Location4::DOWN_ROOM:
