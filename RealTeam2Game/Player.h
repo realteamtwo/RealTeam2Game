@@ -5,11 +5,15 @@
 #include <vector>
 #include "Item.h"
 #include "Level2.h"
+#include"Level3.h"
+#include "Level4.h"
 #include "Room.h"
 
 class Player {
 private:
 	Level2::Location location;
+	Level3::Location3 location3;
+	Level4::Location4 location4;
 	vector<Item> items;
 	int level;
 public:
@@ -29,6 +33,9 @@ public:
 	void removeItem(string);
 	//Sets the player's current level
 	void setLevel(int);
+	//like set location but for floor 3
+	void setLocation3(Level3::Location3);
+	void setLocation4(Level4::Location4);
 	
 
 
@@ -38,7 +45,12 @@ public:
 	Level2::Location getLocation();
 	//Gets the list of items, as a vector
 	vector<Item> getItems();
+	//Checks if the player has the given item
+	bool hasItem(Item);
 	//Gets the player's current level
 	int getLevel();
+	//like getLocation but for level3
+	Level3::Location3 getLocation3();
+	Level4::Location4 getLocation4();
 };
 #endif

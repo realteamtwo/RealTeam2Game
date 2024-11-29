@@ -2,6 +2,7 @@
 #define LEVEL3
 
 #include <string>
+#include "StopWatch.h"
 
 //Header file for level 3 (The Potion Room) much like level 2. Sets up level3 class and has player class
 
@@ -14,11 +15,12 @@ public:
 
 	//Enum, one entry for each location
 	//let me know if you guys would like to rename these or if there will be more or if the shape is different
-	enum Location { CENTER_ROOM, DOWN_ROOM, UP_ROOM, LEFT_ROOM, RIGHT_ROOM };
+	enum Location3 { CENTER_ROOM, DOWN_ROOM, UP_ROOM, LEFT_ROOM, RIGHT_ROOM };
 
 	//Constructor
 	Level3();
-
+	// display the description of the locked door.
+	
 	//Checks the player's current room and prints the description for it
 	void displayDescription(Player& p);
 
@@ -41,6 +43,11 @@ private:
 	//for running left room takes player input, runs if player inputs left in center room
 	void runLeftRoom(Player& p, std::string);
 
+	StopWatch L3Time;
+
+	bool cauldronExploded;
+	bool plantGrown;
+	bool iceRoomDoorOpen = false;
 };
 
 

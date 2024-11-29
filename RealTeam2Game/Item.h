@@ -29,8 +29,27 @@ public:
 	std::string getDisplayName();
 	//Returns the item's description
 	std::string getDescription();
+
+
+	//OTHER
+	
+	//Checks if two items are equal (their names and descriptions both match)
+	bool operator==(Item);
 private:
 	std::string displayName;
 	std::string description;
+
+	/*
+	Item(const std::string& name, const std::string& description)
+        : name(name), description(description) {}
+
+    const std::string& getName() const { return name; }
+    const std::string& getDescription() const { return description; }
+
+private:
+    std::string name;
+    std::string description;
+
+	*/
 };
 #endif

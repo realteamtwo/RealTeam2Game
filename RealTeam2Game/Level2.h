@@ -2,6 +2,7 @@
 #define LEVEL2
 
 #include <string>
+#include "StopWatch.h"
 
 class Player;
 
@@ -39,10 +40,15 @@ private:
 	bool fireextinguisherFound;
 	bool matchstickFound;
 	bool rightRoomEntered;
+	bool sharpRockFound;
+	bool jarOfEarthwormsFound;
+	bool glassBroken;
 
 	void runUpRoom(Player& p, std::string);
 
 	void runLeftRoom(Player& p, std::string);
+	
+	StopWatch L2Time;
 };
 
 #endif
