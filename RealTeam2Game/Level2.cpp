@@ -196,7 +196,7 @@ void Level2::runRightRoom(Player& p, std::string input) {
 			string answer;
 			cin >> answer;
 
-			if (answer == "fireextinguisher" || answer == "fire extinguisher") {
+			if (answer == "fireextinguisher" || answer == "fire extinguisher" || answer == "extinguisher"|| answer == "fe") {
 				cout << "Correct! You've obtained the Fire Extinguisher!\n";
 				fireextinguisherFound = true;
 				cout << "Go to another wall in order to escape.\n";
@@ -305,7 +305,7 @@ void Level2::runRightRoom(Player& p, std::string input) {
 				cout << "Enter your answer: ";
 				string answer;
 				cin >> answer;
-				if (answer == "matchstick" || answer == "match") {
+				if (answer == "matchstick" || answer == "match" || answer == "matches" || answer == "matchsticks") {
 					cout << "Correct! You've obtained a matchstick.\n";
 					matchstickFound = true;
 					cout << "Go to another wall in order to escape.\n";

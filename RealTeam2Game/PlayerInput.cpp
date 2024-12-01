@@ -70,7 +70,7 @@ void PlayerInput::movePlayer(string direction) {
             string code;
             cout << "Enter the code: ";
             cin >> code;
-            if (code == "911")
+            if (code == "911"|| code == "999")
             {
                 drawerUnlocked = true;
                 keyFound = true;
