@@ -2,6 +2,7 @@
 #define LEVEL3
 
 #include <string>
+#include "Item.h"
 #include "StopWatch.h"
 
 //Header file for level 3 (The Potion Room) much like level 2. Sets up level3 class and has player class
@@ -26,6 +27,10 @@ public:
 
 	//Calls the appropriate function for interacting with the player's current room
 	void interact(Player& p, std::string);
+
+	//For potion brewing
+	//Takes a pointer to the player, and two items (the potion ingredients)
+	void brewPotion(Player& p, Item, Item);
 private:
 
 	//Center room function, takes the player's current input, runs if in center room and is where player first goes

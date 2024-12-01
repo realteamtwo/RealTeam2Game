@@ -6,6 +6,7 @@
 #include "../RealTeam2Game/Player.cpp"
 #include "../RealTeam2Game/Item.cpp"
 #include "../RealTeam2Game/Level2.cpp"
+#include "../RealTeam2Game/Level3.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -201,6 +202,76 @@ namespace RealTeam2Test
 			int expected = 3;
 			int actual = player.getLevel();
 			Assert::IsTrue(expected == actual);
+		}
+
+		//Test various interactions with the cauldron in level 3.
+		TEST_METHOD(CauldronTest) {
+			Logger::WriteMessage("// Test the cauldron in level 3");
+			Level3 level;
+			Player player;
+			player.setLevel(3);
+
+			Item venom("Snake Venom", "A vial filled with murky dark liquid ");
+			Item powder("Magic Powder", "A metallic cylinder with labeled magic powder. The sound of grains swishing happens when you move it. A warning label says do not open.");
+			Item worms("Worms", "A jar of earthworms squirming around");
+			Item herbs("Herbs", "Light blue herbs with spiky leaves. The herbs are still cold to the touch ");
+			Item potionAcid("Acid Potion", "A bubbling liquid made by mixing magic powder and snake venom ");
+			Item potionGrowth("Growth Potion", "A strange liquid that seems to make plants grow quickly");
+			Item dummy("Dummy Item", "A dummy item used for testing.");
+
+			player.addItem(dummy);
+
+			//Brew the acid potion
+			player.addItem(venom);
+			player.addItem(powder);
+			level.brewPotion(player, venom, powder);
+			Assert::IsTrue(player.hasItem(potionAcid)); //Player has the result item
+			Assert::IsTrue(player.hasItem(dummy)); //Player has an item they didn't use
+			Assert::IsFalse(player.hasItem(venom)); //Player does not have ingredient 1
+			Assert::IsFalse(player.hasItem(powder)); //Player does not have ingredient 2
+
+			player.removeItem("Acid Potion");
+
+			//Brew the acid potion again, but with ingredients in the opposite order
+			player.addItem(venom);
+			player.addItem(powder);
+			level.brewPotion(player, powder, venom);
+			Assert::IsTrue(player.hasItem(potionAcid)); //Player has the result item
+			Assert::IsTrue(player.hasItem(dummy)); //Player has an item they didn't use
+			Assert::IsFalse(player.hasItem(powder)); //Player does not have ingredient 1
+			Assert::IsFalse(player.hasItem(venom)); //Player does not have ingredient 2
+
+			player.removeItem("Acid Potion");
+
+			//Brew the growth potion
+			player.addItem(worms);
+			player.addItem(herbs);
+			level.brewPotion(player, worms, herbs);
+			Assert::IsTrue(player.hasItem(potionGrowth));
+			Assert::IsTrue(player.hasItem(dummy));
+			Assert::IsFalse(player.hasItem(worms));
+			Assert::IsFalse(player.hasItem(herbs));
+
+			player.removeItem("Growth Potion");
+
+			//Ditto - swap the ingredients
+			player.addItem(worms);
+			player.addItem(herbs);
+			level.brewPotion(player, worms, herbs);
+			Assert::IsTrue(player.hasItem(potionGrowth));
+			Assert::IsTrue(player.hasItem(dummy));
+			Assert::IsFalse(player.hasItem(herbs));
+			Assert::IsFalse(player.hasItem(worms));
+
+			player.removeItem("Growth Potion");
+
+			//Finally, try brewing an incorrect recipe
+			player.addItem(worms);
+			player.addItem(powder);
+			level.brewPotion(player, worms, powder);
+			Assert::IsTrue(player.hasItem(worms)); //Player still has ingredient 1
+			Assert::IsTrue(player.hasItem(powder)); //Player still has ingredient 2
+			Assert::IsTrue(player.hasItem(dummy)); //Player still has an item they didn't use
 		}
 
 		std::string catItemNames(vector<Item> itemList) {

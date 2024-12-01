@@ -148,6 +148,32 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 		//update location to LEFT_ROOM
 	}
 	else if (input == "right") {
+		if (!iceRoomDoorOpen) {
+			if (p.hasItem(AcidPotion))
+			{
+				cout << " You have something in your inventory which you can use to unlock this door." << endl;
+				cin >> input;
+				if (input == "acid" || input == "Acid Potion")
+				{
+					cout << " You used the acid to melt the ice, which was blocking you from entering the ice room." << endl;
+					cout << " The door is now open." << endl;
+					cout << "A chill runs through you. " << endl;
+					p.removeItem("Acid Potion");
+					iceRoomDoorOpen = true;
+
+				}
+				else
+				{
+					cout << " This is not an appropriate item, Try Again" << endl;
+					return;
+				}
+			}
+			else
+			{
+				cout << " You can't go to the ice room, the door is locked. You need something to unlock it." << endl;
+				return;
+			}
+		}
 		cout << " you go right" << endl;
 		p.setLocation3(Level3::Location3::RIGHT_ROOM);
 		//update location to RIGHT_ROOM
@@ -177,106 +203,122 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 		}
 	}
 	else if (input == "cauldron" || input == "brew") {
-		//Brewing process
-		//Ask the player for the first ingredient
-		Item ingredient1;
-		cout << "Choose an item you have as the first potion ingredient (case sensitive), or exit to step away: " << endl;
-
-		//List all items the player has, while also storing their names for input checking
-		vector<string> playerItemNames;
-		vector<Item> playerItems = p.getItems();
-		for (int i = 0; i < playerItems.size(); i++) {
-			cout << playerItems[i].getDisplayName() << endl;
-			playerItemNames.push_back(playerItems[i].getDisplayName());
-		}
-
-		//Get the player's first choice and check that they have the item
-		string ingredientRequested;
-		bool ingredientValid = false;
-		cin.clear();
-		cin.ignore();
-		getline(cin, ingredientRequested);
-		if (ingredientRequested == "exit") {
-			cout << "You stepped away from the cauldron." << endl;
-			return;
-		}
-		for (int i = 0; i < playerItemNames.size(); i++) {
-			if (ingredientRequested == playerItemNames[i]) {
-				ingredientValid = true;
-				ingredient1 = playerItems[i];
-			}
-		}
-		if (!ingredientValid) {
-			cout << "You don't have that item!" << endl;
-			return;
-		}
-
-		//Ask for the second ingredient and check for it too
-		Item ingredient2;
-		ingredientValid = false;
-		cout << "Choose a second ingredient (case sensitive), or exit to take back the first ingredient: " << endl;
-		cin.clear();
-		string ingredientRequested2;
-		getline(cin, ingredientRequested2);
-		if (ingredientRequested2 == "exit") {
-			cout << "You stepped away from the cauldron." << endl;
-			return;
-		}
-		else if (ingredientRequested2 == ingredient1.getDisplayName()) {
-			cout << "You already used that item!" << endl;
-			return;
-		}
-		for (int i = 0; i < playerItemNames.size(); i++) {
-			if (ingredientRequested2 == playerItemNames[i]) {
-				ingredientValid = true;
-				ingredient2 = playerItems[i];
-			}
-		}
-		if (!ingredientValid) {
-			cout << "You don't have that item!" << endl;
-			return;
-		}
-
-		//Potion recipes! Check if the input items form a valid recipe.
-		//When adding a new recipe, check both combinations of ingredients here.(example provided)
-		if (
-			(ingredient1 == MagicPowder && ingredient2 == SnakeVenom)
-			|| (ingredient1 == SnakeVenom && ingredient2 == MagicPowder)
-			//Special case for jar of earthworms, use the name instead of the item since it's from another room
-			|| (ingredient1.getDisplayName() == "Worms" && ingredient2 == IceHerbs)
-			|| (ingredient1 == IceHerbs && ingredient2.getDisplayName() == "Worms")
-			// || (ingredient1 == YourFirstIngredient && ingredient2 == YourSecondIngredient)
-			// || (ingredient1 == YourSecondIngredient && ingredient2 == YourFirstIngredient)
-		)
-		{
-			Item brewedItem;
-
-			//Acid potion recipe, use as a template for other recipes
-			if ((ingredient1 == MagicPowder && ingredient2 == SnakeVenom) || (ingredient1 == SnakeVenom && ingredient2 == MagicPowder)) {
-				brewedItem = AcidPotion;
-			}
-			else if ((ingredient1.getDisplayName() == "Worms" && ingredient2 == IceHerbs) || (ingredient1 == IceHerbs && ingredient2.getDisplayName() == "Worms")) {
-				brewedItem = GrowthPotion;
-			}
-
-			if (p.hasItem(brewedItem)) {
-				cout << "You already have that potion!" << endl;
-			}
-			else {
-				cout << "You brewed: " << brewedItem.getDisplayName() << ", " << brewedItem.getDescription() << endl;
-				p.removeItem(ingredient1.getDisplayName());
-				p.removeItem(ingredient2.getDisplayName());
-				p.addItem(brewedItem);
-			}
+		if (cauldronExploded) {
+			cout << "The cauldron is gone." << endl;
 		}
 		else {
-			cout << "You put the items into the cauldron, but nothing magical seems to happen." << endl;
-			cout << "Maybe try a different recipe?" << endl;
+			//Brewing process
+			//Ask the player for the first ingredient
+			Item ingredient1;
+			cout << "Choose an item you have as the first potion ingredient (case sensitive), or exit to step away: " << endl;
+
+			//List all items the player has, while also storing their names for input checking
+			vector<string> playerItemNames;
+			vector<Item> playerItems = p.getItems();
+			for (int i = 0; i < playerItems.size(); i++) {
+				cout << playerItems[i].getDisplayName() << endl;
+				playerItemNames.push_back(playerItems[i].getDisplayName());
+			}
+
+			//Get the player's first choice and check that they have the item
+			string ingredientRequested;
+			bool ingredientValid = false;
+			cin.clear();
+			cin.ignore();
+			getline(cin, ingredientRequested);
+			if (ingredientRequested == "exit") {
+				cout << "You stepped away from the cauldron." << endl;
+				return;
+			}
+			for (int i = 0; i < playerItemNames.size(); i++) {
+				if (ingredientRequested == playerItemNames[i]) {
+					ingredientValid = true;
+					ingredient1 = playerItems[i];
+				}
+			}
+			if (!ingredientValid) {
+				cout << "You don't have that item!" << endl;
+				return;
+			}
+
+			//Ask for the second ingredient and check for it too
+			Item ingredient2;
+			ingredientValid = false;
+			cout << "Choose a second ingredient (case sensitive), or exit to take back the first ingredient: " << endl;
+			cin.clear();
+			string ingredientRequested2;
+			getline(cin, ingredientRequested2);
+			if (ingredientRequested2 == "exit") {
+				cout << "You stepped away from the cauldron." << endl;
+				return;
+			}
+			else if (ingredientRequested2 == ingredient1.getDisplayName()) {
+				cout << "You already used that item!" << endl;
+				return;
+			}
+			for (int i = 0; i < playerItemNames.size(); i++) {
+				if (ingredientRequested2 == playerItemNames[i]) {
+					ingredientValid = true;
+					ingredient2 = playerItems[i];
+				}
+			}
+			if (!ingredientValid) {
+				cout << "You don't have that item!" << endl;
+				return;
+			}
+
+			//Potion recipes! Check if the input items form a valid recipe.
+			//When adding a new recipe, check both combinations of ingredients here.(example provided)
+			brewPotion(p, ingredient1, ingredient2);
 		}
-		
 	}
 	//need unlocking here
 	// Add Stop Watch Code for Level 3
+}
+
+//Brew a potion given two items
+void Level3::brewPotion(Player& p, Item ingredient1, Item ingredient2) {
+	if (ingredient1 == VolatileEssence || ingredient2 == VolatileEssence) {
+		//Special case for brewing with volatile essence. This blows up the cauldron
+		p.removeItem("Volatile Essence");
+		cout << "As you mix the ingredients, the volatile essence causes the cauldron to bubble and shake until sudddenly, it explodes!" << endl;
+		cout << "All that remains is a hole where the cauldron once stood. Now you can descend to the next floor." << endl;
+		cauldronExploded = true;
+	}
+	else if (
+		(ingredient1 == MagicPowder && ingredient2 == SnakeVenom)
+		|| (ingredient1 == SnakeVenom && ingredient2 == MagicPowder)
+		//Special case for jar of earthworms, use the name instead of the item since it's from another room
+		|| (ingredient1.getDisplayName() == "Worms" && ingredient2 == IceHerbs)
+		|| (ingredient1 == IceHerbs && ingredient2.getDisplayName() == "Worms")
+		// || (ingredient1 == YourFirstIngredient && ingredient2 == YourSecondIngredient)
+		// || (ingredient1 == YourSecondIngredient && ingredient2 == YourFirstIngredient)
+		)
+	{
+		Item brewedItem;
+
+		//Acid potion recipe, use as a template for other recipes
+		if ((ingredient1 == MagicPowder && ingredient2 == SnakeVenom) || (ingredient1 == SnakeVenom && ingredient2 == MagicPowder)) {
+			brewedItem = AcidPotion;
+		}
+		else if ((ingredient1.getDisplayName() == "Worms" && ingredient2 == IceHerbs) || (ingredient1 == IceHerbs && ingredient2.getDisplayName() == "Worms")) {
+			brewedItem = GrowthPotion;
+		}
+
+		if (p.hasItem(brewedItem)) {
+			cout << "You already have that potion!" << endl;
+		}
+		else {
+			cout << "You brewed: " << brewedItem.getDisplayName() << ", " << brewedItem.getDescription() << endl;
+			p.removeItem(ingredient1.getDisplayName());
+			p.removeItem(ingredient2.getDisplayName());
+			p.addItem(brewedItem);
+		}
+	}
+	else {
+		cout << "You put the items into the cauldron, but nothing magical seems to happen." << endl;
+		cout << "Maybe try a different recipe?" << endl;
+	}
 }
 
 //this is the room the player can enter by going to the right from center room, the ice room
@@ -357,33 +399,6 @@ void Level3::runDownRoom(Player& p, std::string input) {
 //this is the room the player can enter by going to the right from center room, the ice room
 //now when it gets input from player it will do stuff
 void Level3::runRightRoom(Player& p, std::string input) {
-	if (!iceRoomDoorOpen) {
-		if (p.hasItem(AcidPotion))
-		{
-			cout << " You have something in your inventory which you can use to unlock this door." << endl;
-			cin >> input;
-			if (input == "acid"|| input=="Acid Potion")
-			{
-				cout << " You used the acid to melt the ice, which was blocking you from entering the ice room." << endl;
-				cout << " The door is now open." << endl;
-				cout << "A chill runs through you. " << endl;
-				iceRoomDoorOpen = true;
-
-			}
-			else
-			{
-				cout << " This is not an appropriate item, Try Again" << endl;
-				return;
-			}
-		}
-		else
-		{
-			cout << " You can't go to the ice room, the door is locked. You need something to unlock it." << endl;
-			return;
-		}
-	}
-	cout << " Which direction would yu like to go?" << endl;
-	cin >> input;
 	if (input == "right") {
 		cout << "blue plants are sprouting in pots of frozen earth. " << endl;
 		cout << "You picked up Herbs! " << endl;
@@ -402,7 +417,7 @@ void Level3::runRightRoom(Player& p, std::string input) {
 	if (input == "leave") {
 		cout << "You are in center room" << endl;
 		p.setLocation3(Level3::Location3::CENTER_ROOM);
-				}
+	}
 	
 }
 //this is the room the player can enter by going to the up from center room, the ACID POTION room

@@ -45,7 +45,8 @@ int main()
     Player player;
 
     //Uncomment to skip to level 3, for testing
-    //player.setLevel(3);
+    player.addItem(Item("Worms", "A jar of earthworms squirming around"));
+    player.setLevel(3);
 
     string input;
         // Create an inventory object
