@@ -274,6 +274,64 @@ namespace RealTeam2Test
 			Assert::IsTrue(player.hasItem(dummy)); //Player still has an item they didn't use
 		}
 
+		//Tests a few item interactions in level 3
+		TEST_METHOD(Level3InteractionTest) {
+			Logger::WriteMessage("// Test level 3 item interactions");
+			
+			Level3 level;
+			Player player;
+			player.setLevel(3);
+
+			Item venom("Snake Venom", "A vial filled with murky dark liquid ");
+			Item potion("Growth Potion", "A strange liquid that seems to make plants grow quickly");
+			Item essence("Volatile Essence", "A box with many warnings on it, containing a bright red powder.");
+
+			//Test picking up snake venom
+			level.interact(player, "down");
+			level.interact(player, "vial");
+			Assert::IsTrue(player.hasItem(venom));
+
+			//Make sure it can be grabbed a second time
+			player.removeItem("Snake Venom");
+			level.interact(player, "vial");
+			Assert::IsTrue(player.hasItem(venom));
+
+			//Make sure the plant can't be grown without the growth potion
+			level.interact(player, "grow");
+			Assert::IsFalse(player.hasItem(essence));
+
+			//Test picking up volatile essence by using the growth potion
+			player.addItem(potion);
+			level.interact(player, "grow");
+			Assert::IsTrue(player.hasItem(essence));
+		}
+
+		//Test going down to floor 4 and blowing up the cauldron
+		//Should be blocked until the cauldron explodes, at which point it should be possible
+		TEST_METHOD(Level3DescendTest) {
+			Logger::WriteMessage("// Test descending to level 4");
+
+			Level3 level;
+			Player player;
+			player.setLevel(3);
+
+			level.interact(player, "descend"); //Should get blocked; player should stay in level 3
+			int currLevelNum = player.getLevel();
+			Assert::IsTrue(currLevelNum == 3);
+
+			Item essence("Volatile Essence", "A box with many warnings on it, containing a bright red powder.");
+			Item dummy("Dummy Item", "A dummy item used for testing.");
+			player.addItem(essence);
+			player.addItem(dummy);
+			level.brewPotion(player, essence, dummy); //Should blow up the cauldron and consume the essence, but not the other item
+			Assert::IsTrue(player.hasItem(dummy));
+			Assert::IsFalse(player.hasItem(essence));
+
+			level.interact(player, "descend"); //Should let the player descend to level 4
+			currLevelNum = player.getLevel();
+			Assert::IsTrue(currLevelNum == 4);
+		}
+
 		std::string catItemNames(vector<Item> itemList) {
 			std::string catString = "+";
 			for (int iterator = 0; iterator < itemList.size(); iterator++) {
