@@ -329,13 +329,18 @@ void Level3::runDownRoom(Player& p, std::string input) {
 	//check if 'input is right' for what it is gotten from
 	string answer;
 	cout << "Perhaps there is something useful here?" << endl;
-	cout << "Type left, down, right, look, or pickup to interact. When you want to leave type leave." << endl;
+	cout << "Type up, left, down, right, look, or pickup to interact. When you want to leave type leave." << endl;
 	//based on input of player different things can happen (for information check player files and main)
 	if (input == "look") {
 		cout << "Some of the boxes to your left and right stand out." << endl;
+		cout << "There is a bookshelf on the upwards wall." << endl;
 		if (!plantGrown) {
-			cout << "There is another box on a high shelf on the downwards wall, far out of reach. There is a small plant below the shelf." << endl;
+			cout << "There is also another box on a high shelf on the downwards wall, far out of reach. There is a small plant below the shelf." << endl;
 		}
+	}
+	else if (input == "up") { //Hint for the alchemist's first riddle
+		cout << "There is a bookshelf on the wall near the door. One of them, a book about alchemy, stands out." << endl;
+		cout << "The text talks about how transmutation involves moving letters around in a word." << endl;
 	}
 	//theoretically we would want this to be pressed after look but no reason they shouldn't be able to
 	else if (input == "left") {

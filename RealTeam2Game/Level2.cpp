@@ -407,30 +407,32 @@ void Level2::runUpRoom(Player& p, std::string input) {
 			{
 				cout << "You smash the glass with the sharp rock. The jar is now accessible." << endl;
 				glassBroken = true;
-
-				if (!jarOfEarthwormsFound) { // Glass is broken, jar not picked up yet
-					cout << "Pick up the jar of earthworms: ";
-					string choice;
-					cin >> choice;
-					if (choice == "pickup") { // If the player chooses to pick up the jar
-						cout << "You picked up the jar of earthworms.(~~~)"<<endl;
-						cout << "                                    (~~~)" << endl;
-						jarOfEarthwormsFound = true;
-						p.addItem(JarOfEarthworms); // Add the jar to the player's inventory
-					}
-					else {
-						cout << "You leave the jar where it is.\n";
-					}
-				}
-				else { // Jar already picked up
-					cout << "You already have the jar of earthworms.\n";
-				}
 			}
 			else {
 				cout << "You decide not to break the glass for now." << endl;
 			}
 		}
 		
+		if (glassBroken) {
+			if (!jarOfEarthwormsFound) { // Glass is broken, jar not picked up yet
+				cout << "Pick up the jar of earthworms: ";
+				string choice;
+				cin >> choice;
+				if (choice == "pickup") { // If the player chooses to pick up the jar
+					cout << "You picked up the jar of earthworms.(~~~)" << endl;
+					cout << "                                    (~~~)" << endl;
+					jarOfEarthwormsFound = true;
+					p.addItem(JarOfEarthworms); // Add the jar to the player's inventory
+				}
+				else {
+					cout << "You leave the jar where it is.\n";
+				}
+			}
+			else { // Jar already picked up: Alchemist 2nd riddle hint
+				cout << "You look closely where the jar of earthworms was found." << endl;
+				cout << "Behind the broken glass is a short paragraph on the element of surprise." << endl;
+			}
+		}
 		
 	}
 	else if (input == "earth")
