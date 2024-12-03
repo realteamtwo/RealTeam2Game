@@ -38,6 +38,11 @@ private:
 	//For running left room takes player input, runs if player inputs left in center room
 	void runLeftRoom(Player& p, std::string);
 
+	//Initialize riddle check variables
+	bool riddleOneSolved;
+	bool riddleTwoSolved;
+	bool riddleThreeSolved;
+
 	StopWatch L4Time;
 };
 

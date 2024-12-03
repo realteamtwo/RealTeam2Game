@@ -46,7 +46,7 @@ int main()
 
     //Uncomment to skip to level 3, for testing
     //player.addItem(Item("Worms", "A jar of earthworms squirming around"));
-    //player.setLevel(3);
+    //player.setLevel(4);
 
     string input;
         // Create an inventory object
@@ -86,6 +86,12 @@ int main()
         }
         */
     //While loop to check the gameRunning value
+
+    //Level object creation
+    Level2 level2;
+    Level3 level3;
+    Level4 level4;
+
     while (gameRunning)
     {
         cout << "Welcome to the Escape Room Game!" << endl;
@@ -110,10 +116,6 @@ int main()
             }
         }
 
-        //level objects 1 for each level except for the first level
-        Level2 level2;
-        //Level3 level3;
-
         //this will keep the player in the level still able to enter another command after the next as well as get input
         //stops once they are no longer on level 2
         while (player.getLevel() == 2) {
@@ -126,11 +128,6 @@ int main()
         
         //TODO: cout "time spent so far L2" 
         GameTime.printDiffTime(); 
-
-
-        //Level 3 object creation
-        Level3 level3;
-
         
        
         //While loop to keep player in Level 3 and allow them to input commands to solve the puzzles in the room
@@ -144,9 +141,6 @@ int main()
         }
         //TODO: cout "time spent so far L3" 
         GameTime.printDiffTime();
-
-        //Level 4 object creation
-        Level4 level4;
 
         //While loop to keep player in Level 4 and allow them to input commands to solve the puzzles in the room
         //Breaks when level is no longer 4
