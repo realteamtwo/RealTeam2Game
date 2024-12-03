@@ -129,11 +129,19 @@ void Level3::interact(Player& p, std::string input) {
 
 void Level3::runCenterRoom(Player& p, std::string input) {
 	if (input == "down") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "|///|     |///|" << endl;
+		cout << "     | P |     " << endl;
 		cout << " you go down " << endl;
 		//update location to DOWN_ROOM
 		p.setLocation3(Level3::Location3::DOWN_ROOM);
 	}
 	else if (input == "up") {
+		cout << " current location:" << endl;
+		cout << "     | P |           " << endl;
+		cout << "|///|     |///|" << endl;
+		cout << "     |///|     " << endl;
 		cout << " you go up" << endl;
 		cout << "There is nothing" << endl;
 	p.setLocation3(Level3::Location3::CENTER_ROOM);
@@ -141,6 +149,10 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 		//update location to UP_ROOM
 	}
 	else if (input == "left") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "| P |     |///|" << endl;
+		cout << "     |///|     " << endl;
 		cout << " you go left" << endl;
 		cout << "There is nothing" << endl;
 	p.setLocation3(Level3::Location3::CENTER_ROOM);
@@ -148,6 +160,10 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 		//update location to LEFT_ROOM
 	}
 	else if (input == "right") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "|///|     | P |" << endl;
+		cout << "     |///|     " << endl;
 		if (!iceRoomDoorOpen) {
 			if (p.hasItem(AcidPotion))
 			{
@@ -339,9 +355,17 @@ void Level3::runDownRoom(Player& p, std::string input) {
 	}
 	//theoretically we would want this to be pressed after look but no reason they shouldn't be able to
 	else if (input == "left") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "| P |     |///|" << endl;
+		cout << "     |///|     " << endl;
 		cout << "There is an open chest. Inside there is what looks like the fossilized remains of a snake, and a vial of liquid" << endl;
 	}
 	else if (input == "right") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "|///|     | P |" << endl;
+		cout << "     |///|     " << endl;
 		cout << "Amongst several piles of paper is a metallic cylinder. A warning label reads 'Do Not Open: Magic Powder'" << endl;
 		cout << "Pickup? (Y/N): ";
 		//this is to get the yes or no answer to this question wanted to keep it separate from input
@@ -358,6 +382,10 @@ void Level3::runDownRoom(Player& p, std::string input) {
 		}
 	}
 	else if (input == "down") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "|///|     |///|" << endl;
+		cout << "     | P |     " << endl;
 		if (plantGrown) {
 			cout << "This section of the room is mossy and downtrodden. A large stalk grows from the floor to the ceiling." << endl;
 		}
@@ -400,17 +428,33 @@ void Level3::runDownRoom(Player& p, std::string input) {
 //now when it gets input from player it will do stuff
 void Level3::runRightRoom(Player& p, std::string input) {
 	if (input == "right") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "|///|     | P |" << endl;
+		cout << "     |///|     " << endl;
 		cout << "blue plants are sprouting in pots of frozen earth. " << endl;
 		cout << "You picked up Herbs! " << endl;
 		p.addItem(IceHerbs);
 	}
 	else if (input == "left") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "| P |     |///|" << endl;
+		cout << "     |///|     " << endl;
 		cout << "You see a red valve handle. Trying to move it does nothing as the cold metal refuses to budge" << endl;
 	}
 	else if (input == "down") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "|///|     |///|" << endl;
+		cout << "     | P |     " << endl;
 		cout << "A knozzle that still works is attached to the wall. " << endl;
 	}
 	else if (input == "up") {
+		cout << " current location:" << endl;
+		cout << "     | P |           " << endl;
+		cout << "|///|     |///|" << endl;
+		cout << "     |///|     " << endl;
 		cout << "Several glass jars line the wall filled with rotting plants. " << endl;
 	}
 

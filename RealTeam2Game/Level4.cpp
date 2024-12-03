@@ -91,21 +91,37 @@ void Level4::interact(Player& p, std::string input) {
 
 void Level4::runCenterRoom(Player& p, std::string input) {
 	if (input == "down") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "|///|     |///|" << endl;
+		cout << "     | P |     " << endl;
 		cout << "You go down" << endl;
 		//Update location to DOWN_ROOM
 		p.setLocation4(Level4::Location4::DOWN_ROOM);
 	}
 	else if (input == "up") {
+		cout << " current location:" << endl;
+		cout << "     | P |           " << endl;
+		cout << "|///|     |///|" << endl;
+		cout << "     |///|     " << endl;
 		cout << "You go up" << endl;
 		p.setLocation4(Level4::Location4::UP_ROOM);
 		//Update location to UP_ROOM
 	}
 	else if (input == "left") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "| P |     |///|" << endl;
+		cout << "     |///|     " << endl;
 		cout << "You go left" << endl;
 		p.setLocation4(Level4::Location4::LEFT_ROOM);
 		//Update location to LEFT_ROOM
 	}
 	else if (input == "right") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "|///|     | P |" << endl;
+		cout << "     |///|     " << endl;
 		cout << "You go right" << endl;
 		p.setLocation4(Level4::Location4::RIGHT_ROOM);
 		//Update location to RIGHT_ROOM

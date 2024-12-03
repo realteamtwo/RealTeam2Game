@@ -21,8 +21,11 @@ PlayerInput::PlayerInput() : currentDirection("Center"), matchFound(false), torc
 // Function to handle player movement
 void PlayerInput::movePlayer(string direction) {
 
-    if (direction == "up"|| direction=="Up") {
-
+    if (direction == "up" || direction == "Up") {
+        cout << " current location:"<<endl;
+        cout << "     | P |           " << endl;
+        cout << "|///|     |///|" << endl;
+        cout << "     |///|     " << endl;
         if (riddleIsSolved)
         {
             cout << "You already solved a riddle. Now you need to find the drawer." << endl;
@@ -44,6 +47,10 @@ void PlayerInput::movePlayer(string direction) {
 
     else if (direction == "down"|| direction == "Down") {
         currentDirection = "Down";
+        cout << " current location:" << endl;
+        cout << "     |///|           " << endl;
+        cout << "|///|     |///|" << endl;
+        cout << "     | P |     " << endl;
         cout << "You moved down." << endl;
         if (keyFound)
         {
@@ -55,6 +62,10 @@ void PlayerInput::movePlayer(string direction) {
     }
     else if (direction == "left"|| direction=="Left") {
         currentDirection = "Left";
+        cout << " current location:" << endl;
+        cout << "     |///|           " << endl;
+        cout << "| P |     |///|" << endl;
+        cout << "     |///|     " << endl;
         if (!torchFound) {
             cout << "You found a torch! Use the command 'pickup' to pick it up." << endl;
         }
@@ -64,6 +75,10 @@ void PlayerInput::movePlayer(string direction) {
     }
     else if (direction == "right" || direction == "Right") {
         currentDirection = "Right";
+        cout << " current location:" << endl;
+        cout << "     |///|           " << endl;
+        cout << "|///|     | P |" << endl;
+        cout << "     |///|     " << endl;
         if (riddleIsSolved && !drawerUnlocked) {
 
             cout << "You found a drawer. Use the code you got from the riddle to unlock it." << endl;
@@ -115,7 +130,7 @@ void PlayerInput::itemInteraction(string command, StopWatch GameTime) {
             cin >> answer;
 
 
-            if (answer == "911")
+            if (answer == "911"|| answer=="999")
             {
                 riddleIsSolved = true;
                 cout << "You solved the riddle! Now find the drawer and unlock it." << endl;
