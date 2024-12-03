@@ -44,9 +44,13 @@ int main()
     PlayerInput inputHandler;
     Player player;
 
-    //Uncomment to skip to level 3, for testing
+    //Uncomment to skip to another level, for testing
+    //player.setLevel(3);
+
+    //Uncomment to give the player the worms item
+    //Recommended for manually testing level 3 without having to play through level 2
     //player.addItem(Item("Worms", "A jar of earthworms squirming around"));
-    //player.setLevel(4);
+    
 
     string input;
         // Create an inventory object
