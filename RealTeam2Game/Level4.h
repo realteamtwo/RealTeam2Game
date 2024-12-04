@@ -22,6 +22,10 @@ public:
 
 	//Calls the appropriate function for interacting with the player's current room
 	void interact(Player& p, std::string);
+
+	bool checkWin() const;
+
+	void resetStopwatch();
 private:
 	//Center room function, takes the player's current input, runs if in center room and is where player first goes
 	void runCenterRoom(Player& p, std::string);

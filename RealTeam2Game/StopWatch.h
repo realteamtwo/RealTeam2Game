@@ -38,6 +38,11 @@ public:
 		cout << "Hrs: " << hours << " Mins: " << mins << " Secs: " << secs << "\n" << endl;;
 	}
 
+	void reset()
+	{
+		startTime = std::time(nullptr);
+	}
+
 
 };
 #endif

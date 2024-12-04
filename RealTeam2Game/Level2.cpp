@@ -20,13 +20,6 @@ void Level2::displayDescription(Player &p) {
 		if (fireSolved && waterSolved && earthSolved && airSolved) {
 			cout << "You hear a click from the center of the room." << endl;
 			cout << "You are in a central area with an open trapdoor." << endl;
-			if (doorUnlocked == false)
-			{
-				// How much time has passed in the game overall since beating level 2
-				cout << "\n" << "Level #2 has been completed in: ";
-				L2Time.printDiffTime();
-				doorUnlocked = true;
-			}
 		}
 		else {
 			cout << "You are in a central area with another locked trapdoor." << endl;
@@ -87,6 +80,26 @@ void Level2::interact(Player &p, std::string input) {
 			Level2::runUpRoom(p, input);
 			break;
 	}
+	if (p.getLocation() == Location::CENTER_ROOM && fireSolved && waterSolved && earthSolved && airSolved && doorUnlocked == false) {
+		// How much time has passed in the game overall since beating level 2
+		cout << "\n" << "Level #2 has been completed in: ";
+		doorUnlocked = true;
+	}
+	else
+	{
+		cout << "\n" << "Current level time: ";
+	}
+	L2Time.printDiffTime();
+}
+
+bool Level2::checkWin(Player& p) const
+{
+	return fireSolved && waterSolved && earthSolved && airSolved && (p.getLocation() == Location::CENTER_ROOM);
+}
+
+void Level2::resetStopwatch()
+{
+	L2Time.reset();
 }
 
 void Level2::runCenterRoom(Player &p, std::string input) {

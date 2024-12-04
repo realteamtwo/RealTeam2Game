@@ -24,6 +24,9 @@ public:
 	bool riddleSolved() const;
 	bool hasKey() const;
 	bool hasRock() const;
+
+	bool checkWin() const; 
+	void printLevelTime() const;
 	
 
 private:

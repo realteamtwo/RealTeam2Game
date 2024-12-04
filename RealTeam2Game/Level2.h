@@ -29,6 +29,11 @@ public:
 	bool earthSolved = false;
 	bool airSolved = false;
 
+	bool checkWin(Player& p) const;
+
+	void resetStopwatch();
+
+
 private:
 	//Center room function, takes the player's current input
 	void runCenterRoom(Player &p, std::string);

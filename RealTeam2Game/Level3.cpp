@@ -127,6 +127,16 @@ void Level3::interact(Player& p, std::string input) {
 	}
 }
 
+bool Level3::checkWin() const
+{
+	return cauldronExploded == true;
+}
+
+void Level3::resetStopwatch()
+{
+	L3Time.reset();
+}
+
 void Level3::runCenterRoom(Player& p, std::string input) {
 	if (input == "down") {
 		cout << " current location:" << endl;
@@ -208,7 +218,7 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 	//Checks if leave condition has been met to be able to descend to the next floor
 	else if (input == "descend")
 	{
-		if (cauldronExploded == true)
+		if (checkWin())
 		{
 			cout << "You go down through the hole to the next floor of the tower." << endl;
 			p.setLevel(4);

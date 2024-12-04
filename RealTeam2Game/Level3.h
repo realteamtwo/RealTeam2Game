@@ -31,6 +31,10 @@ public:
 	//For potion brewing
 	//Takes a pointer to the player, and two items (the potion ingredients)
 	void brewPotion(Player& p, Item, Item);
+
+	bool checkWin() const;
+
+	void resetStopwatch();
 private:
 
 	//Center room function, takes the player's current input, runs if in center room and is where player first goes

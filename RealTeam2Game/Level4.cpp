@@ -89,6 +89,17 @@ void Level4::interact(Player& p, std::string input) {
 	}
 }
 
+bool Level4::checkWin() const
+{
+	// To Do, Replace (False) with level 4 win condition.
+	return false;
+}
+
+void Level4::resetStopwatch()
+{
+	L4Time.reset();
+}
+
 void Level4::runCenterRoom(Player& p, std::string input) {
 	if (input == "down") {
 		cout << " current location:" << endl;

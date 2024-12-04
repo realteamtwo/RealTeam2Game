@@ -223,6 +223,11 @@ bool PlayerInput::hasRock() const
     return rockFound;
 }
 
+bool PlayerInput::checkWin() const
+{
+    return doorUnlocked;
+}
+
 // Checks if the riddle has been solved
 bool PlayerInput::riddleSolved() const {
     return riddleIsSolved;
