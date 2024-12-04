@@ -52,7 +52,12 @@ void PlayerInput::movePlayer(string direction) {
         cout << "|///|     |///|" << endl;
         cout << "     | P |     " << endl;
         cout << "You moved down." << endl;
-        if (keyFound)
+        if (doorUnlocked) {
+            cout << "The door to the next floor is still unlocked, but you see something else." << endl;
+            cout << "Scratched into the door is a four-word phrase. The first word is illegible." << endl;
+            cout << "\"?????? AND THANK YOU\"" << endl;
+        }
+        else if (keyFound)
         {
             cout << "You found the door! Insert the key to unlock it, by typing 'insert'. " << endl;
         }
@@ -157,19 +162,22 @@ void PlayerInput::itemInteraction(string command, StopWatch GameTime) {
     }
     else if (command == "insert" && keyFound && currentDirection == "Down") {
         {
-            cout << "You inserted the key to unlock the door." << endl;
-            cout << "Congratulations! You have unlocked the door!" << endl;
-            cout << "Type \"descend\" to go to the next floor." << endl;
+            if (doorUnlocked) {
+                cout << "You already unlocked the door." << endl;
+            }
+            else {
+                cout << "You inserted the key to unlock the door." << endl;
+                cout << "Congratulations! You have unlocked the door!" << endl;
+                cout << "Type \"descend\" to go to the next floor." << endl;
 
-            // How much time has passed in the game overall since beating level 1
-            cout << "\n" << "Level #1 has been completed in: ";
-            GameTime.printDiffTime();
+                // How much time has passed in the game overall since beating level 1
+                cout << "\n" << "Level #1 has been completed in: ";
+                GameTime.printDiffTime();
 
-            doorUnlocked = true;
-            //exit(0);
-            
+                doorUnlocked = true;
+                //exit(0);
+            }
         }
-
     }
     else {
         cout << "Invalid command." << endl;

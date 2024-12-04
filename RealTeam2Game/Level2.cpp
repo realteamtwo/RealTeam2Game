@@ -126,6 +126,10 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 		}
 		
 	}
+	else if (input == "ascend") {
+		cout << "You go back up to the top of the tower.";
+		p.setLevel(1);
+	}
 
 }
 
