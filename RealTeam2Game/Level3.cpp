@@ -11,6 +11,7 @@ Item IceHerbs;
 Item AcidPotion;
 Item GrowthPotion;
 Item VolatileEssence;
+Item Trowel;
 
 Level3::Level3() {
 	//items we might encounter in level 3 not sure where to put these
@@ -35,6 +36,8 @@ Level3::Level3() {
 	//Volatile Essence
 	VolatileEssence.setDescription("A box with many warnings on it, containing a bright red powder.");
 	VolatileEssence.setDisplayName("Volatile Essence");
+	Trowel.setDescription("A small trowel with magic runes engraved on it");
+	Trowel.setDisplayName("Trowel");
 
 	cauldronExploded = false;
 	plantGrown = false;
@@ -103,7 +106,7 @@ void Level3::displayDescription(Player& p) {
 		break;
 		//put which
 	case Location3::LEFT_ROOM:
-		
+
 		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
 		break;
 		//put which room 
@@ -474,8 +477,13 @@ void Level3::runRightRoom(Player& p, std::string input) {
 		cout << "|///|     | P |" << endl;
 		cout << "     |///|     " << endl;
 		cout << "blue plants are sprouting in pots of frozen earth. " << endl;
-		cout << "You picked up Herbs! " << endl;
-		p.addItem(IceHerbs);
+		if (p.hasItem(Trowel)) {
+			cout << "You picked up Herbs with the Trowel! " << endl;
+			p.addItem(IceHerbs);
+		}
+		else {
+			cout << "If only you had something to help you get them out of the dirt..." << endl;
+		}
 	}
 	else if (input == "left") {
 		cout << " current location:" << endl;
@@ -568,4 +576,16 @@ void Level3::runUpRoom(Player& p, std::string input) {
 
 }
 void Level3::runLeftRoom(Player& p, std::string input) {
+	if (p.hasItem(Trowel)) {
+		cout << "You have already solved the room there is nothing left here" << endl;
+	}
+	else {
+		p.addItem(Trowel);
+	}
+	cout << "type leave to leave" << endl;
+
+	if (input == "leave") {
+		cout << "You are in center room" << endl;
+		p.setLocation3(Level3::Location3::CENTER_ROOM);
+	}
 }
