@@ -83,9 +83,16 @@ void Level3::displayDescription(Player& p) {
 		//also will be in the else once we figure out how the door unlocks in this room
 		if (cauldronExploded == true) //Checks if the leave condition has been met and prints different text
 		{
-			cout << "The cauldron has exploded and revealed a path forward." << endl;
-			cout << "You are in a central area with an opening in the floor. The cauldron is gone." << endl;
-			cout << "Four hallways extend from this room to other areas." << endl;
+			if (doorunlocked == false)
+			{
+				// How much time has passed in the game overall since beating level 2
+				cout << "\n" << "Level #3 has been completed in: ";
+				L3Time.printDiffTime();
+				doorunlocked = true;
+			}
+				cout << "The cauldron has exploded and revealed a path forward." << endl;
+				cout << "You are in a central area with an opening in the floor. The cauldron is gone." << endl;
+				cout << "Four hallways extend from this room to other areas." << endl;
 		}
 		else
 		{
