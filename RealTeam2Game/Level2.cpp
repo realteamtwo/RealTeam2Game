@@ -94,21 +94,37 @@ void Level2::interact(Player &p, std::string input) {
 
 void Level2::runCenterRoom(Player &p, std::string input) {
 	if (input == "down") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "|///|     |///|" << endl;
+		cout << "     | P |     " << endl;
 		cout << "You go down " << endl;
 		//update location to DOWN_ROOM
 		p.setLocation(Level2::Location::DOWN_ROOM); 
 	}
 	else if (input == "up") {
+		cout << " current location:" << endl;
+		cout << "     | P |           " << endl;
+		cout << "|///|     |///|" << endl;
+		cout << "     |///|     " << endl;
 		cout << "You go up" << endl;
 		p.setLocation(Level2::Location::UP_ROOM);
 		//update location to UP_ROOM
 	}
 	else if (input == "left") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "| P |     |///|" << endl;
+		cout << "     |///|     " << endl;
 		cout << "You go left" << endl;
 		p.setLocation(Level2::Location::LEFT_ROOM);
 		//update location to LEFT_ROOM
 	}
 	else if (input == "right") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "|///|     | P |" << endl;
+		cout << "     |///|     " << endl;
 		cout << "You go right" << endl;
 		p.setLocation(Level2::Location::RIGHT_ROOM);
 		//update location to RIGHT_ROOM
@@ -147,25 +163,36 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 void Level2::runDownRoom(Player &p, std::string input) {
 	
 	if (input == "down") {
-		if (anagramSolved == false) {
-			cout << "shutters block this wall with an arrow pointing left" << endl;
-		}
-		else {
-			cout << "What travels in the daylight but casts no shadow? What can you feel but you cannot see? Say your answer" << endl;
-		}
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "|///|     |///|" << endl;
+		cout << "     | P |     " << endl;
+		cout << "What travels in the daylight but casts no shadow? What can you feel but you cannot see? Say your answer" << endl;
 	}
 
 	else if (input == "left") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "| P |     |///|" << endl;
+		cout << "     |///|     " << endl;
 		cout << "The wall is decorated with swirls" << endl;
 		cout << "On the wall are the letters:  d t a n r o o  " << endl;
 		cout << "what could it mean? " << endl;
 	}
 
 	else if (input == "right") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "|///|     | P |" << endl;
+		cout << "     |///|     " << endl;
 		cout << "There are many pinwheels huddled together here " << endl;
 	}
 
 	else if (input == "up") {
+		cout << " current location:" << endl;
+		cout << "     | P |           " << endl;
+		cout << "|///|     |///|" << endl;
+		cout << "     |///|     " << endl;
 		cout << "The doorway you came from has many tassels and cloth flowing in the breeze" << endl;
 	}
 	else if (input == "leave") {
@@ -222,8 +249,10 @@ void Level2::runRightRoom(Player& p, std::string input) {
 	*/
 	// Left wall interaction: Fire extinguisher riddle
 	if (input == "left") {
-		cin.ignore();
-
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "| P |     |///|" << endl;
+		cout << "     |///|     " << endl;
 		if (!fireextinguisherFound) {
 			cout << "The left wall has a riddle:\n"
 				<< "\"I can stop flames, but I'm not water. You spray me to put out fire. What am I?\"\n";
@@ -247,6 +276,10 @@ void Level2::runRightRoom(Player& p, std::string input) {
 
 	// Down wall interaction: Burned picture and shortcut option
 	else if (input == "down") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "|///|     |///|" << endl;
+		cout << "     | P |     " << endl;
 		cout << "The down wall shows a burned picture with family members. A message next to it reads:\n"
 			<< "\"If you want a shortcut to escape, find the code hidden in this picture.\"\n";
 		cout << "WARNING: If you take this shortcut, it will count as a halfly solved room, which will impact your score.";
@@ -288,6 +321,10 @@ void Level2::runRightRoom(Player& p, std::string input) {
 	}
 	// Right wall interaction: Door with matchstick lock puzzle
 	else if (input == "right") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "|///|     | P |" << endl;
+		cout << "     |///|     " << endl;
 		if (matchstickFound) {
 			cout << "The right wall has a locked door with a red phosphorus on it.\n";
 			cout << " use the matchstick by inputting 'U' to unlock yourself from the fire riddle room : ";
@@ -325,6 +362,10 @@ void Level2::runRightRoom(Player& p, std::string input) {
 		}
 	}
 	else if (input == "up") {
+		cout << " current location:" << endl;
+		cout << "     | P |           " << endl;
+		cout << "|///|     |///|" << endl;
+		cout << "     |///|     " << endl;
 		if (fireextinguisherFound) {
 			cout << "There's a fire on the wall.\n"
 				<< "Use an item from your inventory to clear the fire: ";
@@ -367,14 +408,26 @@ void Level2::runLeftRoom(Player& p, std::string input) {
 	cout << "Water Room" << endl;
 
 	if (input == "down") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "|///|     |///|" << endl;
+		cout << "     | P |     " << endl;
 		cout << "The back glass of the aquarium room wall is vibrant. " << endl;
 		cout << "All there seems to be is a bunch of ancient greek designs of poseidon...Welp nothing I can do about this." << endl;
 	}
 	else if (input == "up") {
+		cout << " current location:" << endl;
+		cout << "     | P |           " << endl;
+		cout << "|///|     |///|" << endl;
+		cout << "     |///|     " << endl;
 		cout << "The front wall is empty with no water and a huge crack in the middle like a sea creature bust through it" << endl;
 	}
 
 	else if (input == "left") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "| P |     |///|" << endl;
+		cout << "     |///|     " << endl;
 		cout << "The left glass of the aquariaum is covered with moss, plants and a slight crack in the glass." <<endl;
 		cout << "A chunk of glass seems to have broken off onto the floor." << endl;
 		cout << "Within the decrypted messages on the broken markings.\n [It States] What runs but has no feet? .\n roars but has no mouth? .\n Runs but never gets tired? .\n " << endl;
@@ -382,6 +435,10 @@ void Level2::runLeftRoom(Player& p, std::string input) {
 
 	}
 	else if (input == "right") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "|///|     | P |" << endl;
+		cout << "     |///|     " << endl;
 		cout << "The right glass wall holds beautiful sea creatures from all over the world" << endl;
 	}
 	else if (input == "water") {
@@ -405,13 +462,25 @@ void Level2::runLeftRoom(Player& p, std::string input) {
 void Level2::runUpRoom(Player& p, std::string input) {
 	cout << "EARTH ROOM" << endl;
 	if (input == "down") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "|///|     |///|" << endl;
+		cout << "     | P |     " << endl;
 		cout << "The back wall is rough and rocky. There appears to be nothing of use on this side of the room." << endl;
 	}
 	else if (input == "up") {
+		cout << " current location:" << endl;
+		cout << "     | P |           " << endl;
+		cout << "|///|     |///|" << endl;
+		cout << "     |///|     " << endl;
 		cout << "The front wall has text on it.\nI'm the third rock from the sun, with one moon as my companion\nIf you don't take care of me, who knows what'll happen" << endl;
 		cout << "I have oceans so deep and moutains so high\nI'm your home. What am I?" << endl;
 	}
 	else if (input == "left") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "| P |     |///|" << endl;
+		cout << "     |///|     " << endl;
 		cout << "The left wall is covered with large, spiky rocks. A chunk of one seems to have broken off onto the floor." << endl;
 		if (!sharpRockFound)
 		{
@@ -437,6 +506,10 @@ void Level2::runUpRoom(Player& p, std::string input) {
 		
 	}
 	else if (input == "right") {
+		cout << " current location:" << endl;
+		cout << "     |///|           " << endl;
+		cout << "|///|     | P |" << endl;
+		cout << "     |///|     " << endl;
 		if (!sharpRockFound) { // Rock is needed to break the glass
 			cout << "You see a glass jar behind a barrier, but you need something sharp to break it." << endl;
 		}
