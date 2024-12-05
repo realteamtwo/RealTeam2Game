@@ -136,8 +136,14 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 		string itemName;
 		cout << "Which item?: " << endl;
 		cin >> itemName;
-		if(itemName == //display name of item)
-		item.getDescription();
+		//I eventually want to make a specific single way to do it instead of an if for each case
+		if(itemName == "sharp rock") {
+			SharpRock.getDescription();
+		}
+		else if (itemName == "earth worms") {
+			JarOfEarthworms.getDescription();
+		}
+
 
 	}*/
 
