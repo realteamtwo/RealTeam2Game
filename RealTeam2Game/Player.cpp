@@ -35,6 +35,7 @@ bool Player::hasItem(Item item) {
 	return false;
 }
 
+/*
 string Player::inspectDescription(string name) {
 	for (int i = 0; i < items.size(); i++) {
 		//Item::getDisplayName;
@@ -43,6 +44,7 @@ string Player::inspectDescription(string name) {
 		//}
 	}
 }
+*/
 
 void Player::setLevel(int l) {
 	level = l;
