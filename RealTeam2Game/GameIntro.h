@@ -23,9 +23,9 @@ Determined to escape, (Player) discovers that the tower is a labyrinth of shifti
 They could either be as simple as matching words on a desk or as hard as deciphering a mysterious language.
 
 As (Player) navigates this perilous environment, they must solve intricate puzzles, each designed to test her intellect and magical prowess. Along the way, they encounter remnants of (Evil Alchemist) past victims—spirits trapped in the tower, their whispers guiding or misdirecting her. 
-To escape, (Player) must harness the very magic that brought them here, learning to bend the rules of her own spells to manipulate the tower’s layout.With every level she descends, the challenges become more daunting, revealing more about (Evil Alchemist) dark experiments and his ultimate goal: to unlock the secrets of life and death.
+To escape, (Player) must harness the very magic that brought them here, learning to bend the rules of her own spells to manipulate the tower's layout.With every level she descends, the challenges become more daunting, revealing more about (Evil Alchemist) dark experiments and his ultimate goal: to unlock the secrets of life and death.
 (Player) journey is not just a race against time to escape; it becomes a quest to confront her own fears, unravel the truth behind the alchemist's madness, and ultimately challenge the very forces that have ensnared them.
-Can (Player) outwit the tower’s defenses, confront (Evil Alchemist) dark legacy, and find their way back home before it’s too late? The fate of the world—and perhaps their very soul—hangs in the balance.
+Can (Player) outwit the tower's defenses, confront (Evil Alchemist) dark legacy, and find their way back home before it's too late? The fate of the world—and perhaps their very soul—hangs in the balance.
   */
 
 //controls rough draft: To descend the Tower, you must open the trapdoor in the middle of each room,

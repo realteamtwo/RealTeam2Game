@@ -22,7 +22,13 @@ public:
 
 	//Calls the appropriate function for interacting with the player's current room
 	void interact(Player& p, std::string);
+
+	//Checks if a riddle has been solved yet
+	bool getRiddleSolved(int riddleNumber);
 private:
+
+	bool doorunlocked = false;
+
 	//Center room function, takes the player's current input, runs if in center room and is where player first goes
 	void runCenterRoom(Player& p, std::string);
 

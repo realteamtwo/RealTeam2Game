@@ -3,6 +3,12 @@
 #include "Player.h"
 #include "Item.h"
 
+#include <algorithm>
+#include <cstdlib>
+#include <ctime>
+#include <string>
+#include <vector>
+
 
 //declaring Items so they can be used in methods
 Item MagicPowder;
@@ -11,6 +17,7 @@ Item IceHerbs;
 Item AcidPotion;
 Item GrowthPotion;
 Item VolatileEssence;
+Item Trowel;
 
 Level3::Level3() {
 	//items we might encounter in level 3 not sure where to put these
@@ -35,12 +42,33 @@ Level3::Level3() {
 	//Volatile Essence
 	VolatileEssence.setDescription("A box with many warnings on it, containing a bright red powder.");
 	VolatileEssence.setDisplayName("Volatile Essence");
+	Trowel.setDescription("A small trowel with magic runes engraved on it");
+	Trowel.setDisplayName("Trowel");
 
 	cauldronExploded = false;
 	plantGrown = false;
 }
 
-
+string inspectDescription3(string itemName) {
+	if (itemName == "magic powder") {
+		return MagicPowder.getDescription();
+	}
+	else if (itemName == "snake venom") {
+		return SnakeVenom.getDescription();
+	}
+	else if (itemName == "ice herbs") {
+		return IceHerbs.getDescription();
+	}
+	else if (itemName == "acid potion") {
+		return AcidPotion.getDescription();
+	}
+	else if (itemName == "growth potion") {
+		return GrowthPotion.getDescription();
+	}
+	else if (itemName == "volatile essence") {
+		return VolatileEssence.getDescription();
+	}
+}
 
 
 
@@ -55,9 +83,16 @@ void Level3::displayDescription(Player& p) {
 		//also will be in the else once we figure out how the door unlocks in this room
 		if (cauldronExploded == true) //Checks if the leave condition has been met and prints different text
 		{
-			cout << "The cauldron has exploded and revealed a path forward." << endl;
-			cout << "You are in a central area with an opening in the floor. The cauldron is gone." << endl;
-			cout << "Four hallways extend from this room to other areas." << endl;
+			if (doorunlocked == false)
+			{
+				// How much time has passed in the game overall since beating level 2
+				cout << "\n" << "Level #3 has been completed in: ";
+				L3Time.printDiffTime();
+				doorunlocked = true;
+			}
+				cout << "The cauldron has exploded and revealed a path forward." << endl;
+				cout << "You are in a central area with an opening in the floor. The cauldron is gone." << endl;
+				cout << "Four hallways extend from this room to other areas." << endl;
 		}
 		else
 		{
@@ -84,8 +119,8 @@ void Level3::displayDescription(Player& p) {
 		break;
 		//put which
 	case Location3::LEFT_ROOM:
-		
-		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
+
+		cout << "Type 'look' to see. If you want to go back type leave. " << endl;
 		break;
 		//put which room 
 	case Location3::UP_ROOM:
@@ -154,8 +189,7 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 		cout << "| P |     |///|" << endl;
 		cout << "     |///|     " << endl;
 		cout << " you go left" << endl;
-		cout << "There is nothing" << endl;
-	p.setLocation3(Level3::Location3::CENTER_ROOM);
+	p.setLocation3(Level3::Location3::LEFT_ROOM);
 
 		//update location to LEFT_ROOM
 	}
@@ -289,39 +323,13 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 		}
 	}
 	//for inspecting items in inventory
-	/*else if (input == "inspect") {
+	else if (input == "inspect") {
 		//we want to compare the name they put in to the name of the item
 		string itemName;
 		cout << "Which item?: " << endl;
 		cin >> itemName;
-		//I eventually want to make a specific single way to do it instead of an if for each case
-		if(itemName == "sharp rock") {
-			SharpRock.getDescription();
-		}
-		else if (itemName == "earth worms") {
-			JarOfEarthworms.getDescription();
-		}
-		else if (itemName == "magic powder") {
-			MagicPowder.getDescription();
-		}
-		else if (itemName == "snake venom") {
-			SnakeVenom.getDescription();
-		}
-		else if (itemName == "ice herbs") {
-			IceHerbs.getDescription();
-		}
-		else if (itemName == "acid potion") {
-			AcidPotion.getDescription();
-		}
-		else if (itemName == "growth potion") {
-			GrowthPotion.getDescription();
-		}
-		else if (itemName == "volatile essence") {
-			VolatileEssence.getDescription();
-		}
-
-
-	}*/
+		inspectDescription3(itemName);
+	}
 	//need unlocking here
 	// Add Stop Watch Code for Level 3
 
@@ -400,7 +408,7 @@ void Level3::runDownRoom(Player& p, std::string input) {
 		cout << "     |///|           " << endl;
 		cout << "| P |     |///|" << endl;
 		cout << "     |///|     " << endl;
-		cout << "There is an open chest. Inside there is what looks like the fossilized remains of a snake, and a vial of liquid" << endl;
+		cout << "There is an open chest. Inside there is what looks like the fossilized remains of a snake, and a VIAL of liquid" << endl;
 	}
 	else if (input == "right") {
 		cout << " current location:" << endl;
@@ -463,6 +471,13 @@ void Level3::runDownRoom(Player& p, std::string input) {
 			p.addItem(VolatileEssence);
 		}
 	}
+	else if (input == "inspect") {
+		//we want to compare the name they put in to the name of the item
+		string itemName;
+		cout << "Which item?: " << endl;
+		cin >> itemName;
+		inspectDescription3(itemName);
+	}
 		
 }
 //this is the room the player can enter by going to the right from center room, the ice room
@@ -474,8 +489,13 @@ void Level3::runRightRoom(Player& p, std::string input) {
 		cout << "|///|     | P |" << endl;
 		cout << "     |///|     " << endl;
 		cout << "blue plants are sprouting in pots of frozen earth. " << endl;
-		cout << "You picked up Herbs! " << endl;
-		p.addItem(IceHerbs);
+		if (p.hasItem(Trowel)) {
+			cout << "You picked up Herbs with the Trowel! " << endl;
+			p.addItem(IceHerbs);
+		}
+		else {
+			cout << "If only you had something to help you get them out of the dirt..." << endl;
+		}
 	}
 	else if (input == "left") {
 		cout << " current location:" << endl;
@@ -503,6 +523,14 @@ void Level3::runRightRoom(Player& p, std::string input) {
 		cout << "You are in center room" << endl;
 		p.setLocation3(Level3::Location3::CENTER_ROOM);
 	}
+
+	if (input == "inspect") {
+		//we want to compare the name they put in to the name of the item
+		string itemName;
+		cout << "Which item?: " << endl;
+		cin >> itemName;
+		inspectDescription3(itemName);
+	}
 	
 }
 //this is the room the player can enter by going to the up from center room, the ACID POTION room
@@ -513,7 +541,7 @@ void Level3::runUpRoom(Player& p, std::string input) {
 	// handles the interaction when the player moves up to the riddle wall.
 	/*if (input == "up") {
 		cout << "You approach the wall with the riddle. The symbols glow faintly, drawing your attention to the carved words:" << endl;
-		cout << "'I am something that burns, but I’m not fire. I am a liquid that can melt steel.' " << endl;
+		cout << "'I am something that burns, but I'm not fire. I am a liquid that can melt steel.' " << endl;
 		cout << "What is your answer?" << endl;
 		string answer;
 		cin >> answer;
@@ -536,7 +564,7 @@ void Level3::runUpRoom(Player& p, std::string input) {
 	// handles the interaction when the player moves left to the shelves of ingredients.
 	else if (input == "left") {
 		cout << "You move to the left wall. Shelves stacked with dusty bottles and peculiar artifacts line the surface." << endl;
-		cout << "One jar stands out, glowing faintly, but it’s sealed tightly. There doesn’t seem to be anything else useful here." << endl;
+		cout << "One jar stands out, glowing faintly, but it's sealed tightly. There doesn't seem to be anything else useful here." << endl;
 	}//handles the interaction when the user moves right to the alchemical table.
 	else if (input == "right") {
 		cout << "You approach a small alchemical table on the right. Strange instruments and scattered notes cover its surface." << endl;
@@ -545,7 +573,7 @@ void Level3::runUpRoom(Player& p, std::string input) {
 	// displaying the description of the room, when the player inputs look 
 	else if (input == "look") {
 		cout << "The room is dimly lit, with bubbling sounds coming from a cauldron in the corner." << endl;
-		cout << "The walls are covered in glowing symbols. There’s a riddle inscribed on the wall to the north." << endl;
+		cout << "The walls are covered in glowing symbols. There's a riddle inscribed on the wall to the north." << endl;
 		cout << "Shelves of ingredients line the west, while an alchemical table occupies the east." << endl;
 		cout << "The door to the Ice Room stands to the south, locked tight with frost." << endl;
 	}
@@ -559,5 +587,225 @@ void Level3::runUpRoom(Player& p, std::string input) {
 	}*/
 
 }
+//for hangman in left room
+#define MAX_ATTEMPTS 6
+bool hasWon = false;
+class HangmanGame {
+public:
+	// constructor to ini
+	HangmanGame()
+	{
+		srand(static_cast<unsigned int>(time(nullptr)));
+		secretWord = "trowel";
+		currentWord = string(secretWord.length(), '_');
+		attemptsLeft = MAX_ATTEMPTS;
+	}
+
+	// function to start the game.
+	void play()
+	{
+		cout << "You find in this room a strange image made with light magic" << endl;
+		cout << "HANGMAN" << endl;
+		cout << "   _____" << endl;
+		cout << "  |     |" << endl;
+		cout << "  |      " << endl;
+		cout << "  |" << endl;
+		cout << "  |" << endl;
+		cout << "  |" << endl;
+		cout << "  |" << endl;
+
+		cout << "You have " << attemptsLeft
+			<< " attempts to guess the word."
+			<< endl;
+
+		// the main game loop which will go on till the
+		// attempts are left or the game is won.
+		while (attemptsLeft > 0) {
+			displayGameInfo();
+			char guess;
+			cout << "Guess a letter: ";
+			cin >> guess;
+
+			if (isalpha(guess)) {
+				guess = tolower(guess);
+				if (alreadyGuessed(guess)) {
+					cout << "You've already guessed that "
+						"letter."
+						<< endl;
+				}
+				else {
+					bool correctGuess = updateCurrentWord(guess);
+					// if the guess is correct, we will
+					// update the word and check if the word
+					// is completely guessed or not
+					if (correctGuess) {
+						cout << "Good guess!" << endl;
+						drawHangman(attemptsLeft);
+						// if the word is completely
+						// guessed.
+						if (currentWord == secretWord) {
+							displayGameInfo();
+							cout << "Congratulations! You "
+								"guessed the word: "
+								<< secretWord << endl;
+							hasWon = true;
+							return;
+						}
+					}
+					else {
+						cout << "Incorrect guess." << endl;
+						attemptsLeft--;
+						drawHangman(attemptsLeft);
+					}
+				}
+			}
+			else {
+				cout << "Please enter a valid letter."
+					<< endl;
+			}
+		}
+
+		if (attemptsLeft == 0) {
+			displayGameInfo();
+			cout << "You've run out of attempts." << endl;
+			cout << "restarting game" << endl;
+			attemptsLeft = 6;
+			currentWord = string(secretWord.length(), '_');
+		}
+	}
+
+private:
+	string secretWord;
+	string currentWord;
+	int attemptsLeft;
+	vector<char> guessedLetters;
+
+
+	// checking if the word is already guessed
+	bool alreadyGuessed(char letter)
+	{
+		return find(guessedLetters.begin(),
+			guessedLetters.end(), letter)
+			!= guessedLetters.end();
+	}
+
+	// updating the word after correct guess
+	bool updateCurrentWord(char letter)
+	{
+		bool correctGuess = false;
+		for (int i = 0; i < secretWord.length(); i++) {
+			if (secretWord[i] == letter) {
+				currentWord[i] = letter;
+				correctGuess = true;
+			}
+		}
+		guessedLetters.push_back(letter);
+		return correctGuess;
+	}
+
+	// function to provide the info at particular point in
+	// the game
+	void displayGameInfo()
+	{
+		cout << "Word: " << currentWord << endl;
+		cout << "Attempts left: " << attemptsLeft << endl;
+		cout << "Guessed letters: ";
+		for (char letter : guessedLetters) {
+			cout << letter << " ";
+		}
+		cout << endl;
+	}
+
+	// function to progressively draw the hangman
+	void drawHangman(int attemptsLeft)
+	{
+		// Add your hangman drawing logic here
+		// For simplicity, you can print a static hangman
+		// ASCII art Modify this function to display the
+		// hangman as you like
+		if (attemptsLeft == 6) {
+			cout << "   _____" << endl;
+			cout << "  |     |" << endl;
+			cout << "  |      " << endl;
+			cout << "  |" << endl;
+			cout << "  |" << endl;
+			cout << "  |" << endl;
+			cout << "  |" << endl;
+		}
+		else if (attemptsLeft == 5) {
+			cout << "   _____" << endl;
+			cout << "  |     |" << endl;
+			cout << "  |     O" << endl;
+			cout << "  |" << endl;
+			cout << "  |" << endl;
+			cout << "  |" << endl;
+			cout << "  |" << endl;
+		}
+		else if (attemptsLeft == 4) {
+			cout << "   _____" << endl;
+			cout << "  |     |" << endl;
+			cout << "  |     O" << endl;
+			cout << "  |     |" << endl;
+			cout << "  |" << endl;
+			cout << "  |" << endl;
+			cout << "  |" << endl;
+		}
+		else if (attemptsLeft == 3) {
+			cout << "   _____" << endl;
+			cout << "  |     |" << endl;
+			cout << "  |     O" << endl;
+			cout << "  |    /|" << endl;
+			cout << "  |" << endl;
+			cout << "  |" << endl;
+			cout << "  |" << endl;
+		}
+		else if (attemptsLeft == 2) {
+			cout << "   _____" << endl;
+			cout << "  |     |" << endl;
+			cout << "  |     O" << endl;
+			cout << "  |    /|\\" << endl;
+			cout << "  |" << endl;
+			cout << "  |" << endl;
+			cout << "  |" << endl;
+		}
+		else if (attemptsLeft == 1) {
+			cout << "   _____" << endl;
+			cout << "  |     |" << endl;
+			cout << "  |     O" << endl;
+			cout << "  |    /|\\" << endl;
+			cout << "  |    /" << endl;
+			cout << "  |" << endl;
+			cout << "  |" << endl;
+		}
+		else if (attemptsLeft == 0) {
+			cout << "   _____" << endl;
+			cout << "  |     |" << endl;
+			cout << "  |     O" << endl;
+			cout << "  |    /|\\" << endl;
+			cout << "  |    / \\" << endl;
+			cout << "  |" << endl;
+			cout << "  |" << endl;
+		}
+	}
+};
+
+
 void Level3::runLeftRoom(Player& p, std::string input) {
+	if (p.hasItem(Trowel)) {
+		cout << "You have already solved the room there is nothing left here" << endl;
+	}
+	else {
+		while (hasWon != true) {
+			HangmanGame game;
+			game.play();
+		}
+		cout << "You received a trowel! " << endl;
+		p.addItem(Trowel);
+	}
+	cout << "type leave to leave" << endl;
+
+	if (input == "leave") {
+		cout << "You are in center room" << endl;
+		p.setLocation3(Level3::Location3::CENTER_ROOM);
+	}
 }

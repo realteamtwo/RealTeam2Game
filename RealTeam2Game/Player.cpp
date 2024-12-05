@@ -35,6 +35,11 @@ bool Player::hasItem(Item item) {
 	return false;
 }
 
+string Player::inspectDescription(string name) {
+	for (int i = 0; i < items.size(); i++) {
+	}
+}
+
 void Player::setLevel(int l) {
 	level = l;
 }
@@ -63,6 +68,7 @@ Level4::Location4 Player::getLocation4() {
 vector<Item> Player::getItems() {
 	return items;
 }
+
 
 
 int Player::getLevel() {

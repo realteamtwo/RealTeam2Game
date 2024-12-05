@@ -13,6 +13,16 @@ bool earthSolved = false;
 bool airSolved = false;
 
 bool doorUnlocked = false;
+bool anagramSolved = false;
+
+string inspectDescription2(string itemName) {
+	if (itemName == "sharp rock") {
+		return SharpRock.getDescription();
+	}
+	else if (itemName == "earth worms") {
+		return JarOfEarthworms.getDescription();
+	}
+}
 
 void Level2::displayDescription(Player &p) {
 	switch (p.getLocation()) {
@@ -147,21 +157,13 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 		p.setLevel(1);
 	}
 	//to check items in inventory
-	/*else if (input == "inspect") {
+	else if (input == "inspect") {
 		//we want to compare the name they put in to the name of the item
 		string itemName;
 		cout << "Which item?: " << endl;
 		cin >> itemName;
-		//I eventually want to make a specific single way to do it instead of an if for each case
-		if(itemName == "sharp rock") {
-			SharpRock.getDescription();
-		}
-		else if (itemName == "earth worms") {
-			JarOfEarthworms.getDescription();
-		}
-
-
-	}*/
+	
+	}
 
 }
 
@@ -181,6 +183,8 @@ void Level2::runDownRoom(Player &p, std::string input) {
 		cout << "| P |     |///|" << endl;
 		cout << "     |///|     " << endl;
 		cout << "The wall is decorated with swirls" << endl;
+		cout << "On the wall are the letters:  d t a n r o o  " << endl;
+		cout << "what could it mean? " << endl;
 	}
 
 	else if (input == "right") {
@@ -206,6 +210,17 @@ void Level2::runDownRoom(Player &p, std::string input) {
 		cout << "You solved the riddle!" << endl;
 		//maybe get item air key or update an unlocking variable (going with variable for now)
 		airSolved = true;
+	}
+	else if (input == "tornado") {
+		cout << "The shutters open wide to reveal a riddle on the down wall" << endl;
+		anagramSolved = true;
+	}
+	else if (input == "inspect") {
+		//we want to compare the name they put in to the name of the item
+		string itemName;
+		cout << "Which item?: " << endl;
+		cin >> itemName;
+
 	}
 }
 
@@ -247,10 +262,10 @@ void Level2::runRightRoom(Player& p, std::string input) {
 		cout << "     |///|     " << endl;
 		if (!fireextinguisherFound) {
 			cout << "The left wall has a riddle:\n"
-				<< "\"I can stop flames, but I’m not water. You spray me to put out fire. What am I?\"\n";
+				<< "\"I can stop flames, but I'm not water. You spray me to put out fire. What am I?\"\n";
 			cout << "Enter your answer: ";
 			string answer;
-			cin >> answer;
+			getline(cin,answer);
 
 			if (answer == "fireextinguisher" || answer == "fire extinguisher" || answer == "extinguisher"|| answer == "fe") {
 				cout << "Correct! You've obtained the Fire Extinguisher!\n";
@@ -308,7 +323,7 @@ void Level2::runRightRoom(Player& p, std::string input) {
 	}
 	else if (input == "jump") {
 		cout << "You jump out of the window and exit the fire room successfully!\n";
-		// Update player’s location or end the room interaction
+		// Update player's location or end the room interaction
 		p.setLocation(Level2::Location::CENTER_ROOM); // or another exit location as per game design
 	}
 	// Right wall interaction: Door with matchstick lock puzzle
@@ -359,15 +374,15 @@ void Level2::runRightRoom(Player& p, std::string input) {
 		cout << "|///|     |///|" << endl;
 		cout << "     |///|     " << endl;
 		if (fireextinguisherFound) {
-			cout << "There’s a fire on the wall.\n"
+			cout << "There's a fire on the wall.\n"
 				<< "Use an item from your inventory to clear the fire: ";
 			string item;
 			cin >> item;
-			if (item == "fireextinguisher") {
+			if (item == "fireextinguisher"|| item == "fire extinguisher" || item =="fe" || item =="fire extinguisher") {
 				cout << "You used the Fire Extinguisher to clear the flames! The path is now accessible.\n";
 				cout << "The wall reads:" << endl;
 				cout << "I am often found in a box," << endl;
-				cout << "Strike me once, and I’ll make sparks," << endl;
+				cout << "Strike me once, and I'll make sparks," << endl;
 				cout << "I can help you start a fire,  Or light up darkened parks." << endl;
 				cout << "What am I?" << endl;
 				cout << "Enter your answer: ";
@@ -388,7 +403,7 @@ void Level2::runRightRoom(Player& p, std::string input) {
 			}
 		}
 		else {
-			cout << "There’s a fire blocking your way. You need something to clear it first.\n";
+			cout << "There's a fire blocking your way. You need something to clear it first.\n";
 		}
 	}
 	else {
@@ -440,8 +455,14 @@ void Level2::runLeftRoom(Player& p, std::string input) {
 	else if (input == "leave") {
 		cout << "You leave the Water Room" << endl << endl;
 		p.setLocation(Level2::Location::CENTER_ROOM);
-		}
-	
+	}
+	else if (input == "inspect") {
+		//we want to compare the name they put in to the name of the item
+		string itemName;
+		cout << "Which item?: " << endl;
+		cin >> itemName;
+
+	}
 	
 }
 
@@ -544,5 +565,12 @@ void Level2::runUpRoom(Player& p, std::string input) {
 	else if (input == "leave") {
 		cout << "You leave the Earth Room" << endl << endl;
 		p.setLocation(Level2::Location::CENTER_ROOM);
+	}
+	else if (input == "inspect") {
+		//we want to compare the name they put in to the name of the item
+		string itemName;
+		cout << "Which item?: " << endl;
+		cin >> itemName;
+
 	}
 }
