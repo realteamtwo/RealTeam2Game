@@ -258,6 +258,8 @@ void Level2::runRightRoom(Player& p, std::string input) {
 				<< "\"I can stop flames, but I'm not water. You spray me to put out fire. What am I?\"\n";
 			cout << "Enter your answer: ";
 			string answer;
+			cin.clear();
+			cin.ignore();
 			getline(cin,answer);
 
 			if (answer == "fireextinguisher" || answer == "fire extinguisher" || answer == "extinguisher"|| answer == "fe") {
