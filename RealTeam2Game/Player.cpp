@@ -37,6 +37,10 @@ bool Player::hasItem(Item item) {
 
 string Player::inspectDescription(string name) {
 	for (int i = 0; i < items.size(); i++) {
+		//Item::getDisplayName;
+		//if(name == ?) {
+			//Item::getDescription
+		//}
 	}
 }
 

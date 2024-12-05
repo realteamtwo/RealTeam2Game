@@ -9,6 +9,7 @@ Level4::Level4()
 	riddleTwoSolved = false;
 	riddleThreeSolved = false;
 };
+
 //tictactoe code variables
 void drawBoard(char* spaces);
 void playerMove(char* spaces, char player);

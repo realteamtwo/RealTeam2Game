@@ -15,14 +15,7 @@ bool airSolved = false;
 bool doorUnlocked = false;
 bool anagramSolved = false;
 
-string inspectDescription2(string itemName) {
-	if (itemName == "sharp rock") {
-		return SharpRock.getDescription();
-	}
-	else if (itemName == "earth worms") {
-		return JarOfEarthworms.getDescription();
-	}
-}
+
 
 void Level2::displayDescription(Player &p) {
 	switch (p.getLocation()) {
