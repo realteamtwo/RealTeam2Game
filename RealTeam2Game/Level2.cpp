@@ -229,12 +229,14 @@ void Level2::runRightRoom(Player& p, std::string input) {
 	*/
 	// Left wall interaction: Fire extinguisher riddle
 	if (input == "left") {
+		cin.ignore();
+
 		if (!fireextinguisherFound) {
 			cout << "The left wall has a riddle:\n"
 				<< "\"I can stop flames, but I'm not water. You spray me to put out fire. What am I?\"\n";
 			cout << "Enter your answer: ";
 			string answer;
-			cin >> answer;
+			getline(cin,answer);
 
 			if (answer == "fireextinguisher" || answer == "fire extinguisher" || answer == "extinguisher"|| answer == "fe") {
 				cout << "Correct! You've obtained the Fire Extinguisher!\n";
@@ -288,7 +290,7 @@ void Level2::runRightRoom(Player& p, std::string input) {
 	}
 	else if (input == "jump") {
 		cout << "You jump out of the window and exit the fire room successfully!\n";
-		// Update player’s location or end the room interaction
+		// Update player's location or end the room interaction
 		p.setLocation(Level2::Location::CENTER_ROOM); // or another exit location as per game design
 	}
 	// Right wall interaction: Door with matchstick lock puzzle
@@ -331,7 +333,7 @@ void Level2::runRightRoom(Player& p, std::string input) {
 	}
 	else if (input == "up") {
 		if (fireextinguisherFound) {
-			cout << "There’s a fire on the wall.\n"
+			cout << "There's a fire on the wall.\n"
 				<< "Use an item from your inventory to clear the fire: ";
 			string item;
 			cin >> item;
@@ -339,7 +341,7 @@ void Level2::runRightRoom(Player& p, std::string input) {
 				cout << "You used the Fire Extinguisher to clear the flames! The path is now accessible.\n";
 				cout << "The wall reads:" << endl;
 				cout << "I am often found in a box," << endl;
-				cout << "Strike me once, and I’ll make sparks," << endl;
+				cout << "Strike me once, and I'll make sparks," << endl;
 				cout << "I can help you start a fire,  Or light up darkened parks." << endl;
 				cout << "What am I?" << endl;
 				cout << "Enter your answer: ";
@@ -360,7 +362,7 @@ void Level2::runRightRoom(Player& p, std::string input) {
 			}
 		}
 		else {
-			cout << "There’s a fire blocking your way. You need something to clear it first.\n";
+			cout << "There's a fire blocking your way. You need something to clear it first.\n";
 		}
 	}
 	else {
