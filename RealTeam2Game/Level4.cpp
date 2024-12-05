@@ -121,7 +121,7 @@ void Level4::runCenterRoom(Player& p, std::string input) {
 		cout << " current location:" << endl;
 		cout << "     |///|           " << endl;
 		cout << "|///|     | P |" << endl;
-		cout << "     |///|     " << endl;
+		cout << "  u   |///|     " << endl;
 		cout << "You go right" << endl;
 		p.setLocation4(Level4::Location4::RIGHT_ROOM);
 		//Update location to RIGHT_ROOM
