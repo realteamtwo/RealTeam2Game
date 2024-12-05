@@ -16,10 +16,10 @@ bool doorUnlocked = false;
 
 string inspectDescription2(string itemName) {
 	if (itemName == "sharp rock") {
-		SharpRock.getDescription();
+		return SharpRock.getDescription();
 	}
 	else if (itemName == "earth worms") {
-		JarOfEarthworms.getDescription();
+		return JarOfEarthworms.getDescription();
 	}
 }
 

@@ -580,6 +580,7 @@ void Level3::runLeftRoom(Player& p, std::string input) {
 		cout << "You have already solved the room there is nothing left here" << endl;
 	}
 	else {
+
 		p.addItem(Trowel);
 	}
 	cout << "type leave to leave" << endl;
