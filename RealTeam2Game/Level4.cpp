@@ -9,6 +9,180 @@ Level4::Level4()
 	riddleTwoSolved = false;
 	riddleThreeSolved = false;
 };
+//tictactoe code variables
+void drawBoard(char* spaces);
+void playerMove(char* spaces, char player);
+void computerMove(char* spaces, char computer);
+bool checkWinner(char* spaces, char player, char computer);
+bool checkTie(char* spaces);
+int ticWins = 0;
+//tictactoe code
+void playGame() {
+	while (ticWins < 3) {
+		char spaces[9] = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
+		char player = 'X';
+		char computer = 'O';
+		bool running = true;
+		drawBoard(spaces);
+
+		while (running) {
+			playerMove(spaces, player);
+			drawBoard(spaces);
+			if (checkWinner(spaces, player, computer)) {
+				running = false;
+				break;
+			}
+			else if (checkTie(spaces)) {
+				running = false;
+				break;
+			}
+
+			computerMove(spaces, computer);
+			drawBoard(spaces);
+			if (checkWinner(spaces, player, computer)) {
+				running = false;
+				break;
+			}
+			else if (checkTie(spaces)) {
+				running = false;
+				break;
+			}
+		}
+		cout << "I'll show you!" << endl;
+	}
+}
+
+void drawBoard(char* spaces) {
+	cout << '\n';
+	cout << "     |     |     " << '\n';
+	cout << "  " << spaces[0] << "  |  " << spaces[1] << "  |  " << spaces[2] << "  " << '\n';
+	cout << "_____|_____|_____" << '\n';
+	cout << "     |     |     " << '\n';
+	cout << "  " << spaces[3] << "  |  " << spaces[4] << "  |  " << spaces[5] << "  " << '\n';
+	cout << "_____|_____|_____" << '\n';
+	cout << "     |     |     " << '\n';
+	cout << "  " << spaces[6] << "  |  " << spaces[7] << "  |  " << spaces[8] << "  " << '\n';
+	cout << "     |     |     " << '\n';
+	cout << '\n';
+}
+void playerMove(char* spaces, char player) {
+	int number;
+	do {
+		cout << "Enter (1-9) to pick a square to place marker: ";
+		cin >> number;
+		number--;
+		if (spaces[number] == ' ') {
+			spaces[number] = player;
+			break;
+		}
+	} while (!number > 0 || !number < 8);
+}
+void computerMove(char* spaces, char computer) {
+	int number;
+	srand(time(0));
+
+	while (true) {
+		number = rand() % 9;
+		if (spaces[number] == ' ') {
+			spaces[number] = computer;
+			break;
+		}
+	}
+}
+bool checkWinner(char* spaces, char player, char computer) {
+
+	if ((spaces[0] != ' ') && (spaces[0] == spaces[1]) && (spaces[1] == spaces[2])) {
+		if (spaces[0] == player) {
+			cout << "YOU WIN!" << endl;;
+			ticWins++;
+		}
+		else {
+			cout << "YOU LOSE! Muahahaha\n";
+		}
+	}
+	else if ((spaces[3] != ' ') && (spaces[3] == spaces[4]) && (spaces[4] == spaces[5])) {
+		if (spaces[3] == player) {
+			cout << "YOU WIN!" << endl;;
+			ticWins++;
+		}
+		else {
+			cout << "YOU LOSE! Muahahaha" << endl;
+		}
+	}
+	else if ((spaces[6] != ' ') && (spaces[6] == spaces[7]) && (spaces[7] == spaces[8])) {
+		if (spaces[6] == player) {
+			cout << "YOU WIN!" << endl;;
+			ticWins++;
+		}
+		else {
+			cout << "YOU LOSE! Muahahaha" << endl;
+		}
+	}
+	else if ((spaces[0] != ' ') && (spaces[0] == spaces[3]) && (spaces[3] == spaces[6])) {
+		if (spaces[0] == player) {
+			cout << "YOU WIN!" << endl;;
+			ticWins++;
+		}
+		else {
+			cout << "YOU LOSE! Muahahaha" << endl;
+		}
+	}
+	else if ((spaces[1] != ' ') && (spaces[1] == spaces[4]) && (spaces[4] == spaces[7])) {
+		if (spaces[1] == player) {
+			cout << "YOU WIN!" << endl;;
+			ticWins++;
+		}
+		else {
+			cout << "YOU LOSE! Muahahaha" << endl;
+		}
+	}
+	else if ((spaces[2] != ' ') && (spaces[2] == spaces[5]) && (spaces[5] == spaces[8])) {
+		if (spaces[2] == player) {
+			cout << "YOU WIN!" << endl;;
+			ticWins++;
+		}
+		else {
+			cout << "YOU LOSE! Muahahaha" << endl;
+		}
+	}
+	else if ((spaces[0] != ' ') && (spaces[0] == spaces[4]) && (spaces[4] == spaces[8])) {
+		if (spaces[0] == player) {
+			cout << "YOU WIN!" << endl;;
+			ticWins++;
+		}
+		else {
+			cout << "YOU LOSE! Muahahaha" << endl;
+		}
+	}
+	else if ((spaces[2] != ' ') && (spaces[2] == spaces[4]) && (spaces[4] == spaces[6])) {
+		if (spaces[2] == player) {
+			cout << "YOU WIN!" << endl;;
+			ticWins++;
+		}
+		else {
+			cout << "YOU LOSE! Muahahaha" << endl;
+		}
+	}
+	else {
+		return false;
+	}
+
+	return true;
+}
+bool checkTie(char* spaces) {
+
+	for (int i = 0; i < 9; i++) {
+		if (spaces[i] == ' ') {
+			return false;
+		}
+	}
+	cout << "IT'S A TIE!\n";
+	return true;
+}
+
+
+
+
 
 void Level4::displayDescription(Player& p) 
 {
@@ -21,6 +195,13 @@ void Level4::displayDescription(Player& p)
 		cout << "You are in a central area at the base of the tower. The Evil Alchemist stands before you." << endl;
 		cout << "'You have done well to make it this far, but believe me. Escaping this tower will not be so simple' he says." << endl;
 		cout << "'On this final floor resides your final riddles to solve. If you solve them, you may leave, but if you cannot, you will remain here forever!" << endl;
+		cout << "But before that I challenge you to a little game" << endl;
+
+		cout << "The Evil Alchemist has challenged you to Tic-Tac-Toe" << endl;
+		cout << "Defeat him 3 times to move on" << endl;
+		playGame();
+		cout << "I'll get you for this" << endl;
+
 		cout << "You will need to use all of the tower's resources to solve this challenge. Some clues may be lying in other parts of the tower." << endl;
 		cout << "Prove to me that you deserve to escape, or remain here with me as my test subject for eternity!'" << endl << endl;
 		//First riddle prompt from the Evil Alchemist, checks that the first riddle hasn't been solved yet
