@@ -14,6 +14,15 @@ bool airSolved = false;
 
 bool doorUnlocked = false;
 
+string inspectDescription2(string itemName) {
+	if (itemName == "sharp rock") {
+		SharpRock.getDescription();
+	}
+	else if (itemName == "earth worms") {
+		JarOfEarthworms.getDescription();
+	}
+}
+
 void Level2::displayDescription(Player &p) {
 	switch (p.getLocation()) {
 	case Location::CENTER_ROOM:
@@ -131,21 +140,13 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 		p.setLevel(1);
 	}
 	//to check items in inventory
-	/*else if (input == "inspect") {
+	else if (input == "inspect") {
 		//we want to compare the name they put in to the name of the item
 		string itemName;
 		cout << "Which item?: " << endl;
 		cin >> itemName;
-		//I eventually want to make a specific single way to do it instead of an if for each case
-		if(itemName == "sharp rock") {
-			SharpRock.getDescription();
-		}
-		else if (itemName == "earth worms") {
-			JarOfEarthworms.getDescription();
-		}
-
-
-	}*/
+	
+	}
 
 }
 
@@ -174,6 +175,13 @@ void Level2::runDownRoom(Player &p, std::string input) {
 		cout << "You solved the riddle!" << endl;
 		//maybe get item air key or update an unlocking variable (going with variable for now)
 		airSolved = true;
+	}
+	else if (input == "inspect") {
+		//we want to compare the name they put in to the name of the item
+		string itemName;
+		cout << "Which item?: " << endl;
+		cin >> itemName;
+
 	}
 }
 
@@ -376,8 +384,14 @@ void Level2::runLeftRoom(Player& p, std::string input) {
 	else if (input == "leave") {
 		cout << "You leave the Water Room" << endl << endl;
 		p.setLocation(Level2::Location::CENTER_ROOM);
-		}
-	
+	}
+	else if (input == "inspect") {
+		//we want to compare the name they put in to the name of the item
+		string itemName;
+		cout << "Which item?: " << endl;
+		cin >> itemName;
+
+	}
 	
 }
 
@@ -464,5 +478,12 @@ void Level2::runUpRoom(Player& p, std::string input) {
 	else if (input == "leave") {
 		cout << "You leave the Earth Room" << endl << endl;
 		p.setLocation(Level2::Location::CENTER_ROOM);
+	}
+	else if (input == "inspect") {
+		//we want to compare the name they put in to the name of the item
+		string itemName;
+		cout << "Which item?: " << endl;
+		cin >> itemName;
+
 	}
 }
