@@ -113,7 +113,7 @@ void Level3::displayDescription(Player& p) {
 		//put which
 	case Location3::LEFT_ROOM:
 
-		cout << "Type up, down, left, or right to look around. If you want to go back type leave. " << endl;
+		cout << "Type 'look' to see. If you want to go back type leave. " << endl;
 		break;
 		//put which room 
 	case Location3::UP_ROOM:
@@ -182,8 +182,7 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 		cout << "| P |     |///|" << endl;
 		cout << "     |///|     " << endl;
 		cout << " you go left" << endl;
-		cout << "There is nothing" << endl;
-	p.setLocation3(Level3::Location3::CENTER_ROOM);
+	p.setLocation3(Level3::Location3::LEFT_ROOM);
 
 		//update location to LEFT_ROOM
 	}

@@ -13,6 +13,7 @@ bool earthSolved = false;
 bool airSolved = false;
 
 bool doorUnlocked = false;
+bool anagramSolved = false;
 
 string inspectDescription2(string itemName) {
 	if (itemName == "sharp rock") {
@@ -153,11 +154,18 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 void Level2::runDownRoom(Player &p, std::string input) {
 	
 	if (input == "down") {
-		cout << "What travels in the daylight but casts no shadow? What can you feel but you cannot see? Say your answer" << endl;
+		if (anagramSolved == false) {
+			cout << "shutters block this wall with an arrow pointing left" << endl;
+		}
+		else {
+			cout << "What travels in the daylight but casts no shadow? What can you feel but you cannot see? Say your answer" << endl;
+		}
 	}
 
 	else if (input == "left") {
 		cout << "The wall is decorated with swirls" << endl;
+		cout << "On the wall are the letters:  d t a n r o o  " << endl;
+		cout << "what could it mean? " << endl;
 	}
 
 	else if (input == "right") {
@@ -175,6 +183,10 @@ void Level2::runDownRoom(Player &p, std::string input) {
 		cout << "You solved the riddle!" << endl;
 		//maybe get item air key or update an unlocking variable (going with variable for now)
 		airSolved = true;
+	}
+	else if (input == "tornado") {
+		cout << "The shutters open wide to reveal a riddle on the down wall" << endl;
+		anagramSolved = true;
 	}
 	else if (input == "inspect") {
 		//we want to compare the name they put in to the name of the item
@@ -219,7 +231,7 @@ void Level2::runRightRoom(Player& p, std::string input) {
 	if (input == "left") {
 		if (!fireextinguisherFound) {
 			cout << "The left wall has a riddle:\n"
-				<< "\"I can stop flames, but I’m not water. You spray me to put out fire. What am I?\"\n";
+				<< "\"I can stop flames, but I'm not water. You spray me to put out fire. What am I?\"\n";
 			cout << "Enter your answer: ";
 			string answer;
 			cin >> answer;
@@ -323,7 +335,7 @@ void Level2::runRightRoom(Player& p, std::string input) {
 				<< "Use an item from your inventory to clear the fire: ";
 			string item;
 			cin >> item;
-			if (item == "fireextinguisher") {
+			if (item == "fireextinguisher"|| item == "fire extinguisher" || item =="fe" || item =="fire extinguisher") {
 				cout << "You used the Fire Extinguisher to clear the flames! The path is now accessible.\n";
 				cout << "The wall reads:" << endl;
 				cout << "I am often found in a box," << endl;
