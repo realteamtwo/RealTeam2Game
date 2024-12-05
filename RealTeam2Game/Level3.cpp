@@ -541,7 +541,7 @@ void Level3::runUpRoom(Player& p, std::string input) {
 	// handles the interaction when the player moves up to the riddle wall.
 	/*if (input == "up") {
 		cout << "You approach the wall with the riddle. The symbols glow faintly, drawing your attention to the carved words:" << endl;
-		cout << "'I am something that burns, but I’m not fire. I am a liquid that can melt steel.' " << endl;
+		cout << "'I am something that burns, but I'm not fire. I am a liquid that can melt steel.' " << endl;
 		cout << "What is your answer?" << endl;
 		string answer;
 		cin >> answer;
@@ -564,7 +564,7 @@ void Level3::runUpRoom(Player& p, std::string input) {
 	// handles the interaction when the player moves left to the shelves of ingredients.
 	else if (input == "left") {
 		cout << "You move to the left wall. Shelves stacked with dusty bottles and peculiar artifacts line the surface." << endl;
-		cout << "One jar stands out, glowing faintly, but it’s sealed tightly. There doesn’t seem to be anything else useful here." << endl;
+		cout << "One jar stands out, glowing faintly, but it's sealed tightly. There doesn't seem to be anything else useful here." << endl;
 	}//handles the interaction when the user moves right to the alchemical table.
 	else if (input == "right") {
 		cout << "You approach a small alchemical table on the right. Strange instruments and scattered notes cover its surface." << endl;
@@ -573,7 +573,7 @@ void Level3::runUpRoom(Player& p, std::string input) {
 	// displaying the description of the room, when the player inputs look 
 	else if (input == "look") {
 		cout << "The room is dimly lit, with bubbling sounds coming from a cauldron in the corner." << endl;
-		cout << "The walls are covered in glowing symbols. There’s a riddle inscribed on the wall to the north." << endl;
+		cout << "The walls are covered in glowing symbols. There's a riddle inscribed on the wall to the north." << endl;
 		cout << "Shelves of ingredients line the west, while an alchemical table occupies the east." << endl;
 		cout << "The door to the Ice Room stands to the south, locked tight with frost." << endl;
 	}
