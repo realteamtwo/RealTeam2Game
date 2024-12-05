@@ -177,6 +177,14 @@ void Level4::runCenterRoom(Player& p, std::string input) {
 	else if ((input == "exit" || input == "EXIT" || input == "Exit") && riddleOneSolved == true && riddleTwoSolved == true && riddleThreeSolved == true)
 	{
 		cout << "You exit the tower having escaped the Evil Alchemist unharmed." << endl;
+
+		if (doorunlocked == false)
+			{
+				// How much time has passed in the game overall since beating level 2
+				cout << "\n" << "Level #4 has been completed in: ";
+				L4Time.printDiffTime();
+				doorunlocked = true;
+			}
 	}
 }
 
