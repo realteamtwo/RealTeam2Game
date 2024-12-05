@@ -288,8 +288,44 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 			brewPotion(p, ingredient1, ingredient2);
 		}
 	}
+	//for inspecting items in inventory
+	/*else if (input == "inspect") {
+		//we want to compare the name they put in to the name of the item
+		string itemName;
+		cout << "Which item?: " << endl;
+		cin >> itemName;
+		//I eventually want to make a specific single way to do it instead of an if for each case
+		if(itemName == "sharp rock") {
+			SharpRock.getDescription();
+		}
+		else if (itemName == "earth worms") {
+			JarOfEarthworms.getDescription();
+		}
+		else if (itemName == "magic powder") {
+			MagicPowder.getDescription();
+		}
+		else if (itemName == "snake venom") {
+			SnakeVenom.getDescription();
+		}
+		else if (itemName == "ice herbs") {
+			IceHerbs.getDescription();
+		}
+		else if (itemName == "acid potion") {
+			AcidPotion.getDescription();
+		}
+		else if (itemName == "growth potion") {
+			GrowthPotion.getDescription();
+		}
+		else if (itemName == "volatile essence") {
+			VolatileEssence.getDescription();
+		}
+
+
+	}*/
 	//need unlocking here
 	// Add Stop Watch Code for Level 3
+
+	
 }
 
 //Brew a potion given two items
