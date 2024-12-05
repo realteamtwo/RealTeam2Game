@@ -40,7 +40,26 @@ Level3::Level3() {
 	plantGrown = false;
 }
 
-
+string inspectDescription3(string itemName) {
+	if (itemName == "magic powder") {
+		return MagicPowder.getDescription();
+	}
+	else if (itemName == "snake venom") {
+		return SnakeVenom.getDescription();
+	}
+	else if (itemName == "ice herbs") {
+		return IceHerbs.getDescription();
+	}
+	else if (itemName == "acid potion") {
+		return AcidPotion.getDescription();
+	}
+	else if (itemName == "growth potion") {
+		return GrowthPotion.getDescription();
+	}
+	else if (itemName == "volatile essence") {
+		return VolatileEssence.getDescription();
+	}
+}
 
 
 
@@ -289,39 +308,13 @@ void Level3::runCenterRoom(Player& p, std::string input) {
 		}
 	}
 	//for inspecting items in inventory
-	/*else if (input == "inspect") {
+	else if (input == "inspect") {
 		//we want to compare the name they put in to the name of the item
 		string itemName;
 		cout << "Which item?: " << endl;
 		cin >> itemName;
-		//I eventually want to make a specific single way to do it instead of an if for each case
-		if(itemName == "sharp rock") {
-			SharpRock.getDescription();
-		}
-		else if (itemName == "earth worms") {
-			JarOfEarthworms.getDescription();
-		}
-		else if (itemName == "magic powder") {
-			MagicPowder.getDescription();
-		}
-		else if (itemName == "snake venom") {
-			SnakeVenom.getDescription();
-		}
-		else if (itemName == "ice herbs") {
-			IceHerbs.getDescription();
-		}
-		else if (itemName == "acid potion") {
-			AcidPotion.getDescription();
-		}
-		else if (itemName == "growth potion") {
-			GrowthPotion.getDescription();
-		}
-		else if (itemName == "volatile essence") {
-			VolatileEssence.getDescription();
-		}
-
-
-	}*/
+		inspectDescription3(itemName);
+	}
 	//need unlocking here
 	// Add Stop Watch Code for Level 3
 
@@ -400,7 +393,7 @@ void Level3::runDownRoom(Player& p, std::string input) {
 		cout << "     |///|           " << endl;
 		cout << "| P |     |///|" << endl;
 		cout << "     |///|     " << endl;
-		cout << "There is an open chest. Inside there is what looks like the fossilized remains of a snake, and a vial of liquid" << endl;
+		cout << "There is an open chest. Inside there is what looks like the fossilized remains of a snake, and a VIAL of liquid" << endl;
 	}
 	else if (input == "right") {
 		cout << " current location:" << endl;
@@ -463,6 +456,13 @@ void Level3::runDownRoom(Player& p, std::string input) {
 			p.addItem(VolatileEssence);
 		}
 	}
+	else if (input == "inspect") {
+		//we want to compare the name they put in to the name of the item
+		string itemName;
+		cout << "Which item?: " << endl;
+		cin >> itemName;
+		inspectDescription3(itemName);
+	}
 		
 }
 //this is the room the player can enter by going to the right from center room, the ice room
@@ -502,6 +502,14 @@ void Level3::runRightRoom(Player& p, std::string input) {
 	if (input == "leave") {
 		cout << "You are in center room" << endl;
 		p.setLocation3(Level3::Location3::CENTER_ROOM);
+	}
+
+	if (input == "inspect") {
+		//we want to compare the name they put in to the name of the item
+		string itemName;
+		cout << "Which item?: " << endl;
+		cin >> itemName;
+		inspectDescription3(itemName);
 	}
 	
 }
