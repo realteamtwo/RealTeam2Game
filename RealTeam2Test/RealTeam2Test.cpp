@@ -7,6 +7,7 @@
 #include "../RealTeam2Game/Item.cpp"
 #include "../RealTeam2Game/Level2.cpp"
 #include "../RealTeam2Game/Level3.cpp"
+#include "../RealTeam2Game/Level4.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -330,6 +331,68 @@ namespace RealTeam2Test
 			level.interact(player, "descend"); //Should let the player descend to level 4
 			currLevelNum = player.getLevel();
 			Assert::IsTrue(currLevelNum == 4);
+		}
+
+		//Make sure level 4 is solvable, with both "lowercase" and "Proper case" riddle solutions
+		TEST_METHOD(Level4SolveTest) {
+			Player player;
+			player.setLevel(4);
+
+			Level4 levelLowercase;
+			Logger::WriteMessage("// Testing that the level 4 riddles start unsolved");
+			Assert::IsFalse(levelLowercase.getRiddleSolved(1));
+			Assert::IsFalse(levelLowercase.getRiddleSolved(2));
+			Assert::IsFalse(levelLowercase.getRiddleSolved(3));
+
+			Logger::WriteMessage("// Testing lowercase level 4 riddle solutions (deal, surprise, please)");
+			levelLowercase.interact(player, "deal");
+			Assert::IsTrue(levelLowercase.getRiddleSolved(1));
+			levelLowercase.interact(player, "surprise");
+			Assert::IsTrue(levelLowercase.getRiddleSolved(2));
+			levelLowercase.interact(player, "please");
+			Assert::IsTrue(levelLowercase.getRiddleSolved(3));
+
+			Level4 levelProperCase;
+			Logger::WriteMessage("// Testing proper case level 4 riddle solutions (Deal, Surprise, Please");
+			levelProperCase.interact(player, "Deal");
+			Assert::IsTrue(levelProperCase.getRiddleSolved(1));
+			levelProperCase.interact(player, "Surprise");
+			Assert::IsTrue(levelProperCase.getRiddleSolved(2));
+			levelProperCase.interact(player, "Please");
+			Assert::IsTrue(levelProperCase.getRiddleSolved(3));
+		}
+
+		//Test other interactions in level 4, like getting riddles wrong or answering in the wrong order
+		TEST_METHOD(Level4IncorrectTest) {
+			Logger::WriteMessage("// Test inputting solutions to riddles 2 and 3 while still on riddle 1");
+			Player player;
+			Level4 level;
+
+			level.interact(player, "surprise");
+			Assert::IsFalse(level.getRiddleSolved(2));
+
+			level.interact(player, "please");
+			Assert::IsFalse(level.getRiddleSolved(3));
+
+			Logger::WriteMessage("// Test inputting a wrong answer to riddle 1");
+			level.interact(player, "gold");
+			Assert::IsFalse(level.getRiddleSolved(1));
+
+			level.interact(player, "deal");
+
+			Logger::WriteMessage("// Test inputting the solution to riddle 3 while still on riddle 2");
+			level.interact(player, "please");
+			Assert::IsFalse(level.getRiddleSolved(3));
+
+			Logger::WriteMessage("// Test inputting a wrong answer to riddle 2");
+			level.interact(player, "aether");
+			Assert::IsFalse(level.getRiddleSolved(2));
+
+			level.interact(player, "surprise");
+
+			Logger::WriteMessage("// Test inputting a wrong answer to riddle 3");
+			level.interact(player, "peas");
+			Assert::IsFalse(level.getRiddleSolved(3));
 		}
 
 		std::string catItemNames(vector<Item> itemList) {

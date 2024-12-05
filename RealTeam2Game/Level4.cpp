@@ -89,6 +89,23 @@ void Level4::interact(Player& p, std::string input) {
 	}
 }
 
+bool Level4::getRiddleSolved(int riddleNum) {
+	switch (riddleNum) {
+	case 1:
+		return riddleOneSolved;
+		break;
+	case 2:
+		return riddleTwoSolved;
+		break;
+	case 3:
+		return riddleThreeSolved;
+		break;
+	default:
+		return false;
+		break;
+	}
+}
+
 void Level4::runCenterRoom(Player& p, std::string input) {
 	if (input == "down") {
 		cout << " current location:" << endl;
