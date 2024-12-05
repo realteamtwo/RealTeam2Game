@@ -35,14 +35,14 @@ bool Player::hasItem(Item item) {
 	return false;
 }
 
-string Player::inspectDescription(string name) {
-	for (int i = 0; i < items.size(); i++) {
+//string Player::inspectDescription(string name) {
+	//for (int i = 0; i < items.size(); i++) {
 		//Item::getDisplayName;
 		//if(name == ?) {
 			//Item::getDescription
 		//}
-	}
-}
+	//}
+//}
 
 void Player::setLevel(int l) {
 	level = l;

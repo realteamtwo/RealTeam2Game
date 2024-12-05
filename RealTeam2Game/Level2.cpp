@@ -163,11 +163,16 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 void Level2::runDownRoom(Player &p, std::string input) {
 	
 	if (input == "down") {
-		cout << " current location:" << endl;
-		cout << "     |///|           " << endl;
-		cout << "|///|     |///|" << endl;
-		cout << "     | P |     " << endl;
-		cout << "What travels in the daylight but casts no shadow? What can you feel but you cannot see? Say your answer" << endl;
+		if (anagramSolved != true) {
+			cout << "a shutter is closed on this wall with an arrow painted on pointing to the left" << endl;
+		}
+		else {
+			cout << " current location:" << endl;
+			cout << "     |///|           " << endl;
+			cout << "|///|     |///|" << endl;
+			cout << "     | P |     " << endl;
+			cout << "What travels in the daylight but casts no shadow? What can you feel but you cannot see? Say your answer" << endl;
+		}
 	}
 
 	else if (input == "left") {

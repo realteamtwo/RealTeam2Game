@@ -48,7 +48,7 @@ public:
 	//Checks if the player has the given item
 	bool hasItem(Item);
 	//for displaying item description
-	string inspectDescription(string name);
+	//string inspectDescription(string name);
 	//Gets the player's current level
 	int getLevel();
 	//like getLocation but for level3
