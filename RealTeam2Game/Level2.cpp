@@ -130,6 +130,16 @@ void Level2::runCenterRoom(Player &p, std::string input) {
 		cout << "You go back up to the top of the tower.";
 		p.setLevel(1);
 	}
+	//to check items in inventory
+	/*else if (input == "inspect") {
+		//we want to compare the name they put in to the name of the item
+		string itemName;
+		cout << "Which item?: " << endl;
+		cin >> itemName;
+		if(itemName == //display name of item)
+		item.getDescription();
+
+	}*/
 
 }
 
