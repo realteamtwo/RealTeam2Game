@@ -94,6 +94,8 @@ void computerMove(char* spaces, char computer) {
 }
 bool checkWinner(char* spaces, char player, char computer) {
 
+	//unlike when we did tictactoe before we don't need input validation
+	//also if a=b, b=c, this means a=c so you only need to check 2 squares for value and if it isn't empty
 	if ((spaces[0] != ' ') && (spaces[0] == spaces[1]) && (spaces[1] == spaces[2])) {
 		if (spaces[0] == player) {
 			cout << "YOU WIN!" << endl;;
