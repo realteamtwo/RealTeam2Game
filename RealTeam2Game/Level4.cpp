@@ -55,20 +55,21 @@ void playGame() {
 
 void drawBoard(char* spaces) {
 	cout << '\n';
-	cout << "     |     |     " << '\n';
-	cout << "  " << spaces[0] << "  |  " << spaces[1] << "  |  " << spaces[2] << "  " << '\n';
-	cout << "_____|_____|_____" << '\n';
-	cout << "     |     |     " << '\n';
-	cout << "  " << spaces[3] << "  |  " << spaces[4] << "  |  " << spaces[5] << "  " << '\n';
-	cout << "_____|_____|_____" << '\n';
-	cout << "     |     |     " << '\n';
-	cout << "  " << spaces[6] << "  |  " << spaces[7] << "  |  " << spaces[8] << "  " << '\n';
-	cout << "     |     |     " << '\n';
+	//making the board (the spaces don't look like they line up but they do)
+	cout << "     |     |     " << endl;
+	cout << "  " << spaces[0] << "  |  " << spaces[1] << "  |  " << spaces[2] << "  " << endl;
+	cout << "_____|_____|_____" << endl;
+	cout << "     |     |     " << endl;
+	cout << "  " << spaces[3] << "  |  " << spaces[4] << "  |  " << spaces[5] << "  " << endl;
+	cout << "_____|_____|_____" << endl;
+	cout << "     |     |     " << endl;
+	cout << "  " << spaces[6] << "  |  " << spaces[7] << "  |  " << spaces[8] << "  " << endl;
+	cout << "     |     |     " << endl;
 	cout << '\n';
 }
 void playerMove(char* spaces, char player) {
 	int number;
-	do {
+	while (number < 0 || number > 8) {
 		cout << "Enter (1-9) to pick a square to place marker: ";
 		cin >> number;
 		number--;
@@ -76,12 +77,13 @@ void playerMove(char* spaces, char player) {
 			spaces[number] = player;
 			break;
 		}
-	} while (!number > 0 || !number < 8);
+	}
+	
 }
 void computerMove(char* spaces, char computer) {
 	int number;
 	srand(time(0));
-
+	//random number
 	while (true) {
 		number = rand() % 9;
 		if (spaces[number] == ' ') {
