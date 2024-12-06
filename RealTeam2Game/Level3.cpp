@@ -595,8 +595,9 @@ public:
 	HangmanGame()
 	{
 		srand(static_cast<unsigned int>(time(nullptr)));
-		secretWord = "trowel";
-		currentWord = string(secretWord.length(), '_');
+		secretWord = "trowel"; 
+		//secretWord.length() could be used instead of six but since the word is always trowel we can use 6
+		currentWord = string(6, '_');
 		attemptsLeft = 6;
 	}
 
