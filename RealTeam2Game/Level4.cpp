@@ -100,7 +100,7 @@ bool checkWinner(char* spaces, char player, char computer) {
 			ticWins++;
 		}
 		else {
-			cout << "YOU LOSE! Muahahaha\n";
+			cout << "YOU LOSE! Muahahaha" << endl;
 		}
 	}
 	else if ((spaces[3] != ' ') && (spaces[3] == spaces[4]) && (spaces[4] == spaces[5])) {
