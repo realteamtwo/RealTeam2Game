@@ -688,7 +688,8 @@ private:
 	bool updateCurrentWord(char letter)
 	{
 		bool correctGuess = false;
-		for (int i = 0; i < secretWord.length(); i++) {
+		//could use secretWord.length() but the length is 6
+		for (int i = 0; i < 6; i++) {
 			if (secretWord[i] == letter) {
 				currentWord[i] = letter;
 				correctGuess = true;
