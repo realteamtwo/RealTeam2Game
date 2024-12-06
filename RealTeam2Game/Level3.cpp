@@ -588,17 +588,16 @@ void Level3::runUpRoom(Player& p, std::string input) {
 
 }
 //for hangman in left room
-#define MAX_ATTEMPTS 6
 bool hasWon = false;
 class HangmanGame {
 public:
-	// constructor to ini
+	//constructor, initializes
 	HangmanGame()
 	{
 		srand(static_cast<unsigned int>(time(nullptr)));
 		secretWord = "trowel";
 		currentWord = string(secretWord.length(), '_');
-		attemptsLeft = MAX_ATTEMPTS;
+		attemptsLeft = 6;
 	}
 
 	// function to start the game.
@@ -614,9 +613,7 @@ public:
 		cout << "  |" << endl;
 		cout << "  |" << endl;
 
-		cout << "You have " << attemptsLeft
-			<< " attempts to guess the word."
-			<< endl;
+		cout << "You have " << attemptsLeft << " attempts to guess the word." << endl;
 
 		// the main game loop which will go on till the
 		// attempts are left or the game is won.
@@ -629,8 +626,7 @@ public:
 			if (isalpha(guess)) {
 				guess = tolower(guess);
 				if (alreadyGuessed(guess)) {
-					cout << "You've already guessed that "
-						"letter."
+					cout << "You've already guessed that letter."
 						<< endl;
 				}
 				else {
@@ -645,9 +641,7 @@ public:
 						// guessed.
 						if (currentWord == secretWord) {
 							displayGameInfo();
-							cout << "Congratulations! You "
-								"guessed the word: "
-								<< secretWord << endl;
+							cout << "Congratulations! You guessed the word: trowel. The light flickers away."  << endl;
 							hasWon = true;
 							return;
 						}
